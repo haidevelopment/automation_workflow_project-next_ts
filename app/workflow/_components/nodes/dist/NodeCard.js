@@ -1,12 +1,15 @@
 "use client";
 "use strict";
 exports.__esModule = true;
+var useFlowValidation_1 = require("@/components/hooks/useFlowValidation");
 var utils_1 = require("@/lib/utils");
 var react_1 = require("@xyflow/react");
 var react_2 = require("react");
 function NodeCard(_a) {
     var children = _a.children, nodeId = _a.nodeId, isSelected = _a.isSelected;
     var _b = react_1.useReactFlow(), getNode = _b.getNode, setCenter = _b.setCenter;
+    var invalidInputs = useFlowValidation_1["default"]().invalidInputs;
+    var hasInvalidInputs = invalidInputs.some(function (node) { return node.nodeId === nodeId; });
     return (react_2["default"].createElement("div", { onDoubleClick: function () {
             var node = getNode(nodeId);
             if (!node)
@@ -24,6 +27,6 @@ function NodeCard(_a) {
                 zoom: 1,
                 duration: 500
             });
-        }, className: utils_1.cn("rounded-md cursor-pointer bg-background border-2 border-separate w-[420px] text-xs gap-1 flex flex-col", isSelected && "border-primary") }, children));
+        }, className: utils_1.cn("rounded-md cursor-pointer bg-background border-2 border-separate w-[420px] text-xs gap-1 flex flex-col", isSelected && "border-primary", invalidInputs && "border-destructive border-2 ") }, children));
 }
 exports["default"] = NodeCard;

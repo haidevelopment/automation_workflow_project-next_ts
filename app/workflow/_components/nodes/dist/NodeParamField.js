@@ -19,7 +19,7 @@ var react_2 = require("@xyflow/react");
 var BrowserInstanceParam_1 = require("./BrowserInstanceParam");
 function NodeParamField(_a) {
     var _b;
-    var param = _a.param, nodeId = _a.nodeId;
+    var param = _a.param, nodeId = _a.nodeId, disabled = _a.disabled;
     var _c = react_2.useReactFlow(), updateNodeData = _c.updateNodeData, getNode = _c.getNode;
     var node = getNode(nodeId);
     var value = (_b = node === null || node === void 0 ? void 0 : node.data.inputs) === null || _b === void 0 ? void 0 : _b[param.name];
@@ -31,7 +31,7 @@ function NodeParamField(_a) {
     }, [updateNodeData, node === null || node === void 0 ? void 0 : node.data.inputs, param.name, nodeId]);
     switch (param.type) {
         case task_1.TaskParamType.STRING:
-            return react_1["default"].createElement(StringParam_1["default"], { param: param, value: value, updateNodeParamValue: updateNodeParamValue });
+            return react_1["default"].createElement(StringParam_1["default"], { param: param, value: value, updateNodeParamValue: updateNodeParamValue, disabled: disabled });
         case task_1.TaskParamType.BROWSER_INSTANCE:
             return react_1["default"].createElement(BrowserInstanceParam_1["default"], { param: param, value: value, updateNodeParamValue: updateNodeParamValue });
         default:

@@ -12,7 +12,8 @@ function TaskMenu() {
             react_1["default"].createElement(accordion_1.AccordionItem, { value: "extraction" },
                 react_1["default"].createElement(accordion_1.AccordionTrigger, { className: "font-bold" }, "Data Extaction"),
                 react_1["default"].createElement(accordion_1.AccordionContent, { className: "flex flex-col gap-1" },
-                    react_1["default"].createElement(TaskMenuBtn, { taskType: task_1.TaskType.PAGE_TO_HTML }))))));
+                    react_1["default"].createElement(TaskMenuBtn, { taskType: task_1.TaskType.PAGE_TO_HTML }),
+                    react_1["default"].createElement(TaskMenuBtn, { taskType: task_1.TaskType.EXTRACT_TEXT_FROM_ELEMENT }))))));
 }
 function TaskMenuBtn(_a) {
     var taskType = _a.taskType;

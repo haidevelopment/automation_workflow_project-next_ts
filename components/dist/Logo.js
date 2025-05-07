@@ -10,7 +10,7 @@ function Logo(_a) {
         react_1["default"].createElement("div", { className: "rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 p-2" },
             react_1["default"].createElement(lucide_react_1.SquareDashedMousePointer, { size: iconSize, className: "stroke-white" })),
         react_1["default"].createElement("div", null,
-            react_1["default"].createElement("span", { className: "bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent" }, "Flow"),
-            react_1["default"].createElement("span", { className: "text-stone-700 dark:text-stone-300" }, "Scrape"))));
+            react_1["default"].createElement("span", { className: "bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent" }, "Automation"),
+            react_1["default"].createElement("span", { className: "text-stone-700 dark:text-stone-300" }, "Flow"))));
 }
 exports["default"] = Logo;

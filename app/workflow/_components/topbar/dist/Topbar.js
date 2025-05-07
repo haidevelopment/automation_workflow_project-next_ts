@@ -7,6 +7,7 @@ var lucide_react_1 = require("lucide-react");
 var navigation_1 = require("next/navigation");
 var react_1 = require("react");
 var SaveBtn_1 = require("./SaveBtn");
+var ExecuteBtn_1 = require("./ExecuteBtn");
 function Topbar(_a) {
     var title = _a.title, subTitle = _a.subTitle, workflowId = _a.workflowId;
     var router = navigation_1.useRouter();
@@ -19,6 +20,7 @@ function Topbar(_a) {
                 react_1["default"].createElement("p", { className: "font-bold text-ellipsis truncate" }, title),
                 subTitle && (react_1["default"].createElement("p", { className: "text-xs text-muted-foreground truncate text-ellipsis" }, subTitle)))),
         react_1["default"].createElement("div", { className: "flex gap-1 flex-1 justify-end" },
+            react_1["default"].createElement(ExecuteBtn_1["default"], { workflowId: workflowId }),
             react_1["default"].createElement(SaveBtn_1["default"], { workflowId: workflowId }))));
 }
 exports["default"] = Topbar;
