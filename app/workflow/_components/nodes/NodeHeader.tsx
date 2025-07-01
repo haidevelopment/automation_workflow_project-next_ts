@@ -17,7 +17,7 @@ function NodeHeader({
   nodeId: string;
 }) {
   const task = TaskRegistry[taskType];
-  const { deleteElements,getNode,addNodes } = useReactFlow();
+  const { deleteElements, getNode, addNodes } = useReactFlow();
   return (
     <div className="flex items-center gap-2 p-2">
       <task.icon size={16} />
@@ -47,18 +47,24 @@ function NodeHeader({
           )}
           {!task.isEntryPoint && (
             <>
-              <Button variant={"ghost"} size={"icon"} onClick={()=>{
-                const node = getNode(nodeId) as AppNode;
-                console.log("@NODE",node);
-                const newX = node.position.x + node.measured.width + 20;
-                const newY = node.position.y + node.measured.height + 20;
-                const newNode = CreateFlowNode(node.data.type,{
-                  x:newX,
-                  y:newY
-                });
-                addNodes([newNode]);
-                
-              }}>
+              <Button
+                variant={"ghost"}
+                size={"icon"}
+                onClick={() => {
+                  const node = getNode(nodeId) as AppNode;
+                  console.log("@NODE", node);
+                  const newX =
+                    node.position.x + (node.measured?.width ?? 0) + 20;
+                  const newY =
+                    node.position.y + (node.measured?.height ?? 0) + 20;
+
+                  const newNode = CreateFlowNode(node.data.type, {
+                    x: newX,
+                    y: newY,
+                  });
+                  addNodes([newNode]);
+                }}
+              >
                 <CopyIcon size={12} />
               </Button>
             </>

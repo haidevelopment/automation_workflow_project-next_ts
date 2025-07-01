@@ -12,45 +12,51 @@ datasource db {
 }
 
 model Workflow {
-  id          String              @id @default(cuid())
+  id          String  @id @default(cuid())
   userId      String
   name        String
-  description String
+  description String?
   definition  String
-  status      String
-  createdAt   DateTime            @default(now())
-  updatedAt   DateTime            @updatedAt
-  executions  WorkflowExecution[]
+  status      String //DRAF | PUBLISHED
+
+  lastRunAt     DateTime?
+  lastRunId     String?
+  lastRunStatus String?
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+  executions    WorkflowExecution[]
 
   //1 nguời dùng không thể có 2 workflow chạy cũng 1 tên
   @@unique([name, userId])
 }
 
 model WorkflowExecution {
-  id          String           @id @default(cuid())
-  workflowId  String
-  userId      String
-  strigger    String
-  status      String
-  createdAt   DateTime         @default(now())
-  startedAt   DateTime?
-  completedAt DateTime?
-  phases      ExecutionPhase[]
-  workflow    Workflow         @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  id              String           @id @default(cuid())
+  workflowId      String
+  userId          String
+  strigger        String
+  status          String
+  createdAt       DateTime         @default(now())
+  startedAt       DateTime?
+  completedAt     DateTime?
+  creditsConsumed Int              @default(0)
+  phases          ExecutionPhase[]
+  workflow        Workflow         @relation(fields: [workflowId], references: [id], onDelete: Cascade)
 }
 
 model ExecutionPhase {
-  id                  String            @id @default(cuid())
-  userId              String
-  status              String
-  number              Int
-  node                String
-  name                String
-  startedAt           DateTime?
-  completedAt         DateTime?
-  inputs              String?
-  outputs             String?
-  creditsCost         Int?
+  id          String    @id @default(cuid())
+  userId      String
+  status      String
+  number      Int
+  node        String
+  name        String
+  startedAt   DateTime?
+  completedAt DateTime?
+  inputs      String?
+  outputs     String?
+
+  creditsConsumed     Int?
   workflowExecutionId String
   execution           WorkflowExecution @relation(fields: [workflowExecutionId], references: [id], onDelete: Cascade)
 }
