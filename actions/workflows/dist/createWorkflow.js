@@ -76,7 +76,7 @@ function CreateWorkflow(form) {
                         nodes: [],
                         edges: []
                     };
-                    initialFlow.nodes.push(CreateFlowNode_1.CreateFlowNode(task_1.TaskType.LAUCH_BROWSER));
+                    initialFlow.nodes.push(CreateFlowNode_1.CreateFlowNode(task_1.TaskType.LAUNCH_BROWSER));
                     return [4 /*yield*/, prisma_1["default"].workflow.create({
                             data: __assign({ userId: userId, status: workflow_2.WorkflowStatus.DRAF, definition: JSON.stringify(initialFlow) }, data)
                         })];

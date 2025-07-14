@@ -33,7 +33,7 @@ const snapGrid: [number, number] = [50, 50];
 const fitViewOptions = { padding: 1 };
 function FlowEditor({ workflow }: { workflow: Workflow }) {
   const [nodes, setNodes, onNodesChange] = useNodesState([
-    CreateFlowNode(TaskType.LAUCH_BROWSER),
+    CreateFlowNode(TaskType.LAUNCH_BROWSER),
   ]);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
   const { setViewport, screenToFlowPosition, updateNodeData } = useReactFlow();

@@ -3,7 +3,7 @@ exports.__esModule = true;
 exports.TaskParamType = exports.TaskType = void 0;
 var TaskType;
 (function (TaskType) {
-    TaskType["LAUCH_BROWSER"] = "LAUCH_BROWSER";
+    TaskType["LAUNCH_BROWSER"] = "LAUNCH_BROWSER";
     TaskType["PAGE_TO_HTML"] = "PAGE_TO_HTML";
     TaskType["EXTRACT_TEXT_FROM_ELEMENT"] = "EXTRACT_TEXT_FROM_ELEMENT";
 })(TaskType = exports.TaskType || (exports.TaskType = {}));

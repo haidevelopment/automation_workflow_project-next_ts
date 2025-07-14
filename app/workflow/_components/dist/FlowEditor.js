@@ -32,7 +32,7 @@ var fitViewOptions = { padding: 1 };
 function FlowEditor(_a) {
     var workflow = _a.workflow;
     var _b = react_1.useNodesState([
-        CreateFlowNode_1.CreateFlowNode(task_1.TaskType.LAUCH_BROWSER),
+        CreateFlowNode_1.CreateFlowNode(task_1.TaskType.LAUNCH_BROWSER),
     ]), nodes = _b[0], setNodes = _b[1], onNodesChange = _b[2];
     var _c = react_1.useEdgesState([]), edges = _c[0], setEdges = _c[1], onEdgesChange = _c[2];
     var _d = react_1.useReactFlow(), setViewport = _d.setViewport, screenToFlowPosition = _d.screenToFlowPosition, updateNodeData = _d.updateNodeData;

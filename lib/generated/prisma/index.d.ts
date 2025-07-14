@@ -28,6 +28,16 @@ export type WorkflowExecution = $Result.DefaultSelection<Prisma.$WorkflowExecuti
  * 
  */
 export type ExecutionPhase = $Result.DefaultSelection<Prisma.$ExecutionPhasePayload>
+/**
+ * Model ExecutionLog
+ * 
+ */
+export type ExecutionLog = $Result.DefaultSelection<Prisma.$ExecutionLogPayload>
+/**
+ * Model UserBalance
+ * 
+ */
+export type UserBalance = $Result.DefaultSelection<Prisma.$UserBalancePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +193,26 @@ export class PrismaClient<
     * ```
     */
   get executionPhase(): Prisma.ExecutionPhaseDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.executionLog`: Exposes CRUD operations for the **ExecutionLog** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ExecutionLogs
+    * const executionLogs = await prisma.executionLog.findMany()
+    * ```
+    */
+  get executionLog(): Prisma.ExecutionLogDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userBalance`: Exposes CRUD operations for the **UserBalance** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserBalances
+    * const userBalances = await prisma.userBalance.findMany()
+    * ```
+    */
+  get userBalance(): Prisma.UserBalanceDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +655,9 @@ export namespace Prisma {
   export const ModelName: {
     Workflow: 'Workflow',
     WorkflowExecution: 'WorkflowExecution',
-    ExecutionPhase: 'ExecutionPhase'
+    ExecutionPhase: 'ExecutionPhase',
+    ExecutionLog: 'ExecutionLog',
+    UserBalance: 'UserBalance'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "workflow" | "workflowExecution" | "executionPhase"
+      modelProps: "workflow" | "workflowExecution" | "executionPhase" | "executionLog" | "userBalance"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +902,154 @@ export namespace Prisma {
           }
         }
       }
+      ExecutionLog: {
+        payload: Prisma.$ExecutionLogPayload<ExtArgs>
+        fields: Prisma.ExecutionLogFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ExecutionLogFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExecutionLogPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ExecutionLogFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExecutionLogPayload>
+          }
+          findFirst: {
+            args: Prisma.ExecutionLogFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExecutionLogPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ExecutionLogFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExecutionLogPayload>
+          }
+          findMany: {
+            args: Prisma.ExecutionLogFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExecutionLogPayload>[]
+          }
+          create: {
+            args: Prisma.ExecutionLogCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExecutionLogPayload>
+          }
+          createMany: {
+            args: Prisma.ExecutionLogCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ExecutionLogCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExecutionLogPayload>[]
+          }
+          delete: {
+            args: Prisma.ExecutionLogDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExecutionLogPayload>
+          }
+          update: {
+            args: Prisma.ExecutionLogUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExecutionLogPayload>
+          }
+          deleteMany: {
+            args: Prisma.ExecutionLogDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ExecutionLogUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ExecutionLogUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExecutionLogPayload>[]
+          }
+          upsert: {
+            args: Prisma.ExecutionLogUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExecutionLogPayload>
+          }
+          aggregate: {
+            args: Prisma.ExecutionLogAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateExecutionLog>
+          }
+          groupBy: {
+            args: Prisma.ExecutionLogGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ExecutionLogGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ExecutionLogCountArgs<ExtArgs>
+            result: $Utils.Optional<ExecutionLogCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserBalance: {
+        payload: Prisma.$UserBalancePayload<ExtArgs>
+        fields: Prisma.UserBalanceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserBalanceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserBalancePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserBalanceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserBalancePayload>
+          }
+          findFirst: {
+            args: Prisma.UserBalanceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserBalancePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserBalanceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserBalancePayload>
+          }
+          findMany: {
+            args: Prisma.UserBalanceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserBalancePayload>[]
+          }
+          create: {
+            args: Prisma.UserBalanceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserBalancePayload>
+          }
+          createMany: {
+            args: Prisma.UserBalanceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserBalanceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserBalancePayload>[]
+          }
+          delete: {
+            args: Prisma.UserBalanceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserBalancePayload>
+          }
+          update: {
+            args: Prisma.UserBalanceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserBalancePayload>
+          }
+          deleteMany: {
+            args: Prisma.UserBalanceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserBalanceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserBalanceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserBalancePayload>[]
+          }
+          upsert: {
+            args: Prisma.UserBalanceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserBalancePayload>
+          }
+          aggregate: {
+            args: Prisma.UserBalanceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserBalance>
+          }
+          groupBy: {
+            args: Prisma.UserBalanceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserBalanceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserBalanceCountArgs<ExtArgs>
+            result: $Utils.Optional<UserBalanceCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -957,6 +1137,8 @@ export namespace Prisma {
     workflow?: WorkflowOmit
     workflowExecution?: WorkflowExecutionOmit
     executionPhase?: ExecutionPhaseOmit
+    executionLog?: ExecutionLogOmit
+    userBalance?: UserBalanceOmit
   }
 
   /* Types for Logging */
@@ -1109,6 +1291,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ExecutionPhaseCountOutputType
+   */
+
+  export type ExecutionPhaseCountOutputType = {
+    logs: number
+  }
+
+  export type ExecutionPhaseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    logs?: boolean | ExecutionPhaseCountOutputTypeCountLogsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ExecutionPhaseCountOutputType without action
+   */
+  export type ExecutionPhaseCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionPhaseCountOutputType
+     */
+    select?: ExecutionPhaseCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ExecutionPhaseCountOutputType without action
+   */
+  export type ExecutionPhaseCountOutputTypeCountLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExecutionLogWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -1118,8 +1331,18 @@ export namespace Prisma {
 
   export type AggregateWorkflow = {
     _count: WorkflowCountAggregateOutputType | null
+    _avg: WorkflowAvgAggregateOutputType | null
+    _sum: WorkflowSumAggregateOutputType | null
     _min: WorkflowMinAggregateOutputType | null
     _max: WorkflowMaxAggregateOutputType | null
+  }
+
+  export type WorkflowAvgAggregateOutputType = {
+    creditsCost: number | null
+  }
+
+  export type WorkflowSumAggregateOutputType = {
+    creditsCost: number | null
   }
 
   export type WorkflowMinAggregateOutputType = {
@@ -1128,10 +1351,14 @@ export namespace Prisma {
     name: string | null
     description: string | null
     definition: string | null
+    executionPlan: string | null
+    creditsCost: number | null
+    cron: string | null
     status: string | null
     lastRunAt: Date | null
     lastRunId: string | null
     lastRunStatus: string | null
+    nextRunAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1142,10 +1369,14 @@ export namespace Prisma {
     name: string | null
     description: string | null
     definition: string | null
+    executionPlan: string | null
+    creditsCost: number | null
+    cron: string | null
     status: string | null
     lastRunAt: Date | null
     lastRunId: string | null
     lastRunStatus: string | null
+    nextRunAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1156,15 +1387,27 @@ export namespace Prisma {
     name: number
     description: number
     definition: number
+    executionPlan: number
+    creditsCost: number
+    cron: number
     status: number
     lastRunAt: number
     lastRunId: number
     lastRunStatus: number
+    nextRunAt: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type WorkflowAvgAggregateInputType = {
+    creditsCost?: true
+  }
+
+  export type WorkflowSumAggregateInputType = {
+    creditsCost?: true
+  }
 
   export type WorkflowMinAggregateInputType = {
     id?: true
@@ -1172,10 +1415,14 @@ export namespace Prisma {
     name?: true
     description?: true
     definition?: true
+    executionPlan?: true
+    creditsCost?: true
+    cron?: true
     status?: true
     lastRunAt?: true
     lastRunId?: true
     lastRunStatus?: true
+    nextRunAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1186,10 +1433,14 @@ export namespace Prisma {
     name?: true
     description?: true
     definition?: true
+    executionPlan?: true
+    creditsCost?: true
+    cron?: true
     status?: true
     lastRunAt?: true
     lastRunId?: true
     lastRunStatus?: true
+    nextRunAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1200,10 +1451,14 @@ export namespace Prisma {
     name?: true
     description?: true
     definition?: true
+    executionPlan?: true
+    creditsCost?: true
+    cron?: true
     status?: true
     lastRunAt?: true
     lastRunId?: true
     lastRunStatus?: true
+    nextRunAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1247,6 +1502,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: WorkflowAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WorkflowSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: WorkflowMinAggregateInputType
@@ -1277,6 +1544,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: WorkflowCountAggregateInputType | true
+    _avg?: WorkflowAvgAggregateInputType
+    _sum?: WorkflowSumAggregateInputType
     _min?: WorkflowMinAggregateInputType
     _max?: WorkflowMaxAggregateInputType
   }
@@ -1287,13 +1556,19 @@ export namespace Prisma {
     name: string
     description: string | null
     definition: string
+    executionPlan: string | null
+    creditsCost: number
+    cron: string | null
     status: string
     lastRunAt: Date | null
     lastRunId: string | null
     lastRunStatus: string | null
+    nextRunAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: WorkflowCountAggregateOutputType | null
+    _avg: WorkflowAvgAggregateOutputType | null
+    _sum: WorkflowSumAggregateOutputType | null
     _min: WorkflowMinAggregateOutputType | null
     _max: WorkflowMaxAggregateOutputType | null
   }
@@ -1318,10 +1593,14 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     definition?: boolean
+    executionPlan?: boolean
+    creditsCost?: boolean
+    cron?: boolean
     status?: boolean
     lastRunAt?: boolean
     lastRunId?: boolean
     lastRunStatus?: boolean
+    nextRunAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     executions?: boolean | Workflow$executionsArgs<ExtArgs>
@@ -1334,10 +1613,14 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     definition?: boolean
+    executionPlan?: boolean
+    creditsCost?: boolean
+    cron?: boolean
     status?: boolean
     lastRunAt?: boolean
     lastRunId?: boolean
     lastRunStatus?: boolean
+    nextRunAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["workflow"]>
@@ -1348,10 +1631,14 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     definition?: boolean
+    executionPlan?: boolean
+    creditsCost?: boolean
+    cron?: boolean
     status?: boolean
     lastRunAt?: boolean
     lastRunId?: boolean
     lastRunStatus?: boolean
+    nextRunAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["workflow"]>
@@ -1362,15 +1649,19 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     definition?: boolean
+    executionPlan?: boolean
+    creditsCost?: boolean
+    cron?: boolean
     status?: boolean
     lastRunAt?: boolean
     lastRunId?: boolean
     lastRunStatus?: boolean
+    nextRunAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type WorkflowOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "description" | "definition" | "status" | "lastRunAt" | "lastRunId" | "lastRunStatus" | "createdAt" | "updatedAt", ExtArgs["result"]["workflow"]>
+  export type WorkflowOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "description" | "definition" | "executionPlan" | "creditsCost" | "cron" | "status" | "lastRunAt" | "lastRunId" | "lastRunStatus" | "nextRunAt" | "createdAt" | "updatedAt", ExtArgs["result"]["workflow"]>
   export type WorkflowInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     executions?: boolean | Workflow$executionsArgs<ExtArgs>
     _count?: boolean | WorkflowCountOutputTypeDefaultArgs<ExtArgs>
@@ -1389,10 +1680,14 @@ export namespace Prisma {
       name: string
       description: string | null
       definition: string
+      executionPlan: string | null
+      creditsCost: number
+      cron: string | null
       status: string
       lastRunAt: Date | null
       lastRunId: string | null
       lastRunStatus: string | null
+      nextRunAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["workflow"]>
@@ -1824,10 +2119,14 @@ export namespace Prisma {
     readonly name: FieldRef<"Workflow", 'String'>
     readonly description: FieldRef<"Workflow", 'String'>
     readonly definition: FieldRef<"Workflow", 'String'>
+    readonly executionPlan: FieldRef<"Workflow", 'String'>
+    readonly creditsCost: FieldRef<"Workflow", 'Int'>
+    readonly cron: FieldRef<"Workflow", 'String'>
     readonly status: FieldRef<"Workflow", 'String'>
     readonly lastRunAt: FieldRef<"Workflow", 'DateTime'>
     readonly lastRunId: FieldRef<"Workflow", 'String'>
     readonly lastRunStatus: FieldRef<"Workflow", 'String'>
+    readonly nextRunAt: FieldRef<"Workflow", 'DateTime'>
     readonly createdAt: FieldRef<"Workflow", 'DateTime'>
     readonly updatedAt: FieldRef<"Workflow", 'DateTime'>
   }
@@ -2287,6 +2586,7 @@ export namespace Prisma {
     createdAt: Date | null
     startedAt: Date | null
     completedAt: Date | null
+    definition: string | null
     creditsConsumed: number | null
   }
 
@@ -2299,6 +2599,7 @@ export namespace Prisma {
     createdAt: Date | null
     startedAt: Date | null
     completedAt: Date | null
+    definition: string | null
     creditsConsumed: number | null
   }
 
@@ -2311,6 +2612,7 @@ export namespace Prisma {
     createdAt: number
     startedAt: number
     completedAt: number
+    definition: number
     creditsConsumed: number
     _all: number
   }
@@ -2333,6 +2635,7 @@ export namespace Prisma {
     createdAt?: true
     startedAt?: true
     completedAt?: true
+    definition?: true
     creditsConsumed?: true
   }
 
@@ -2345,6 +2648,7 @@ export namespace Prisma {
     createdAt?: true
     startedAt?: true
     completedAt?: true
+    definition?: true
     creditsConsumed?: true
   }
 
@@ -2357,6 +2661,7 @@ export namespace Prisma {
     createdAt?: true
     startedAt?: true
     completedAt?: true
+    definition?: true
     creditsConsumed?: true
     _all?: true
   }
@@ -2456,6 +2761,7 @@ export namespace Prisma {
     createdAt: Date
     startedAt: Date | null
     completedAt: Date | null
+    definition: string
     creditsConsumed: number
     _count: WorkflowExecutionCountAggregateOutputType | null
     _avg: WorkflowExecutionAvgAggregateOutputType | null
@@ -2487,6 +2793,7 @@ export namespace Prisma {
     createdAt?: boolean
     startedAt?: boolean
     completedAt?: boolean
+    definition?: boolean
     creditsConsumed?: boolean
     phases?: boolean | WorkflowExecution$phasesArgs<ExtArgs>
     workflow?: boolean | WorkflowDefaultArgs<ExtArgs>
@@ -2502,6 +2809,7 @@ export namespace Prisma {
     createdAt?: boolean
     startedAt?: boolean
     completedAt?: boolean
+    definition?: boolean
     creditsConsumed?: boolean
     workflow?: boolean | WorkflowDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["workflowExecution"]>
@@ -2515,6 +2823,7 @@ export namespace Prisma {
     createdAt?: boolean
     startedAt?: boolean
     completedAt?: boolean
+    definition?: boolean
     creditsConsumed?: boolean
     workflow?: boolean | WorkflowDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["workflowExecution"]>
@@ -2528,10 +2837,11 @@ export namespace Prisma {
     createdAt?: boolean
     startedAt?: boolean
     completedAt?: boolean
+    definition?: boolean
     creditsConsumed?: boolean
   }
 
-  export type WorkflowExecutionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "workflowId" | "userId" | "strigger" | "status" | "createdAt" | "startedAt" | "completedAt" | "creditsConsumed", ExtArgs["result"]["workflowExecution"]>
+  export type WorkflowExecutionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "workflowId" | "userId" | "strigger" | "status" | "createdAt" | "startedAt" | "completedAt" | "definition" | "creditsConsumed", ExtArgs["result"]["workflowExecution"]>
   export type WorkflowExecutionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     phases?: boolean | WorkflowExecution$phasesArgs<ExtArgs>
     workflow?: boolean | WorkflowDefaultArgs<ExtArgs>
@@ -2559,6 +2869,7 @@ export namespace Prisma {
       createdAt: Date
       startedAt: Date | null
       completedAt: Date | null
+      definition: string
       creditsConsumed: number
     }, ExtArgs["result"]["workflowExecution"]>
     composites: {}
@@ -2993,6 +3304,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"WorkflowExecution", 'DateTime'>
     readonly startedAt: FieldRef<"WorkflowExecution", 'DateTime'>
     readonly completedAt: FieldRef<"WorkflowExecution", 'DateTime'>
+    readonly definition: FieldRef<"WorkflowExecution", 'String'>
     readonly creditsConsumed: FieldRef<"WorkflowExecution", 'Int'>
   }
     
@@ -3689,6 +4001,8 @@ export namespace Prisma {
     creditsConsumed?: boolean
     workflowExecutionId?: boolean
     execution?: boolean | WorkflowExecutionDefaultArgs<ExtArgs>
+    logs?: boolean | ExecutionPhase$logsArgs<ExtArgs>
+    _count?: boolean | ExecutionPhaseCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["executionPhase"]>
 
   export type ExecutionPhaseSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3741,6 +4055,8 @@ export namespace Prisma {
   export type ExecutionPhaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "status" | "number" | "node" | "name" | "startedAt" | "completedAt" | "inputs" | "outputs" | "creditsConsumed" | "workflowExecutionId", ExtArgs["result"]["executionPhase"]>
   export type ExecutionPhaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     execution?: boolean | WorkflowExecutionDefaultArgs<ExtArgs>
+    logs?: boolean | ExecutionPhase$logsArgs<ExtArgs>
+    _count?: boolean | ExecutionPhaseCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ExecutionPhaseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     execution?: boolean | WorkflowExecutionDefaultArgs<ExtArgs>
@@ -3753,6 +4069,7 @@ export namespace Prisma {
     name: "ExecutionPhase"
     objects: {
       execution: Prisma.$WorkflowExecutionPayload<ExtArgs>
+      logs: Prisma.$ExecutionLogPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4162,6 +4479,7 @@ export namespace Prisma {
   export interface Prisma__ExecutionPhaseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     execution<T extends WorkflowExecutionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WorkflowExecutionDefaultArgs<ExtArgs>>): Prisma__WorkflowExecutionClient<$Result.GetResult<Prisma.$WorkflowExecutionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    logs<T extends ExecutionPhase$logsArgs<ExtArgs> = {}>(args?: Subset<T, ExecutionPhase$logsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4597,6 +4915,30 @@ export namespace Prisma {
   }
 
   /**
+   * ExecutionPhase.logs
+   */
+  export type ExecutionPhase$logsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogInclude<ExtArgs> | null
+    where?: ExecutionLogWhereInput
+    orderBy?: ExecutionLogOrderByWithRelationInput | ExecutionLogOrderByWithRelationInput[]
+    cursor?: ExecutionLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ExecutionLogScalarFieldEnum | ExecutionLogScalarFieldEnum[]
+  }
+
+  /**
    * ExecutionPhase without action
    */
   export type ExecutionPhaseDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4612,6 +4954,2050 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ExecutionPhaseInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ExecutionLog
+   */
+
+  export type AggregateExecutionLog = {
+    _count: ExecutionLogCountAggregateOutputType | null
+    _min: ExecutionLogMinAggregateOutputType | null
+    _max: ExecutionLogMaxAggregateOutputType | null
+  }
+
+  export type ExecutionLogMinAggregateOutputType = {
+    id: string | null
+    logLevel: string | null
+    message: string | null
+    time: Date | null
+    executionPhaseId: string | null
+  }
+
+  export type ExecutionLogMaxAggregateOutputType = {
+    id: string | null
+    logLevel: string | null
+    message: string | null
+    time: Date | null
+    executionPhaseId: string | null
+  }
+
+  export type ExecutionLogCountAggregateOutputType = {
+    id: number
+    logLevel: number
+    message: number
+    time: number
+    executionPhaseId: number
+    _all: number
+  }
+
+
+  export type ExecutionLogMinAggregateInputType = {
+    id?: true
+    logLevel?: true
+    message?: true
+    time?: true
+    executionPhaseId?: true
+  }
+
+  export type ExecutionLogMaxAggregateInputType = {
+    id?: true
+    logLevel?: true
+    message?: true
+    time?: true
+    executionPhaseId?: true
+  }
+
+  export type ExecutionLogCountAggregateInputType = {
+    id?: true
+    logLevel?: true
+    message?: true
+    time?: true
+    executionPhaseId?: true
+    _all?: true
+  }
+
+  export type ExecutionLogAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ExecutionLog to aggregate.
+     */
+    where?: ExecutionLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExecutionLogs to fetch.
+     */
+    orderBy?: ExecutionLogOrderByWithRelationInput | ExecutionLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ExecutionLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExecutionLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExecutionLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ExecutionLogs
+    **/
+    _count?: true | ExecutionLogCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ExecutionLogMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ExecutionLogMaxAggregateInputType
+  }
+
+  export type GetExecutionLogAggregateType<T extends ExecutionLogAggregateArgs> = {
+        [P in keyof T & keyof AggregateExecutionLog]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateExecutionLog[P]>
+      : GetScalarType<T[P], AggregateExecutionLog[P]>
+  }
+
+
+
+
+  export type ExecutionLogGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExecutionLogWhereInput
+    orderBy?: ExecutionLogOrderByWithAggregationInput | ExecutionLogOrderByWithAggregationInput[]
+    by: ExecutionLogScalarFieldEnum[] | ExecutionLogScalarFieldEnum
+    having?: ExecutionLogScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ExecutionLogCountAggregateInputType | true
+    _min?: ExecutionLogMinAggregateInputType
+    _max?: ExecutionLogMaxAggregateInputType
+  }
+
+  export type ExecutionLogGroupByOutputType = {
+    id: string
+    logLevel: string
+    message: string
+    time: Date
+    executionPhaseId: string
+    _count: ExecutionLogCountAggregateOutputType | null
+    _min: ExecutionLogMinAggregateOutputType | null
+    _max: ExecutionLogMaxAggregateOutputType | null
+  }
+
+  type GetExecutionLogGroupByPayload<T extends ExecutionLogGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ExecutionLogGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ExecutionLogGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ExecutionLogGroupByOutputType[P]>
+            : GetScalarType<T[P], ExecutionLogGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ExecutionLogSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    logLevel?: boolean
+    message?: boolean
+    time?: boolean
+    executionPhaseId?: boolean
+    executionPhase?: boolean | ExecutionPhaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["executionLog"]>
+
+  export type ExecutionLogSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    logLevel?: boolean
+    message?: boolean
+    time?: boolean
+    executionPhaseId?: boolean
+    executionPhase?: boolean | ExecutionPhaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["executionLog"]>
+
+  export type ExecutionLogSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    logLevel?: boolean
+    message?: boolean
+    time?: boolean
+    executionPhaseId?: boolean
+    executionPhase?: boolean | ExecutionPhaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["executionLog"]>
+
+  export type ExecutionLogSelectScalar = {
+    id?: boolean
+    logLevel?: boolean
+    message?: boolean
+    time?: boolean
+    executionPhaseId?: boolean
+  }
+
+  export type ExecutionLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "logLevel" | "message" | "time" | "executionPhaseId", ExtArgs["result"]["executionLog"]>
+  export type ExecutionLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    executionPhase?: boolean | ExecutionPhaseDefaultArgs<ExtArgs>
+  }
+  export type ExecutionLogIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    executionPhase?: boolean | ExecutionPhaseDefaultArgs<ExtArgs>
+  }
+  export type ExecutionLogIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    executionPhase?: boolean | ExecutionPhaseDefaultArgs<ExtArgs>
+  }
+
+  export type $ExecutionLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ExecutionLog"
+    objects: {
+      executionPhase: Prisma.$ExecutionPhasePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      logLevel: string
+      message: string
+      time: Date
+      executionPhaseId: string
+    }, ExtArgs["result"]["executionLog"]>
+    composites: {}
+  }
+
+  type ExecutionLogGetPayload<S extends boolean | null | undefined | ExecutionLogDefaultArgs> = $Result.GetResult<Prisma.$ExecutionLogPayload, S>
+
+  type ExecutionLogCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ExecutionLogFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ExecutionLogCountAggregateInputType | true
+    }
+
+  export interface ExecutionLogDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ExecutionLog'], meta: { name: 'ExecutionLog' } }
+    /**
+     * Find zero or one ExecutionLog that matches the filter.
+     * @param {ExecutionLogFindUniqueArgs} args - Arguments to find a ExecutionLog
+     * @example
+     * // Get one ExecutionLog
+     * const executionLog = await prisma.executionLog.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ExecutionLogFindUniqueArgs>(args: SelectSubset<T, ExecutionLogFindUniqueArgs<ExtArgs>>): Prisma__ExecutionLogClient<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ExecutionLog that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ExecutionLogFindUniqueOrThrowArgs} args - Arguments to find a ExecutionLog
+     * @example
+     * // Get one ExecutionLog
+     * const executionLog = await prisma.executionLog.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ExecutionLogFindUniqueOrThrowArgs>(args: SelectSubset<T, ExecutionLogFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ExecutionLogClient<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ExecutionLog that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExecutionLogFindFirstArgs} args - Arguments to find a ExecutionLog
+     * @example
+     * // Get one ExecutionLog
+     * const executionLog = await prisma.executionLog.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ExecutionLogFindFirstArgs>(args?: SelectSubset<T, ExecutionLogFindFirstArgs<ExtArgs>>): Prisma__ExecutionLogClient<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ExecutionLog that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExecutionLogFindFirstOrThrowArgs} args - Arguments to find a ExecutionLog
+     * @example
+     * // Get one ExecutionLog
+     * const executionLog = await prisma.executionLog.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ExecutionLogFindFirstOrThrowArgs>(args?: SelectSubset<T, ExecutionLogFindFirstOrThrowArgs<ExtArgs>>): Prisma__ExecutionLogClient<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ExecutionLogs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExecutionLogFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ExecutionLogs
+     * const executionLogs = await prisma.executionLog.findMany()
+     * 
+     * // Get first 10 ExecutionLogs
+     * const executionLogs = await prisma.executionLog.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const executionLogWithIdOnly = await prisma.executionLog.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ExecutionLogFindManyArgs>(args?: SelectSubset<T, ExecutionLogFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ExecutionLog.
+     * @param {ExecutionLogCreateArgs} args - Arguments to create a ExecutionLog.
+     * @example
+     * // Create one ExecutionLog
+     * const ExecutionLog = await prisma.executionLog.create({
+     *   data: {
+     *     // ... data to create a ExecutionLog
+     *   }
+     * })
+     * 
+     */
+    create<T extends ExecutionLogCreateArgs>(args: SelectSubset<T, ExecutionLogCreateArgs<ExtArgs>>): Prisma__ExecutionLogClient<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ExecutionLogs.
+     * @param {ExecutionLogCreateManyArgs} args - Arguments to create many ExecutionLogs.
+     * @example
+     * // Create many ExecutionLogs
+     * const executionLog = await prisma.executionLog.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ExecutionLogCreateManyArgs>(args?: SelectSubset<T, ExecutionLogCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ExecutionLogs and returns the data saved in the database.
+     * @param {ExecutionLogCreateManyAndReturnArgs} args - Arguments to create many ExecutionLogs.
+     * @example
+     * // Create many ExecutionLogs
+     * const executionLog = await prisma.executionLog.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ExecutionLogs and only return the `id`
+     * const executionLogWithIdOnly = await prisma.executionLog.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ExecutionLogCreateManyAndReturnArgs>(args?: SelectSubset<T, ExecutionLogCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ExecutionLog.
+     * @param {ExecutionLogDeleteArgs} args - Arguments to delete one ExecutionLog.
+     * @example
+     * // Delete one ExecutionLog
+     * const ExecutionLog = await prisma.executionLog.delete({
+     *   where: {
+     *     // ... filter to delete one ExecutionLog
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ExecutionLogDeleteArgs>(args: SelectSubset<T, ExecutionLogDeleteArgs<ExtArgs>>): Prisma__ExecutionLogClient<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ExecutionLog.
+     * @param {ExecutionLogUpdateArgs} args - Arguments to update one ExecutionLog.
+     * @example
+     * // Update one ExecutionLog
+     * const executionLog = await prisma.executionLog.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ExecutionLogUpdateArgs>(args: SelectSubset<T, ExecutionLogUpdateArgs<ExtArgs>>): Prisma__ExecutionLogClient<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ExecutionLogs.
+     * @param {ExecutionLogDeleteManyArgs} args - Arguments to filter ExecutionLogs to delete.
+     * @example
+     * // Delete a few ExecutionLogs
+     * const { count } = await prisma.executionLog.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ExecutionLogDeleteManyArgs>(args?: SelectSubset<T, ExecutionLogDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ExecutionLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExecutionLogUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ExecutionLogs
+     * const executionLog = await prisma.executionLog.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ExecutionLogUpdateManyArgs>(args: SelectSubset<T, ExecutionLogUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ExecutionLogs and returns the data updated in the database.
+     * @param {ExecutionLogUpdateManyAndReturnArgs} args - Arguments to update many ExecutionLogs.
+     * @example
+     * // Update many ExecutionLogs
+     * const executionLog = await prisma.executionLog.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ExecutionLogs and only return the `id`
+     * const executionLogWithIdOnly = await prisma.executionLog.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ExecutionLogUpdateManyAndReturnArgs>(args: SelectSubset<T, ExecutionLogUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ExecutionLog.
+     * @param {ExecutionLogUpsertArgs} args - Arguments to update or create a ExecutionLog.
+     * @example
+     * // Update or create a ExecutionLog
+     * const executionLog = await prisma.executionLog.upsert({
+     *   create: {
+     *     // ... data to create a ExecutionLog
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ExecutionLog we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ExecutionLogUpsertArgs>(args: SelectSubset<T, ExecutionLogUpsertArgs<ExtArgs>>): Prisma__ExecutionLogClient<$Result.GetResult<Prisma.$ExecutionLogPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ExecutionLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExecutionLogCountArgs} args - Arguments to filter ExecutionLogs to count.
+     * @example
+     * // Count the number of ExecutionLogs
+     * const count = await prisma.executionLog.count({
+     *   where: {
+     *     // ... the filter for the ExecutionLogs we want to count
+     *   }
+     * })
+    **/
+    count<T extends ExecutionLogCountArgs>(
+      args?: Subset<T, ExecutionLogCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ExecutionLogCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ExecutionLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExecutionLogAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ExecutionLogAggregateArgs>(args: Subset<T, ExecutionLogAggregateArgs>): Prisma.PrismaPromise<GetExecutionLogAggregateType<T>>
+
+    /**
+     * Group by ExecutionLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExecutionLogGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ExecutionLogGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ExecutionLogGroupByArgs['orderBy'] }
+        : { orderBy?: ExecutionLogGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ExecutionLogGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetExecutionLogGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ExecutionLog model
+   */
+  readonly fields: ExecutionLogFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ExecutionLog.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ExecutionLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    executionPhase<T extends ExecutionPhaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ExecutionPhaseDefaultArgs<ExtArgs>>): Prisma__ExecutionPhaseClient<$Result.GetResult<Prisma.$ExecutionPhasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ExecutionLog model
+   */
+  interface ExecutionLogFieldRefs {
+    readonly id: FieldRef<"ExecutionLog", 'String'>
+    readonly logLevel: FieldRef<"ExecutionLog", 'String'>
+    readonly message: FieldRef<"ExecutionLog", 'String'>
+    readonly time: FieldRef<"ExecutionLog", 'DateTime'>
+    readonly executionPhaseId: FieldRef<"ExecutionLog", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ExecutionLog findUnique
+   */
+  export type ExecutionLogFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogInclude<ExtArgs> | null
+    /**
+     * Filter, which ExecutionLog to fetch.
+     */
+    where: ExecutionLogWhereUniqueInput
+  }
+
+  /**
+   * ExecutionLog findUniqueOrThrow
+   */
+  export type ExecutionLogFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogInclude<ExtArgs> | null
+    /**
+     * Filter, which ExecutionLog to fetch.
+     */
+    where: ExecutionLogWhereUniqueInput
+  }
+
+  /**
+   * ExecutionLog findFirst
+   */
+  export type ExecutionLogFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogInclude<ExtArgs> | null
+    /**
+     * Filter, which ExecutionLog to fetch.
+     */
+    where?: ExecutionLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExecutionLogs to fetch.
+     */
+    orderBy?: ExecutionLogOrderByWithRelationInput | ExecutionLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ExecutionLogs.
+     */
+    cursor?: ExecutionLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExecutionLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExecutionLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ExecutionLogs.
+     */
+    distinct?: ExecutionLogScalarFieldEnum | ExecutionLogScalarFieldEnum[]
+  }
+
+  /**
+   * ExecutionLog findFirstOrThrow
+   */
+  export type ExecutionLogFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogInclude<ExtArgs> | null
+    /**
+     * Filter, which ExecutionLog to fetch.
+     */
+    where?: ExecutionLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExecutionLogs to fetch.
+     */
+    orderBy?: ExecutionLogOrderByWithRelationInput | ExecutionLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ExecutionLogs.
+     */
+    cursor?: ExecutionLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExecutionLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExecutionLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ExecutionLogs.
+     */
+    distinct?: ExecutionLogScalarFieldEnum | ExecutionLogScalarFieldEnum[]
+  }
+
+  /**
+   * ExecutionLog findMany
+   */
+  export type ExecutionLogFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogInclude<ExtArgs> | null
+    /**
+     * Filter, which ExecutionLogs to fetch.
+     */
+    where?: ExecutionLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExecutionLogs to fetch.
+     */
+    orderBy?: ExecutionLogOrderByWithRelationInput | ExecutionLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ExecutionLogs.
+     */
+    cursor?: ExecutionLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExecutionLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExecutionLogs.
+     */
+    skip?: number
+    distinct?: ExecutionLogScalarFieldEnum | ExecutionLogScalarFieldEnum[]
+  }
+
+  /**
+   * ExecutionLog create
+   */
+  export type ExecutionLogCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ExecutionLog.
+     */
+    data: XOR<ExecutionLogCreateInput, ExecutionLogUncheckedCreateInput>
+  }
+
+  /**
+   * ExecutionLog createMany
+   */
+  export type ExecutionLogCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ExecutionLogs.
+     */
+    data: ExecutionLogCreateManyInput | ExecutionLogCreateManyInput[]
+  }
+
+  /**
+   * ExecutionLog createManyAndReturn
+   */
+  export type ExecutionLogCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * The data used to create many ExecutionLogs.
+     */
+    data: ExecutionLogCreateManyInput | ExecutionLogCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ExecutionLog update
+   */
+  export type ExecutionLogUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ExecutionLog.
+     */
+    data: XOR<ExecutionLogUpdateInput, ExecutionLogUncheckedUpdateInput>
+    /**
+     * Choose, which ExecutionLog to update.
+     */
+    where: ExecutionLogWhereUniqueInput
+  }
+
+  /**
+   * ExecutionLog updateMany
+   */
+  export type ExecutionLogUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ExecutionLogs.
+     */
+    data: XOR<ExecutionLogUpdateManyMutationInput, ExecutionLogUncheckedUpdateManyInput>
+    /**
+     * Filter which ExecutionLogs to update
+     */
+    where?: ExecutionLogWhereInput
+    /**
+     * Limit how many ExecutionLogs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ExecutionLog updateManyAndReturn
+   */
+  export type ExecutionLogUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * The data used to update ExecutionLogs.
+     */
+    data: XOR<ExecutionLogUpdateManyMutationInput, ExecutionLogUncheckedUpdateManyInput>
+    /**
+     * Filter which ExecutionLogs to update
+     */
+    where?: ExecutionLogWhereInput
+    /**
+     * Limit how many ExecutionLogs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ExecutionLog upsert
+   */
+  export type ExecutionLogUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ExecutionLog to update in case it exists.
+     */
+    where: ExecutionLogWhereUniqueInput
+    /**
+     * In case the ExecutionLog found by the `where` argument doesn't exist, create a new ExecutionLog with this data.
+     */
+    create: XOR<ExecutionLogCreateInput, ExecutionLogUncheckedCreateInput>
+    /**
+     * In case the ExecutionLog was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ExecutionLogUpdateInput, ExecutionLogUncheckedUpdateInput>
+  }
+
+  /**
+   * ExecutionLog delete
+   */
+  export type ExecutionLogDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogInclude<ExtArgs> | null
+    /**
+     * Filter which ExecutionLog to delete.
+     */
+    where: ExecutionLogWhereUniqueInput
+  }
+
+  /**
+   * ExecutionLog deleteMany
+   */
+  export type ExecutionLogDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ExecutionLogs to delete
+     */
+    where?: ExecutionLogWhereInput
+    /**
+     * Limit how many ExecutionLogs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ExecutionLog without action
+   */
+  export type ExecutionLogDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExecutionLog
+     */
+    select?: ExecutionLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExecutionLog
+     */
+    omit?: ExecutionLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExecutionLogInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserBalance
+   */
+
+  export type AggregateUserBalance = {
+    _count: UserBalanceCountAggregateOutputType | null
+    _avg: UserBalanceAvgAggregateOutputType | null
+    _sum: UserBalanceSumAggregateOutputType | null
+    _min: UserBalanceMinAggregateOutputType | null
+    _max: UserBalanceMaxAggregateOutputType | null
+  }
+
+  export type UserBalanceAvgAggregateOutputType = {
+    credits: number | null
+  }
+
+  export type UserBalanceSumAggregateOutputType = {
+    credits: number | null
+  }
+
+  export type UserBalanceMinAggregateOutputType = {
+    userId: string | null
+    credits: number | null
+  }
+
+  export type UserBalanceMaxAggregateOutputType = {
+    userId: string | null
+    credits: number | null
+  }
+
+  export type UserBalanceCountAggregateOutputType = {
+    userId: number
+    credits: number
+    _all: number
+  }
+
+
+  export type UserBalanceAvgAggregateInputType = {
+    credits?: true
+  }
+
+  export type UserBalanceSumAggregateInputType = {
+    credits?: true
+  }
+
+  export type UserBalanceMinAggregateInputType = {
+    userId?: true
+    credits?: true
+  }
+
+  export type UserBalanceMaxAggregateInputType = {
+    userId?: true
+    credits?: true
+  }
+
+  export type UserBalanceCountAggregateInputType = {
+    userId?: true
+    credits?: true
+    _all?: true
+  }
+
+  export type UserBalanceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserBalance to aggregate.
+     */
+    where?: UserBalanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserBalances to fetch.
+     */
+    orderBy?: UserBalanceOrderByWithRelationInput | UserBalanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserBalanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserBalances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserBalances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserBalances
+    **/
+    _count?: true | UserBalanceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UserBalanceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserBalanceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserBalanceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserBalanceMaxAggregateInputType
+  }
+
+  export type GetUserBalanceAggregateType<T extends UserBalanceAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserBalance]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserBalance[P]>
+      : GetScalarType<T[P], AggregateUserBalance[P]>
+  }
+
+
+
+
+  export type UserBalanceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserBalanceWhereInput
+    orderBy?: UserBalanceOrderByWithAggregationInput | UserBalanceOrderByWithAggregationInput[]
+    by: UserBalanceScalarFieldEnum[] | UserBalanceScalarFieldEnum
+    having?: UserBalanceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserBalanceCountAggregateInputType | true
+    _avg?: UserBalanceAvgAggregateInputType
+    _sum?: UserBalanceSumAggregateInputType
+    _min?: UserBalanceMinAggregateInputType
+    _max?: UserBalanceMaxAggregateInputType
+  }
+
+  export type UserBalanceGroupByOutputType = {
+    userId: string
+    credits: number
+    _count: UserBalanceCountAggregateOutputType | null
+    _avg: UserBalanceAvgAggregateOutputType | null
+    _sum: UserBalanceSumAggregateOutputType | null
+    _min: UserBalanceMinAggregateOutputType | null
+    _max: UserBalanceMaxAggregateOutputType | null
+  }
+
+  type GetUserBalanceGroupByPayload<T extends UserBalanceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserBalanceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserBalanceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserBalanceGroupByOutputType[P]>
+            : GetScalarType<T[P], UserBalanceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserBalanceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    credits?: boolean
+  }, ExtArgs["result"]["userBalance"]>
+
+  export type UserBalanceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    credits?: boolean
+  }, ExtArgs["result"]["userBalance"]>
+
+  export type UserBalanceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    credits?: boolean
+  }, ExtArgs["result"]["userBalance"]>
+
+  export type UserBalanceSelectScalar = {
+    userId?: boolean
+    credits?: boolean
+  }
+
+  export type UserBalanceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "credits", ExtArgs["result"]["userBalance"]>
+
+  export type $UserBalancePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserBalance"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      userId: string
+      credits: number
+    }, ExtArgs["result"]["userBalance"]>
+    composites: {}
+  }
+
+  type UserBalanceGetPayload<S extends boolean | null | undefined | UserBalanceDefaultArgs> = $Result.GetResult<Prisma.$UserBalancePayload, S>
+
+  type UserBalanceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserBalanceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserBalanceCountAggregateInputType | true
+    }
+
+  export interface UserBalanceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserBalance'], meta: { name: 'UserBalance' } }
+    /**
+     * Find zero or one UserBalance that matches the filter.
+     * @param {UserBalanceFindUniqueArgs} args - Arguments to find a UserBalance
+     * @example
+     * // Get one UserBalance
+     * const userBalance = await prisma.userBalance.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserBalanceFindUniqueArgs>(args: SelectSubset<T, UserBalanceFindUniqueArgs<ExtArgs>>): Prisma__UserBalanceClient<$Result.GetResult<Prisma.$UserBalancePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserBalance that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserBalanceFindUniqueOrThrowArgs} args - Arguments to find a UserBalance
+     * @example
+     * // Get one UserBalance
+     * const userBalance = await prisma.userBalance.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserBalanceFindUniqueOrThrowArgs>(args: SelectSubset<T, UserBalanceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserBalanceClient<$Result.GetResult<Prisma.$UserBalancePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserBalance that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserBalanceFindFirstArgs} args - Arguments to find a UserBalance
+     * @example
+     * // Get one UserBalance
+     * const userBalance = await prisma.userBalance.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserBalanceFindFirstArgs>(args?: SelectSubset<T, UserBalanceFindFirstArgs<ExtArgs>>): Prisma__UserBalanceClient<$Result.GetResult<Prisma.$UserBalancePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserBalance that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserBalanceFindFirstOrThrowArgs} args - Arguments to find a UserBalance
+     * @example
+     * // Get one UserBalance
+     * const userBalance = await prisma.userBalance.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserBalanceFindFirstOrThrowArgs>(args?: SelectSubset<T, UserBalanceFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserBalanceClient<$Result.GetResult<Prisma.$UserBalancePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserBalances that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserBalanceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserBalances
+     * const userBalances = await prisma.userBalance.findMany()
+     * 
+     * // Get first 10 UserBalances
+     * const userBalances = await prisma.userBalance.findMany({ take: 10 })
+     * 
+     * // Only select the `userId`
+     * const userBalanceWithUserIdOnly = await prisma.userBalance.findMany({ select: { userId: true } })
+     * 
+     */
+    findMany<T extends UserBalanceFindManyArgs>(args?: SelectSubset<T, UserBalanceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserBalancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserBalance.
+     * @param {UserBalanceCreateArgs} args - Arguments to create a UserBalance.
+     * @example
+     * // Create one UserBalance
+     * const UserBalance = await prisma.userBalance.create({
+     *   data: {
+     *     // ... data to create a UserBalance
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserBalanceCreateArgs>(args: SelectSubset<T, UserBalanceCreateArgs<ExtArgs>>): Prisma__UserBalanceClient<$Result.GetResult<Prisma.$UserBalancePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserBalances.
+     * @param {UserBalanceCreateManyArgs} args - Arguments to create many UserBalances.
+     * @example
+     * // Create many UserBalances
+     * const userBalance = await prisma.userBalance.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserBalanceCreateManyArgs>(args?: SelectSubset<T, UserBalanceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserBalances and returns the data saved in the database.
+     * @param {UserBalanceCreateManyAndReturnArgs} args - Arguments to create many UserBalances.
+     * @example
+     * // Create many UserBalances
+     * const userBalance = await prisma.userBalance.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserBalances and only return the `userId`
+     * const userBalanceWithUserIdOnly = await prisma.userBalance.createManyAndReturn({
+     *   select: { userId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserBalanceCreateManyAndReturnArgs>(args?: SelectSubset<T, UserBalanceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserBalancePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserBalance.
+     * @param {UserBalanceDeleteArgs} args - Arguments to delete one UserBalance.
+     * @example
+     * // Delete one UserBalance
+     * const UserBalance = await prisma.userBalance.delete({
+     *   where: {
+     *     // ... filter to delete one UserBalance
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserBalanceDeleteArgs>(args: SelectSubset<T, UserBalanceDeleteArgs<ExtArgs>>): Prisma__UserBalanceClient<$Result.GetResult<Prisma.$UserBalancePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserBalance.
+     * @param {UserBalanceUpdateArgs} args - Arguments to update one UserBalance.
+     * @example
+     * // Update one UserBalance
+     * const userBalance = await prisma.userBalance.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserBalanceUpdateArgs>(args: SelectSubset<T, UserBalanceUpdateArgs<ExtArgs>>): Prisma__UserBalanceClient<$Result.GetResult<Prisma.$UserBalancePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserBalances.
+     * @param {UserBalanceDeleteManyArgs} args - Arguments to filter UserBalances to delete.
+     * @example
+     * // Delete a few UserBalances
+     * const { count } = await prisma.userBalance.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserBalanceDeleteManyArgs>(args?: SelectSubset<T, UserBalanceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserBalances.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserBalanceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserBalances
+     * const userBalance = await prisma.userBalance.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserBalanceUpdateManyArgs>(args: SelectSubset<T, UserBalanceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserBalances and returns the data updated in the database.
+     * @param {UserBalanceUpdateManyAndReturnArgs} args - Arguments to update many UserBalances.
+     * @example
+     * // Update many UserBalances
+     * const userBalance = await prisma.userBalance.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserBalances and only return the `userId`
+     * const userBalanceWithUserIdOnly = await prisma.userBalance.updateManyAndReturn({
+     *   select: { userId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserBalanceUpdateManyAndReturnArgs>(args: SelectSubset<T, UserBalanceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserBalancePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserBalance.
+     * @param {UserBalanceUpsertArgs} args - Arguments to update or create a UserBalance.
+     * @example
+     * // Update or create a UserBalance
+     * const userBalance = await prisma.userBalance.upsert({
+     *   create: {
+     *     // ... data to create a UserBalance
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserBalance we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserBalanceUpsertArgs>(args: SelectSubset<T, UserBalanceUpsertArgs<ExtArgs>>): Prisma__UserBalanceClient<$Result.GetResult<Prisma.$UserBalancePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserBalances.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserBalanceCountArgs} args - Arguments to filter UserBalances to count.
+     * @example
+     * // Count the number of UserBalances
+     * const count = await prisma.userBalance.count({
+     *   where: {
+     *     // ... the filter for the UserBalances we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserBalanceCountArgs>(
+      args?: Subset<T, UserBalanceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserBalanceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserBalance.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserBalanceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserBalanceAggregateArgs>(args: Subset<T, UserBalanceAggregateArgs>): Prisma.PrismaPromise<GetUserBalanceAggregateType<T>>
+
+    /**
+     * Group by UserBalance.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserBalanceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserBalanceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserBalanceGroupByArgs['orderBy'] }
+        : { orderBy?: UserBalanceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserBalanceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserBalanceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserBalance model
+   */
+  readonly fields: UserBalanceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserBalance.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserBalanceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserBalance model
+   */
+  interface UserBalanceFieldRefs {
+    readonly userId: FieldRef<"UserBalance", 'String'>
+    readonly credits: FieldRef<"UserBalance", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserBalance findUnique
+   */
+  export type UserBalanceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
+    /**
+     * Filter, which UserBalance to fetch.
+     */
+    where: UserBalanceWhereUniqueInput
+  }
+
+  /**
+   * UserBalance findUniqueOrThrow
+   */
+  export type UserBalanceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
+    /**
+     * Filter, which UserBalance to fetch.
+     */
+    where: UserBalanceWhereUniqueInput
+  }
+
+  /**
+   * UserBalance findFirst
+   */
+  export type UserBalanceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
+    /**
+     * Filter, which UserBalance to fetch.
+     */
+    where?: UserBalanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserBalances to fetch.
+     */
+    orderBy?: UserBalanceOrderByWithRelationInput | UserBalanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserBalances.
+     */
+    cursor?: UserBalanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserBalances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserBalances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserBalances.
+     */
+    distinct?: UserBalanceScalarFieldEnum | UserBalanceScalarFieldEnum[]
+  }
+
+  /**
+   * UserBalance findFirstOrThrow
+   */
+  export type UserBalanceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
+    /**
+     * Filter, which UserBalance to fetch.
+     */
+    where?: UserBalanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserBalances to fetch.
+     */
+    orderBy?: UserBalanceOrderByWithRelationInput | UserBalanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserBalances.
+     */
+    cursor?: UserBalanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserBalances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserBalances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserBalances.
+     */
+    distinct?: UserBalanceScalarFieldEnum | UserBalanceScalarFieldEnum[]
+  }
+
+  /**
+   * UserBalance findMany
+   */
+  export type UserBalanceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
+    /**
+     * Filter, which UserBalances to fetch.
+     */
+    where?: UserBalanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserBalances to fetch.
+     */
+    orderBy?: UserBalanceOrderByWithRelationInput | UserBalanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserBalances.
+     */
+    cursor?: UserBalanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserBalances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserBalances.
+     */
+    skip?: number
+    distinct?: UserBalanceScalarFieldEnum | UserBalanceScalarFieldEnum[]
+  }
+
+  /**
+   * UserBalance create
+   */
+  export type UserBalanceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
+    /**
+     * The data needed to create a UserBalance.
+     */
+    data: XOR<UserBalanceCreateInput, UserBalanceUncheckedCreateInput>
+  }
+
+  /**
+   * UserBalance createMany
+   */
+  export type UserBalanceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserBalances.
+     */
+    data: UserBalanceCreateManyInput | UserBalanceCreateManyInput[]
+  }
+
+  /**
+   * UserBalance createManyAndReturn
+   */
+  export type UserBalanceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserBalances.
+     */
+    data: UserBalanceCreateManyInput | UserBalanceCreateManyInput[]
+  }
+
+  /**
+   * UserBalance update
+   */
+  export type UserBalanceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
+    /**
+     * The data needed to update a UserBalance.
+     */
+    data: XOR<UserBalanceUpdateInput, UserBalanceUncheckedUpdateInput>
+    /**
+     * Choose, which UserBalance to update.
+     */
+    where: UserBalanceWhereUniqueInput
+  }
+
+  /**
+   * UserBalance updateMany
+   */
+  export type UserBalanceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserBalances.
+     */
+    data: XOR<UserBalanceUpdateManyMutationInput, UserBalanceUncheckedUpdateManyInput>
+    /**
+     * Filter which UserBalances to update
+     */
+    where?: UserBalanceWhereInput
+    /**
+     * Limit how many UserBalances to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserBalance updateManyAndReturn
+   */
+  export type UserBalanceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
+    /**
+     * The data used to update UserBalances.
+     */
+    data: XOR<UserBalanceUpdateManyMutationInput, UserBalanceUncheckedUpdateManyInput>
+    /**
+     * Filter which UserBalances to update
+     */
+    where?: UserBalanceWhereInput
+    /**
+     * Limit how many UserBalances to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserBalance upsert
+   */
+  export type UserBalanceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
+    /**
+     * The filter to search for the UserBalance to update in case it exists.
+     */
+    where: UserBalanceWhereUniqueInput
+    /**
+     * In case the UserBalance found by the `where` argument doesn't exist, create a new UserBalance with this data.
+     */
+    create: XOR<UserBalanceCreateInput, UserBalanceUncheckedCreateInput>
+    /**
+     * In case the UserBalance was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserBalanceUpdateInput, UserBalanceUncheckedUpdateInput>
+  }
+
+  /**
+   * UserBalance delete
+   */
+  export type UserBalanceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
+    /**
+     * Filter which UserBalance to delete.
+     */
+    where: UserBalanceWhereUniqueInput
+  }
+
+  /**
+   * UserBalance deleteMany
+   */
+  export type UserBalanceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserBalances to delete
+     */
+    where?: UserBalanceWhereInput
+    /**
+     * Limit how many UserBalances to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserBalance without action
+   */
+  export type UserBalanceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserBalance
+     */
+    select?: UserBalanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserBalance
+     */
+    omit?: UserBalanceOmit<ExtArgs> | null
   }
 
 
@@ -4632,10 +7018,14 @@ export namespace Prisma {
     name: 'name',
     description: 'description',
     definition: 'definition',
+    executionPlan: 'executionPlan',
+    creditsCost: 'creditsCost',
+    cron: 'cron',
     status: 'status',
     lastRunAt: 'lastRunAt',
     lastRunId: 'lastRunId',
     lastRunStatus: 'lastRunStatus',
+    nextRunAt: 'nextRunAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -4652,6 +7042,7 @@ export namespace Prisma {
     createdAt: 'createdAt',
     startedAt: 'startedAt',
     completedAt: 'completedAt',
+    definition: 'definition',
     creditsConsumed: 'creditsConsumed'
   };
 
@@ -4674,6 +7065,25 @@ export namespace Prisma {
   };
 
   export type ExecutionPhaseScalarFieldEnum = (typeof ExecutionPhaseScalarFieldEnum)[keyof typeof ExecutionPhaseScalarFieldEnum]
+
+
+  export const ExecutionLogScalarFieldEnum: {
+    id: 'id',
+    logLevel: 'logLevel',
+    message: 'message',
+    time: 'time',
+    executionPhaseId: 'executionPhaseId'
+  };
+
+  export type ExecutionLogScalarFieldEnum = (typeof ExecutionLogScalarFieldEnum)[keyof typeof ExecutionLogScalarFieldEnum]
+
+
+  export const UserBalanceScalarFieldEnum: {
+    userId: 'userId',
+    credits: 'credits'
+  };
+
+  export type UserBalanceScalarFieldEnum = (typeof UserBalanceScalarFieldEnum)[keyof typeof UserBalanceScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4705,16 +7115,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
+   * Reference to a field of type 'Int'
    */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'DateTime'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
     
 
 
@@ -4737,10 +7147,14 @@ export namespace Prisma {
     name?: StringFilter<"Workflow"> | string
     description?: StringNullableFilter<"Workflow"> | string | null
     definition?: StringFilter<"Workflow"> | string
+    executionPlan?: StringNullableFilter<"Workflow"> | string | null
+    creditsCost?: IntFilter<"Workflow"> | number
+    cron?: StringNullableFilter<"Workflow"> | string | null
     status?: StringFilter<"Workflow"> | string
     lastRunAt?: DateTimeNullableFilter<"Workflow"> | Date | string | null
     lastRunId?: StringNullableFilter<"Workflow"> | string | null
     lastRunStatus?: StringNullableFilter<"Workflow"> | string | null
+    nextRunAt?: DateTimeNullableFilter<"Workflow"> | Date | string | null
     createdAt?: DateTimeFilter<"Workflow"> | Date | string
     updatedAt?: DateTimeFilter<"Workflow"> | Date | string
     executions?: WorkflowExecutionListRelationFilter
@@ -4752,10 +7166,14 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     definition?: SortOrder
+    executionPlan?: SortOrderInput | SortOrder
+    creditsCost?: SortOrder
+    cron?: SortOrderInput | SortOrder
     status?: SortOrder
     lastRunAt?: SortOrderInput | SortOrder
     lastRunId?: SortOrderInput | SortOrder
     lastRunStatus?: SortOrderInput | SortOrder
+    nextRunAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     executions?: WorkflowExecutionOrderByRelationAggregateInput
@@ -4771,10 +7189,14 @@ export namespace Prisma {
     name?: StringFilter<"Workflow"> | string
     description?: StringNullableFilter<"Workflow"> | string | null
     definition?: StringFilter<"Workflow"> | string
+    executionPlan?: StringNullableFilter<"Workflow"> | string | null
+    creditsCost?: IntFilter<"Workflow"> | number
+    cron?: StringNullableFilter<"Workflow"> | string | null
     status?: StringFilter<"Workflow"> | string
     lastRunAt?: DateTimeNullableFilter<"Workflow"> | Date | string | null
     lastRunId?: StringNullableFilter<"Workflow"> | string | null
     lastRunStatus?: StringNullableFilter<"Workflow"> | string | null
+    nextRunAt?: DateTimeNullableFilter<"Workflow"> | Date | string | null
     createdAt?: DateTimeFilter<"Workflow"> | Date | string
     updatedAt?: DateTimeFilter<"Workflow"> | Date | string
     executions?: WorkflowExecutionListRelationFilter
@@ -4786,15 +7208,21 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     definition?: SortOrder
+    executionPlan?: SortOrderInput | SortOrder
+    creditsCost?: SortOrder
+    cron?: SortOrderInput | SortOrder
     status?: SortOrder
     lastRunAt?: SortOrderInput | SortOrder
     lastRunId?: SortOrderInput | SortOrder
     lastRunStatus?: SortOrderInput | SortOrder
+    nextRunAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: WorkflowCountOrderByAggregateInput
+    _avg?: WorkflowAvgOrderByAggregateInput
     _max?: WorkflowMaxOrderByAggregateInput
     _min?: WorkflowMinOrderByAggregateInput
+    _sum?: WorkflowSumOrderByAggregateInput
   }
 
   export type WorkflowScalarWhereWithAggregatesInput = {
@@ -4806,10 +7234,14 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Workflow"> | string
     description?: StringNullableWithAggregatesFilter<"Workflow"> | string | null
     definition?: StringWithAggregatesFilter<"Workflow"> | string
+    executionPlan?: StringNullableWithAggregatesFilter<"Workflow"> | string | null
+    creditsCost?: IntWithAggregatesFilter<"Workflow"> | number
+    cron?: StringNullableWithAggregatesFilter<"Workflow"> | string | null
     status?: StringWithAggregatesFilter<"Workflow"> | string
     lastRunAt?: DateTimeNullableWithAggregatesFilter<"Workflow"> | Date | string | null
     lastRunId?: StringNullableWithAggregatesFilter<"Workflow"> | string | null
     lastRunStatus?: StringNullableWithAggregatesFilter<"Workflow"> | string | null
+    nextRunAt?: DateTimeNullableWithAggregatesFilter<"Workflow"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Workflow"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Workflow"> | Date | string
   }
@@ -4826,6 +7258,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"WorkflowExecution"> | Date | string
     startedAt?: DateTimeNullableFilter<"WorkflowExecution"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"WorkflowExecution"> | Date | string | null
+    definition?: StringFilter<"WorkflowExecution"> | string
     creditsConsumed?: IntFilter<"WorkflowExecution"> | number
     phases?: ExecutionPhaseListRelationFilter
     workflow?: XOR<WorkflowScalarRelationFilter, WorkflowWhereInput>
@@ -4840,6 +7273,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     startedAt?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
+    definition?: SortOrder
     creditsConsumed?: SortOrder
     phases?: ExecutionPhaseOrderByRelationAggregateInput
     workflow?: WorkflowOrderByWithRelationInput
@@ -4857,6 +7291,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"WorkflowExecution"> | Date | string
     startedAt?: DateTimeNullableFilter<"WorkflowExecution"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"WorkflowExecution"> | Date | string | null
+    definition?: StringFilter<"WorkflowExecution"> | string
     creditsConsumed?: IntFilter<"WorkflowExecution"> | number
     phases?: ExecutionPhaseListRelationFilter
     workflow?: XOR<WorkflowScalarRelationFilter, WorkflowWhereInput>
@@ -4871,6 +7306,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     startedAt?: SortOrderInput | SortOrder
     completedAt?: SortOrderInput | SortOrder
+    definition?: SortOrder
     creditsConsumed?: SortOrder
     _count?: WorkflowExecutionCountOrderByAggregateInput
     _avg?: WorkflowExecutionAvgOrderByAggregateInput
@@ -4891,6 +7327,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"WorkflowExecution"> | Date | string
     startedAt?: DateTimeNullableWithAggregatesFilter<"WorkflowExecution"> | Date | string | null
     completedAt?: DateTimeNullableWithAggregatesFilter<"WorkflowExecution"> | Date | string | null
+    definition?: StringWithAggregatesFilter<"WorkflowExecution"> | string
     creditsConsumed?: IntWithAggregatesFilter<"WorkflowExecution"> | number
   }
 
@@ -4911,6 +7348,7 @@ export namespace Prisma {
     creditsConsumed?: IntNullableFilter<"ExecutionPhase"> | number | null
     workflowExecutionId?: StringFilter<"ExecutionPhase"> | string
     execution?: XOR<WorkflowExecutionScalarRelationFilter, WorkflowExecutionWhereInput>
+    logs?: ExecutionLogListRelationFilter
   }
 
   export type ExecutionPhaseOrderByWithRelationInput = {
@@ -4927,6 +7365,7 @@ export namespace Prisma {
     creditsConsumed?: SortOrderInput | SortOrder
     workflowExecutionId?: SortOrder
     execution?: WorkflowExecutionOrderByWithRelationInput
+    logs?: ExecutionLogOrderByRelationAggregateInput
   }
 
   export type ExecutionPhaseWhereUniqueInput = Prisma.AtLeast<{
@@ -4946,6 +7385,7 @@ export namespace Prisma {
     creditsConsumed?: IntNullableFilter<"ExecutionPhase"> | number | null
     workflowExecutionId?: StringFilter<"ExecutionPhase"> | string
     execution?: XOR<WorkflowExecutionScalarRelationFilter, WorkflowExecutionWhereInput>
+    logs?: ExecutionLogListRelationFilter
   }, "id">
 
   export type ExecutionPhaseOrderByWithAggregationInput = {
@@ -4986,16 +7426,114 @@ export namespace Prisma {
     workflowExecutionId?: StringWithAggregatesFilter<"ExecutionPhase"> | string
   }
 
+  export type ExecutionLogWhereInput = {
+    AND?: ExecutionLogWhereInput | ExecutionLogWhereInput[]
+    OR?: ExecutionLogWhereInput[]
+    NOT?: ExecutionLogWhereInput | ExecutionLogWhereInput[]
+    id?: StringFilter<"ExecutionLog"> | string
+    logLevel?: StringFilter<"ExecutionLog"> | string
+    message?: StringFilter<"ExecutionLog"> | string
+    time?: DateTimeFilter<"ExecutionLog"> | Date | string
+    executionPhaseId?: StringFilter<"ExecutionLog"> | string
+    executionPhase?: XOR<ExecutionPhaseScalarRelationFilter, ExecutionPhaseWhereInput>
+  }
+
+  export type ExecutionLogOrderByWithRelationInput = {
+    id?: SortOrder
+    logLevel?: SortOrder
+    message?: SortOrder
+    time?: SortOrder
+    executionPhaseId?: SortOrder
+    executionPhase?: ExecutionPhaseOrderByWithRelationInput
+  }
+
+  export type ExecutionLogWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ExecutionLogWhereInput | ExecutionLogWhereInput[]
+    OR?: ExecutionLogWhereInput[]
+    NOT?: ExecutionLogWhereInput | ExecutionLogWhereInput[]
+    logLevel?: StringFilter<"ExecutionLog"> | string
+    message?: StringFilter<"ExecutionLog"> | string
+    time?: DateTimeFilter<"ExecutionLog"> | Date | string
+    executionPhaseId?: StringFilter<"ExecutionLog"> | string
+    executionPhase?: XOR<ExecutionPhaseScalarRelationFilter, ExecutionPhaseWhereInput>
+  }, "id">
+
+  export type ExecutionLogOrderByWithAggregationInput = {
+    id?: SortOrder
+    logLevel?: SortOrder
+    message?: SortOrder
+    time?: SortOrder
+    executionPhaseId?: SortOrder
+    _count?: ExecutionLogCountOrderByAggregateInput
+    _max?: ExecutionLogMaxOrderByAggregateInput
+    _min?: ExecutionLogMinOrderByAggregateInput
+  }
+
+  export type ExecutionLogScalarWhereWithAggregatesInput = {
+    AND?: ExecutionLogScalarWhereWithAggregatesInput | ExecutionLogScalarWhereWithAggregatesInput[]
+    OR?: ExecutionLogScalarWhereWithAggregatesInput[]
+    NOT?: ExecutionLogScalarWhereWithAggregatesInput | ExecutionLogScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ExecutionLog"> | string
+    logLevel?: StringWithAggregatesFilter<"ExecutionLog"> | string
+    message?: StringWithAggregatesFilter<"ExecutionLog"> | string
+    time?: DateTimeWithAggregatesFilter<"ExecutionLog"> | Date | string
+    executionPhaseId?: StringWithAggregatesFilter<"ExecutionLog"> | string
+  }
+
+  export type UserBalanceWhereInput = {
+    AND?: UserBalanceWhereInput | UserBalanceWhereInput[]
+    OR?: UserBalanceWhereInput[]
+    NOT?: UserBalanceWhereInput | UserBalanceWhereInput[]
+    userId?: StringFilter<"UserBalance"> | string
+    credits?: IntFilter<"UserBalance"> | number
+  }
+
+  export type UserBalanceOrderByWithRelationInput = {
+    userId?: SortOrder
+    credits?: SortOrder
+  }
+
+  export type UserBalanceWhereUniqueInput = Prisma.AtLeast<{
+    userId?: string
+    AND?: UserBalanceWhereInput | UserBalanceWhereInput[]
+    OR?: UserBalanceWhereInput[]
+    NOT?: UserBalanceWhereInput | UserBalanceWhereInput[]
+    credits?: IntFilter<"UserBalance"> | number
+  }, "userId">
+
+  export type UserBalanceOrderByWithAggregationInput = {
+    userId?: SortOrder
+    credits?: SortOrder
+    _count?: UserBalanceCountOrderByAggregateInput
+    _avg?: UserBalanceAvgOrderByAggregateInput
+    _max?: UserBalanceMaxOrderByAggregateInput
+    _min?: UserBalanceMinOrderByAggregateInput
+    _sum?: UserBalanceSumOrderByAggregateInput
+  }
+
+  export type UserBalanceScalarWhereWithAggregatesInput = {
+    AND?: UserBalanceScalarWhereWithAggregatesInput | UserBalanceScalarWhereWithAggregatesInput[]
+    OR?: UserBalanceScalarWhereWithAggregatesInput[]
+    NOT?: UserBalanceScalarWhereWithAggregatesInput | UserBalanceScalarWhereWithAggregatesInput[]
+    userId?: StringWithAggregatesFilter<"UserBalance"> | string
+    credits?: IntWithAggregatesFilter<"UserBalance"> | number
+  }
+
   export type WorkflowCreateInput = {
     id?: string
     userId: string
     name: string
     description?: string | null
     definition: string
+    executionPlan?: string | null
+    creditsCost?: number
+    cron?: string | null
     status: string
     lastRunAt?: Date | string | null
     lastRunId?: string | null
     lastRunStatus?: string | null
+    nextRunAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     executions?: WorkflowExecutionCreateNestedManyWithoutWorkflowInput
@@ -5007,10 +7545,14 @@ export namespace Prisma {
     name: string
     description?: string | null
     definition: string
+    executionPlan?: string | null
+    creditsCost?: number
+    cron?: string | null
     status: string
     lastRunAt?: Date | string | null
     lastRunId?: string | null
     lastRunStatus?: string | null
+    nextRunAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     executions?: WorkflowExecutionUncheckedCreateNestedManyWithoutWorkflowInput
@@ -5022,10 +7564,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     definition?: StringFieldUpdateOperationsInput | string
+    executionPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    creditsCost?: IntFieldUpdateOperationsInput | number
+    cron?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     lastRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastRunId?: NullableStringFieldUpdateOperationsInput | string | null
     lastRunStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    nextRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     executions?: WorkflowExecutionUpdateManyWithoutWorkflowNestedInput
@@ -5037,10 +7583,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     definition?: StringFieldUpdateOperationsInput | string
+    executionPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    creditsCost?: IntFieldUpdateOperationsInput | number
+    cron?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     lastRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastRunId?: NullableStringFieldUpdateOperationsInput | string | null
     lastRunStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    nextRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     executions?: WorkflowExecutionUncheckedUpdateManyWithoutWorkflowNestedInput
@@ -5052,10 +7602,14 @@ export namespace Prisma {
     name: string
     description?: string | null
     definition: string
+    executionPlan?: string | null
+    creditsCost?: number
+    cron?: string | null
     status: string
     lastRunAt?: Date | string | null
     lastRunId?: string | null
     lastRunStatus?: string | null
+    nextRunAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5066,10 +7620,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     definition?: StringFieldUpdateOperationsInput | string
+    executionPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    creditsCost?: IntFieldUpdateOperationsInput | number
+    cron?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     lastRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastRunId?: NullableStringFieldUpdateOperationsInput | string | null
     lastRunStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    nextRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5080,10 +7638,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     definition?: StringFieldUpdateOperationsInput | string
+    executionPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    creditsCost?: IntFieldUpdateOperationsInput | number
+    cron?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     lastRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastRunId?: NullableStringFieldUpdateOperationsInput | string | null
     lastRunStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    nextRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5096,6 +7658,7 @@ export namespace Prisma {
     createdAt?: Date | string
     startedAt?: Date | string | null
     completedAt?: Date | string | null
+    definition?: string
     creditsConsumed?: number
     phases?: ExecutionPhaseCreateNestedManyWithoutExecutionInput
     workflow: WorkflowCreateNestedOneWithoutExecutionsInput
@@ -5110,6 +7673,7 @@ export namespace Prisma {
     createdAt?: Date | string
     startedAt?: Date | string | null
     completedAt?: Date | string | null
+    definition?: string
     creditsConsumed?: number
     phases?: ExecutionPhaseUncheckedCreateNestedManyWithoutExecutionInput
   }
@@ -5122,6 +7686,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    definition?: StringFieldUpdateOperationsInput | string
     creditsConsumed?: IntFieldUpdateOperationsInput | number
     phases?: ExecutionPhaseUpdateManyWithoutExecutionNestedInput
     workflow?: WorkflowUpdateOneRequiredWithoutExecutionsNestedInput
@@ -5136,6 +7701,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    definition?: StringFieldUpdateOperationsInput | string
     creditsConsumed?: IntFieldUpdateOperationsInput | number
     phases?: ExecutionPhaseUncheckedUpdateManyWithoutExecutionNestedInput
   }
@@ -5149,6 +7715,7 @@ export namespace Prisma {
     createdAt?: Date | string
     startedAt?: Date | string | null
     completedAt?: Date | string | null
+    definition?: string
     creditsConsumed?: number
   }
 
@@ -5160,6 +7727,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    definition?: StringFieldUpdateOperationsInput | string
     creditsConsumed?: IntFieldUpdateOperationsInput | number
   }
 
@@ -5172,6 +7740,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    definition?: StringFieldUpdateOperationsInput | string
     creditsConsumed?: IntFieldUpdateOperationsInput | number
   }
 
@@ -5188,6 +7757,7 @@ export namespace Prisma {
     outputs?: string | null
     creditsConsumed?: number | null
     execution: WorkflowExecutionCreateNestedOneWithoutPhasesInput
+    logs?: ExecutionLogCreateNestedManyWithoutExecutionPhaseInput
   }
 
   export type ExecutionPhaseUncheckedCreateInput = {
@@ -5203,6 +7773,7 @@ export namespace Prisma {
     outputs?: string | null
     creditsConsumed?: number | null
     workflowExecutionId: string
+    logs?: ExecutionLogUncheckedCreateNestedManyWithoutExecutionPhaseInput
   }
 
   export type ExecutionPhaseUpdateInput = {
@@ -5218,6 +7789,7 @@ export namespace Prisma {
     outputs?: NullableStringFieldUpdateOperationsInput | string | null
     creditsConsumed?: NullableIntFieldUpdateOperationsInput | number | null
     execution?: WorkflowExecutionUpdateOneRequiredWithoutPhasesNestedInput
+    logs?: ExecutionLogUpdateManyWithoutExecutionPhaseNestedInput
   }
 
   export type ExecutionPhaseUncheckedUpdateInput = {
@@ -5233,6 +7805,7 @@ export namespace Prisma {
     outputs?: NullableStringFieldUpdateOperationsInput | string | null
     creditsConsumed?: NullableIntFieldUpdateOperationsInput | number | null
     workflowExecutionId?: StringFieldUpdateOperationsInput | string
+    logs?: ExecutionLogUncheckedUpdateManyWithoutExecutionPhaseNestedInput
   }
 
   export type ExecutionPhaseCreateManyInput = {
@@ -5279,6 +7852,96 @@ export namespace Prisma {
     workflowExecutionId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type ExecutionLogCreateInput = {
+    id?: string
+    logLevel: string
+    message: string
+    time?: Date | string
+    executionPhase: ExecutionPhaseCreateNestedOneWithoutLogsInput
+  }
+
+  export type ExecutionLogUncheckedCreateInput = {
+    id?: string
+    logLevel: string
+    message: string
+    time?: Date | string
+    executionPhaseId: string
+  }
+
+  export type ExecutionLogUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    logLevel?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    time?: DateTimeFieldUpdateOperationsInput | Date | string
+    executionPhase?: ExecutionPhaseUpdateOneRequiredWithoutLogsNestedInput
+  }
+
+  export type ExecutionLogUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    logLevel?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    time?: DateTimeFieldUpdateOperationsInput | Date | string
+    executionPhaseId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExecutionLogCreateManyInput = {
+    id?: string
+    logLevel: string
+    message: string
+    time?: Date | string
+    executionPhaseId: string
+  }
+
+  export type ExecutionLogUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    logLevel?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    time?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExecutionLogUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    logLevel?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    time?: DateTimeFieldUpdateOperationsInput | Date | string
+    executionPhaseId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserBalanceCreateInput = {
+    userId: string
+    credits?: number
+  }
+
+  export type UserBalanceUncheckedCreateInput = {
+    userId: string
+    credits?: number
+  }
+
+  export type UserBalanceUpdateInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    credits?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserBalanceUncheckedUpdateInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    credits?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserBalanceCreateManyInput = {
+    userId: string
+    credits?: number
+  }
+
+  export type UserBalanceUpdateManyMutationInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    credits?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserBalanceUncheckedUpdateManyInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    credits?: IntFieldUpdateOperationsInput | number
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -5305,6 +7968,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -5355,12 +8029,20 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     definition?: SortOrder
+    executionPlan?: SortOrder
+    creditsCost?: SortOrder
+    cron?: SortOrder
     status?: SortOrder
     lastRunAt?: SortOrder
     lastRunId?: SortOrder
     lastRunStatus?: SortOrder
+    nextRunAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type WorkflowAvgOrderByAggregateInput = {
+    creditsCost?: SortOrder
   }
 
   export type WorkflowMaxOrderByAggregateInput = {
@@ -5369,10 +8051,14 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     definition?: SortOrder
+    executionPlan?: SortOrder
+    creditsCost?: SortOrder
+    cron?: SortOrder
     status?: SortOrder
     lastRunAt?: SortOrder
     lastRunId?: SortOrder
     lastRunStatus?: SortOrder
+    nextRunAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5383,12 +8069,20 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     definition?: SortOrder
+    executionPlan?: SortOrder
+    creditsCost?: SortOrder
+    cron?: SortOrder
     status?: SortOrder
     lastRunAt?: SortOrder
     lastRunId?: SortOrder
     lastRunStatus?: SortOrder
+    nextRunAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type WorkflowSumOrderByAggregateInput = {
+    creditsCost?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -5425,6 +8119,22 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | null
@@ -5453,17 +8163,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type ExecutionPhaseListRelationFilter = {
     every?: ExecutionPhaseWhereInput
     some?: ExecutionPhaseWhereInput
@@ -5488,6 +8187,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     startedAt?: SortOrder
     completedAt?: SortOrder
+    definition?: SortOrder
     creditsConsumed?: SortOrder
   }
 
@@ -5504,6 +8204,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     startedAt?: SortOrder
     completedAt?: SortOrder
+    definition?: SortOrder
     creditsConsumed?: SortOrder
   }
 
@@ -5516,27 +8217,12 @@ export namespace Prisma {
     createdAt?: SortOrder
     startedAt?: SortOrder
     completedAt?: SortOrder
+    definition?: SortOrder
     creditsConsumed?: SortOrder
   }
 
   export type WorkflowExecutionSumOrderByAggregateInput = {
     creditsConsumed?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -5553,6 +8239,16 @@ export namespace Prisma {
   export type WorkflowExecutionScalarRelationFilter = {
     is?: WorkflowExecutionWhereInput
     isNot?: WorkflowExecutionWhereInput
+  }
+
+  export type ExecutionLogListRelationFilter = {
+    every?: ExecutionLogWhereInput
+    some?: ExecutionLogWhereInput
+    none?: ExecutionLogWhereInput
+  }
+
+  export type ExecutionLogOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type ExecutionPhaseCountOrderByAggregateInput = {
@@ -5626,6 +8322,58 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type ExecutionPhaseScalarRelationFilter = {
+    is?: ExecutionPhaseWhereInput
+    isNot?: ExecutionPhaseWhereInput
+  }
+
+  export type ExecutionLogCountOrderByAggregateInput = {
+    id?: SortOrder
+    logLevel?: SortOrder
+    message?: SortOrder
+    time?: SortOrder
+    executionPhaseId?: SortOrder
+  }
+
+  export type ExecutionLogMaxOrderByAggregateInput = {
+    id?: SortOrder
+    logLevel?: SortOrder
+    message?: SortOrder
+    time?: SortOrder
+    executionPhaseId?: SortOrder
+  }
+
+  export type ExecutionLogMinOrderByAggregateInput = {
+    id?: SortOrder
+    logLevel?: SortOrder
+    message?: SortOrder
+    time?: SortOrder
+    executionPhaseId?: SortOrder
+  }
+
+  export type UserBalanceCountOrderByAggregateInput = {
+    userId?: SortOrder
+    credits?: SortOrder
+  }
+
+  export type UserBalanceAvgOrderByAggregateInput = {
+    credits?: SortOrder
+  }
+
+  export type UserBalanceMaxOrderByAggregateInput = {
+    userId?: SortOrder
+    credits?: SortOrder
+  }
+
+  export type UserBalanceMinOrderByAggregateInput = {
+    userId?: SortOrder
+    credits?: SortOrder
+  }
+
+  export type UserBalanceSumOrderByAggregateInput = {
+    credits?: SortOrder
+  }
+
   export type WorkflowExecutionCreateNestedManyWithoutWorkflowInput = {
     create?: XOR<WorkflowExecutionCreateWithoutWorkflowInput, WorkflowExecutionUncheckedCreateWithoutWorkflowInput> | WorkflowExecutionCreateWithoutWorkflowInput[] | WorkflowExecutionUncheckedCreateWithoutWorkflowInput[]
     connectOrCreate?: WorkflowExecutionCreateOrConnectWithoutWorkflowInput | WorkflowExecutionCreateOrConnectWithoutWorkflowInput[]
@@ -5646,6 +8394,14 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -5704,14 +8460,6 @@ export namespace Prisma {
     connect?: ExecutionPhaseWhereUniqueInput | ExecutionPhaseWhereUniqueInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type ExecutionPhaseUpdateManyWithoutExecutionNestedInput = {
     create?: XOR<ExecutionPhaseCreateWithoutExecutionInput, ExecutionPhaseUncheckedCreateWithoutExecutionInput> | ExecutionPhaseCreateWithoutExecutionInput[] | ExecutionPhaseUncheckedCreateWithoutExecutionInput[]
     connectOrCreate?: ExecutionPhaseCreateOrConnectWithoutExecutionInput | ExecutionPhaseCreateOrConnectWithoutExecutionInput[]
@@ -5754,6 +8502,20 @@ export namespace Prisma {
     connect?: WorkflowExecutionWhereUniqueInput
   }
 
+  export type ExecutionLogCreateNestedManyWithoutExecutionPhaseInput = {
+    create?: XOR<ExecutionLogCreateWithoutExecutionPhaseInput, ExecutionLogUncheckedCreateWithoutExecutionPhaseInput> | ExecutionLogCreateWithoutExecutionPhaseInput[] | ExecutionLogUncheckedCreateWithoutExecutionPhaseInput[]
+    connectOrCreate?: ExecutionLogCreateOrConnectWithoutExecutionPhaseInput | ExecutionLogCreateOrConnectWithoutExecutionPhaseInput[]
+    createMany?: ExecutionLogCreateManyExecutionPhaseInputEnvelope
+    connect?: ExecutionLogWhereUniqueInput | ExecutionLogWhereUniqueInput[]
+  }
+
+  export type ExecutionLogUncheckedCreateNestedManyWithoutExecutionPhaseInput = {
+    create?: XOR<ExecutionLogCreateWithoutExecutionPhaseInput, ExecutionLogUncheckedCreateWithoutExecutionPhaseInput> | ExecutionLogCreateWithoutExecutionPhaseInput[] | ExecutionLogUncheckedCreateWithoutExecutionPhaseInput[]
+    connectOrCreate?: ExecutionLogCreateOrConnectWithoutExecutionPhaseInput | ExecutionLogCreateOrConnectWithoutExecutionPhaseInput[]
+    createMany?: ExecutionLogCreateManyExecutionPhaseInputEnvelope
+    connect?: ExecutionLogWhereUniqueInput | ExecutionLogWhereUniqueInput[]
+  }
+
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -5768,6 +8530,48 @@ export namespace Prisma {
     upsert?: WorkflowExecutionUpsertWithoutPhasesInput
     connect?: WorkflowExecutionWhereUniqueInput
     update?: XOR<XOR<WorkflowExecutionUpdateToOneWithWhereWithoutPhasesInput, WorkflowExecutionUpdateWithoutPhasesInput>, WorkflowExecutionUncheckedUpdateWithoutPhasesInput>
+  }
+
+  export type ExecutionLogUpdateManyWithoutExecutionPhaseNestedInput = {
+    create?: XOR<ExecutionLogCreateWithoutExecutionPhaseInput, ExecutionLogUncheckedCreateWithoutExecutionPhaseInput> | ExecutionLogCreateWithoutExecutionPhaseInput[] | ExecutionLogUncheckedCreateWithoutExecutionPhaseInput[]
+    connectOrCreate?: ExecutionLogCreateOrConnectWithoutExecutionPhaseInput | ExecutionLogCreateOrConnectWithoutExecutionPhaseInput[]
+    upsert?: ExecutionLogUpsertWithWhereUniqueWithoutExecutionPhaseInput | ExecutionLogUpsertWithWhereUniqueWithoutExecutionPhaseInput[]
+    createMany?: ExecutionLogCreateManyExecutionPhaseInputEnvelope
+    set?: ExecutionLogWhereUniqueInput | ExecutionLogWhereUniqueInput[]
+    disconnect?: ExecutionLogWhereUniqueInput | ExecutionLogWhereUniqueInput[]
+    delete?: ExecutionLogWhereUniqueInput | ExecutionLogWhereUniqueInput[]
+    connect?: ExecutionLogWhereUniqueInput | ExecutionLogWhereUniqueInput[]
+    update?: ExecutionLogUpdateWithWhereUniqueWithoutExecutionPhaseInput | ExecutionLogUpdateWithWhereUniqueWithoutExecutionPhaseInput[]
+    updateMany?: ExecutionLogUpdateManyWithWhereWithoutExecutionPhaseInput | ExecutionLogUpdateManyWithWhereWithoutExecutionPhaseInput[]
+    deleteMany?: ExecutionLogScalarWhereInput | ExecutionLogScalarWhereInput[]
+  }
+
+  export type ExecutionLogUncheckedUpdateManyWithoutExecutionPhaseNestedInput = {
+    create?: XOR<ExecutionLogCreateWithoutExecutionPhaseInput, ExecutionLogUncheckedCreateWithoutExecutionPhaseInput> | ExecutionLogCreateWithoutExecutionPhaseInput[] | ExecutionLogUncheckedCreateWithoutExecutionPhaseInput[]
+    connectOrCreate?: ExecutionLogCreateOrConnectWithoutExecutionPhaseInput | ExecutionLogCreateOrConnectWithoutExecutionPhaseInput[]
+    upsert?: ExecutionLogUpsertWithWhereUniqueWithoutExecutionPhaseInput | ExecutionLogUpsertWithWhereUniqueWithoutExecutionPhaseInput[]
+    createMany?: ExecutionLogCreateManyExecutionPhaseInputEnvelope
+    set?: ExecutionLogWhereUniqueInput | ExecutionLogWhereUniqueInput[]
+    disconnect?: ExecutionLogWhereUniqueInput | ExecutionLogWhereUniqueInput[]
+    delete?: ExecutionLogWhereUniqueInput | ExecutionLogWhereUniqueInput[]
+    connect?: ExecutionLogWhereUniqueInput | ExecutionLogWhereUniqueInput[]
+    update?: ExecutionLogUpdateWithWhereUniqueWithoutExecutionPhaseInput | ExecutionLogUpdateWithWhereUniqueWithoutExecutionPhaseInput[]
+    updateMany?: ExecutionLogUpdateManyWithWhereWithoutExecutionPhaseInput | ExecutionLogUpdateManyWithWhereWithoutExecutionPhaseInput[]
+    deleteMany?: ExecutionLogScalarWhereInput | ExecutionLogScalarWhereInput[]
+  }
+
+  export type ExecutionPhaseCreateNestedOneWithoutLogsInput = {
+    create?: XOR<ExecutionPhaseCreateWithoutLogsInput, ExecutionPhaseUncheckedCreateWithoutLogsInput>
+    connectOrCreate?: ExecutionPhaseCreateOrConnectWithoutLogsInput
+    connect?: ExecutionPhaseWhereUniqueInput
+  }
+
+  export type ExecutionPhaseUpdateOneRequiredWithoutLogsNestedInput = {
+    create?: XOR<ExecutionPhaseCreateWithoutLogsInput, ExecutionPhaseUncheckedCreateWithoutLogsInput>
+    connectOrCreate?: ExecutionPhaseCreateOrConnectWithoutLogsInput
+    upsert?: ExecutionPhaseUpsertWithoutLogsInput
+    connect?: ExecutionPhaseWhereUniqueInput
+    update?: XOR<XOR<ExecutionPhaseUpdateToOneWithWhereWithoutLogsInput, ExecutionPhaseUpdateWithoutLogsInput>, ExecutionPhaseUncheckedUpdateWithoutLogsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5796,6 +8600,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
@@ -5837,17 +8652,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
@@ -5876,6 +8680,33 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | null
@@ -5902,33 +8733,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5966,6 +8770,7 @@ export namespace Prisma {
     createdAt?: Date | string
     startedAt?: Date | string | null
     completedAt?: Date | string | null
+    definition?: string
     creditsConsumed?: number
     phases?: ExecutionPhaseCreateNestedManyWithoutExecutionInput
   }
@@ -5978,6 +8783,7 @@ export namespace Prisma {
     createdAt?: Date | string
     startedAt?: Date | string | null
     completedAt?: Date | string | null
+    definition?: string
     creditsConsumed?: number
     phases?: ExecutionPhaseUncheckedCreateNestedManyWithoutExecutionInput
   }
@@ -6019,6 +8825,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"WorkflowExecution"> | Date | string
     startedAt?: DateTimeNullableFilter<"WorkflowExecution"> | Date | string | null
     completedAt?: DateTimeNullableFilter<"WorkflowExecution"> | Date | string | null
+    definition?: StringFilter<"WorkflowExecution"> | string
     creditsConsumed?: IntFilter<"WorkflowExecution"> | number
   }
 
@@ -6034,6 +8841,7 @@ export namespace Prisma {
     inputs?: string | null
     outputs?: string | null
     creditsConsumed?: number | null
+    logs?: ExecutionLogCreateNestedManyWithoutExecutionPhaseInput
   }
 
   export type ExecutionPhaseUncheckedCreateWithoutExecutionInput = {
@@ -6048,6 +8856,7 @@ export namespace Prisma {
     inputs?: string | null
     outputs?: string | null
     creditsConsumed?: number | null
+    logs?: ExecutionLogUncheckedCreateNestedManyWithoutExecutionPhaseInput
   }
 
   export type ExecutionPhaseCreateOrConnectWithoutExecutionInput = {
@@ -6065,10 +8874,14 @@ export namespace Prisma {
     name: string
     description?: string | null
     definition: string
+    executionPlan?: string | null
+    creditsCost?: number
+    cron?: string | null
     status: string
     lastRunAt?: Date | string | null
     lastRunId?: string | null
     lastRunStatus?: string | null
+    nextRunAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6079,10 +8892,14 @@ export namespace Prisma {
     name: string
     description?: string | null
     definition: string
+    executionPlan?: string | null
+    creditsCost?: number
+    cron?: string | null
     status: string
     lastRunAt?: Date | string | null
     lastRunId?: string | null
     lastRunStatus?: string | null
+    nextRunAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6143,10 +8960,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     definition?: StringFieldUpdateOperationsInput | string
+    executionPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    creditsCost?: IntFieldUpdateOperationsInput | number
+    cron?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     lastRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastRunId?: NullableStringFieldUpdateOperationsInput | string | null
     lastRunStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    nextRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6157,10 +8978,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     definition?: StringFieldUpdateOperationsInput | string
+    executionPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    creditsCost?: IntFieldUpdateOperationsInput | number
+    cron?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     lastRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastRunId?: NullableStringFieldUpdateOperationsInput | string | null
     lastRunStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    nextRunAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6173,6 +8998,7 @@ export namespace Prisma {
     createdAt?: Date | string
     startedAt?: Date | string | null
     completedAt?: Date | string | null
+    definition?: string
     creditsConsumed?: number
     workflow: WorkflowCreateNestedOneWithoutExecutionsInput
   }
@@ -6186,12 +9012,36 @@ export namespace Prisma {
     createdAt?: Date | string
     startedAt?: Date | string | null
     completedAt?: Date | string | null
+    definition?: string
     creditsConsumed?: number
   }
 
   export type WorkflowExecutionCreateOrConnectWithoutPhasesInput = {
     where: WorkflowExecutionWhereUniqueInput
     create: XOR<WorkflowExecutionCreateWithoutPhasesInput, WorkflowExecutionUncheckedCreateWithoutPhasesInput>
+  }
+
+  export type ExecutionLogCreateWithoutExecutionPhaseInput = {
+    id?: string
+    logLevel: string
+    message: string
+    time?: Date | string
+  }
+
+  export type ExecutionLogUncheckedCreateWithoutExecutionPhaseInput = {
+    id?: string
+    logLevel: string
+    message: string
+    time?: Date | string
+  }
+
+  export type ExecutionLogCreateOrConnectWithoutExecutionPhaseInput = {
+    where: ExecutionLogWhereUniqueInput
+    create: XOR<ExecutionLogCreateWithoutExecutionPhaseInput, ExecutionLogUncheckedCreateWithoutExecutionPhaseInput>
+  }
+
+  export type ExecutionLogCreateManyExecutionPhaseInputEnvelope = {
+    data: ExecutionLogCreateManyExecutionPhaseInput | ExecutionLogCreateManyExecutionPhaseInput[]
   }
 
   export type WorkflowExecutionUpsertWithoutPhasesInput = {
@@ -6213,6 +9063,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    definition?: StringFieldUpdateOperationsInput | string
     creditsConsumed?: IntFieldUpdateOperationsInput | number
     workflow?: WorkflowUpdateOneRequiredWithoutExecutionsNestedInput
   }
@@ -6226,7 +9077,111 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    definition?: StringFieldUpdateOperationsInput | string
     creditsConsumed?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ExecutionLogUpsertWithWhereUniqueWithoutExecutionPhaseInput = {
+    where: ExecutionLogWhereUniqueInput
+    update: XOR<ExecutionLogUpdateWithoutExecutionPhaseInput, ExecutionLogUncheckedUpdateWithoutExecutionPhaseInput>
+    create: XOR<ExecutionLogCreateWithoutExecutionPhaseInput, ExecutionLogUncheckedCreateWithoutExecutionPhaseInput>
+  }
+
+  export type ExecutionLogUpdateWithWhereUniqueWithoutExecutionPhaseInput = {
+    where: ExecutionLogWhereUniqueInput
+    data: XOR<ExecutionLogUpdateWithoutExecutionPhaseInput, ExecutionLogUncheckedUpdateWithoutExecutionPhaseInput>
+  }
+
+  export type ExecutionLogUpdateManyWithWhereWithoutExecutionPhaseInput = {
+    where: ExecutionLogScalarWhereInput
+    data: XOR<ExecutionLogUpdateManyMutationInput, ExecutionLogUncheckedUpdateManyWithoutExecutionPhaseInput>
+  }
+
+  export type ExecutionLogScalarWhereInput = {
+    AND?: ExecutionLogScalarWhereInput | ExecutionLogScalarWhereInput[]
+    OR?: ExecutionLogScalarWhereInput[]
+    NOT?: ExecutionLogScalarWhereInput | ExecutionLogScalarWhereInput[]
+    id?: StringFilter<"ExecutionLog"> | string
+    logLevel?: StringFilter<"ExecutionLog"> | string
+    message?: StringFilter<"ExecutionLog"> | string
+    time?: DateTimeFilter<"ExecutionLog"> | Date | string
+    executionPhaseId?: StringFilter<"ExecutionLog"> | string
+  }
+
+  export type ExecutionPhaseCreateWithoutLogsInput = {
+    id?: string
+    userId: string
+    status: string
+    number: number
+    node: string
+    name: string
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    inputs?: string | null
+    outputs?: string | null
+    creditsConsumed?: number | null
+    execution: WorkflowExecutionCreateNestedOneWithoutPhasesInput
+  }
+
+  export type ExecutionPhaseUncheckedCreateWithoutLogsInput = {
+    id?: string
+    userId: string
+    status: string
+    number: number
+    node: string
+    name: string
+    startedAt?: Date | string | null
+    completedAt?: Date | string | null
+    inputs?: string | null
+    outputs?: string | null
+    creditsConsumed?: number | null
+    workflowExecutionId: string
+  }
+
+  export type ExecutionPhaseCreateOrConnectWithoutLogsInput = {
+    where: ExecutionPhaseWhereUniqueInput
+    create: XOR<ExecutionPhaseCreateWithoutLogsInput, ExecutionPhaseUncheckedCreateWithoutLogsInput>
+  }
+
+  export type ExecutionPhaseUpsertWithoutLogsInput = {
+    update: XOR<ExecutionPhaseUpdateWithoutLogsInput, ExecutionPhaseUncheckedUpdateWithoutLogsInput>
+    create: XOR<ExecutionPhaseCreateWithoutLogsInput, ExecutionPhaseUncheckedCreateWithoutLogsInput>
+    where?: ExecutionPhaseWhereInput
+  }
+
+  export type ExecutionPhaseUpdateToOneWithWhereWithoutLogsInput = {
+    where?: ExecutionPhaseWhereInput
+    data: XOR<ExecutionPhaseUpdateWithoutLogsInput, ExecutionPhaseUncheckedUpdateWithoutLogsInput>
+  }
+
+  export type ExecutionPhaseUpdateWithoutLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    number?: IntFieldUpdateOperationsInput | number
+    node?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inputs?: NullableStringFieldUpdateOperationsInput | string | null
+    outputs?: NullableStringFieldUpdateOperationsInput | string | null
+    creditsConsumed?: NullableIntFieldUpdateOperationsInput | number | null
+    execution?: WorkflowExecutionUpdateOneRequiredWithoutPhasesNestedInput
+  }
+
+  export type ExecutionPhaseUncheckedUpdateWithoutLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    number?: IntFieldUpdateOperationsInput | number
+    node?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inputs?: NullableStringFieldUpdateOperationsInput | string | null
+    outputs?: NullableStringFieldUpdateOperationsInput | string | null
+    creditsConsumed?: NullableIntFieldUpdateOperationsInput | number | null
+    workflowExecutionId?: StringFieldUpdateOperationsInput | string
   }
 
   export type WorkflowExecutionCreateManyWorkflowInput = {
@@ -6237,6 +9192,7 @@ export namespace Prisma {
     createdAt?: Date | string
     startedAt?: Date | string | null
     completedAt?: Date | string | null
+    definition?: string
     creditsConsumed?: number
   }
 
@@ -6248,6 +9204,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    definition?: StringFieldUpdateOperationsInput | string
     creditsConsumed?: IntFieldUpdateOperationsInput | number
     phases?: ExecutionPhaseUpdateManyWithoutExecutionNestedInput
   }
@@ -6260,6 +9217,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    definition?: StringFieldUpdateOperationsInput | string
     creditsConsumed?: IntFieldUpdateOperationsInput | number
     phases?: ExecutionPhaseUncheckedUpdateManyWithoutExecutionNestedInput
   }
@@ -6272,6 +9230,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    definition?: StringFieldUpdateOperationsInput | string
     creditsConsumed?: IntFieldUpdateOperationsInput | number
   }
 
@@ -6301,6 +9260,7 @@ export namespace Prisma {
     inputs?: NullableStringFieldUpdateOperationsInput | string | null
     outputs?: NullableStringFieldUpdateOperationsInput | string | null
     creditsConsumed?: NullableIntFieldUpdateOperationsInput | number | null
+    logs?: ExecutionLogUpdateManyWithoutExecutionPhaseNestedInput
   }
 
   export type ExecutionPhaseUncheckedUpdateWithoutExecutionInput = {
@@ -6315,6 +9275,7 @@ export namespace Prisma {
     inputs?: NullableStringFieldUpdateOperationsInput | string | null
     outputs?: NullableStringFieldUpdateOperationsInput | string | null
     creditsConsumed?: NullableIntFieldUpdateOperationsInput | number | null
+    logs?: ExecutionLogUncheckedUpdateManyWithoutExecutionPhaseNestedInput
   }
 
   export type ExecutionPhaseUncheckedUpdateManyWithoutExecutionInput = {
@@ -6329,6 +9290,34 @@ export namespace Prisma {
     inputs?: NullableStringFieldUpdateOperationsInput | string | null
     outputs?: NullableStringFieldUpdateOperationsInput | string | null
     creditsConsumed?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ExecutionLogCreateManyExecutionPhaseInput = {
+    id?: string
+    logLevel: string
+    message: string
+    time?: Date | string
+  }
+
+  export type ExecutionLogUpdateWithoutExecutionPhaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    logLevel?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    time?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExecutionLogUncheckedUpdateWithoutExecutionPhaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    logLevel?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    time?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExecutionLogUncheckedUpdateManyWithoutExecutionPhaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    logLevel?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    time?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
