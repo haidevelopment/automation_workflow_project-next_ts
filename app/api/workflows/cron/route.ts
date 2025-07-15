@@ -19,6 +19,23 @@ export async function GET(req: Request) {
     }
     return Response.json( {workflowToRun: workflows.length, status: 200 });
 }
+export async function POST(req: Request) {
+    const  now = new Date();
+    const workflows = await prisma.workflow.findMany({
+        select: { id: true},
+        where: {
+            status: WorkflowStatus.PUBLISHER,
+            cron: { not: null },
+            nextRunAt: { lte: now }
+        }
+        
+    });
+    console.log("@@WORKFLOW TO RUN", workflows.length)
+    for(const workflow of workflows){
+        triggerWorkflow(workflow.id);
+    }
+    return Response.json( {workflowToRun: workflows.length, status: 200 });
+}
 function triggerWorkflow(workflowId: string) {
     const triggerApiUrl = getAppUrl(`/api/workflows/execute?workflowId=${workflowId}`);
     console.log("triggerApiUrl", triggerApiUrl);

@@ -31,9 +31,10 @@ import DeleteWorkflowDialog from './DeleteWorkflowDialog';
 import RunBtn from "./RunBtn";
 import SchedulerDialog from "./SchedulerDialog";
 import { Badge } from "@/components/ui/badge";
-import ExecutionStatusIndicator from "@/app/workflow/runs/[workflowId]/_components/ExecutionStatusIndicator";
+import ExecutionStatusIndicator, { ExecutionStatusLabel } from "@/app/workflow/runs/[workflowId]/_components/ExecutionStatusIndicator";
 import { format, formatDistanceToNow } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
+import DuplicateWorkflowDialog from "./DuplicateWorkflowDialog";
 const statusColors = {
   [WorkflowStatus.DRAF]: "bg-yellow-400 text-yellow-600",
   [WorkflowStatus.PUBLISHER]: "bg-primary text-primary",
@@ -41,7 +42,7 @@ const statusColors = {
 function WorkflowCard({ workflow }: { workflow: Workflow }) {
   const isDraf = workflow.status == WorkflowStatus.DRAF;
   return (
-    <Card className="border border-separate shadow-sm rounded-lg overflow-hidden hover:shadow-md dark:shadow-primary/30">
+    <Card className="border border-separate shadow-sm rounded-lg overflow-hidden hover:shadow-md dark:shadow-primary/30 group/card">
       <CardContent className="p-4 flex items-center justify-between h-[100px]">
         <div className="flex items-center justify-end space-x-3">
           <div
@@ -69,6 +70,7 @@ function WorkflowCard({ workflow }: { workflow: Workflow }) {
                   {WorkflowStatus.DRAF}
                 </span>
               )}
+              <DuplicateWorkflowDialog workflowId={workflow.id} />
             </h3>
             <ScheduleSection isDraf={isDraf} creditsCost={workflow.creditsCost} workflowId={workflow.id} cron={workflow.cron ?? ""} />
           </div>
@@ -156,7 +158,7 @@ function LastRunDetails({ workflow }: { workflow: Workflow }) {
         {lastRunAt && <Link href={`/workflow/runs/${workflow.id}/${lastRunId}`} className="flex items-center gap-2 text-sm group">
         <span>Lần cuối chạy : </span> 
         <ExecutionStatusIndicator status={lastRunStatus as WorkflowExecutionStatus} /> 
-        <span>{lastRunStatus}</span>
+        <ExecutionStatusLabel status={lastRunStatus as WorkflowExecutionStatus} /> 
         <span>{formatedStartedAt}</span>
         <ChevronRightIcon size={16} className="-translate-x-[4px] group-hover:translate-x-0 transition" />
         </Link>}
