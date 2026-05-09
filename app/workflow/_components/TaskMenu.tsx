@@ -16,8 +16,24 @@ function TaskMenu() {
       <Accordion
         type="multiple"
         className="w-full"
-        defaultValue={["extraction", "interaction"]}
+        defaultValue={["extraction", "interaction", "ai", "export"]}
       >
+          <AccordionItem value="export">
+          <AccordionTrigger className="font-bold">
+            Export
+          </AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-1">
+            <TaskMenuBtn taskType={TaskType.EXPORT} />
+          </AccordionContent>
+        </AccordionItem>
+          <AccordionItem value="ai">
+          <AccordionTrigger className="font-bold">
+            AI
+          </AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-1">
+            <TaskMenuBtn taskType={TaskType.AI} />
+          </AccordionContent>
+        </AccordionItem>
           <AccordionItem value="interaction">
           <AccordionTrigger className="font-bold">
             User Interaction

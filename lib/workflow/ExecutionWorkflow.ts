@@ -178,7 +178,7 @@ async function executePhase(phase: ExecutionPhase, node: AppNode, environment?: 
     if (!runFn || !environment) {
         return false;
     }
-    const executionEnvironment = createExecutionEnvironment(node, environment, logCollector!);
+    const executionEnvironment = createExecutionEnvironment(node, environment, logCollector!, phase.userId);
     return await runFn(executionEnvironment);
 }
 function setupEnvironmentForPhase(node: AppNode, environment?: Environment, edges?: Edge[]) {
@@ -207,12 +207,13 @@ function setupEnvironmentForPhase(node: AppNode, environment?: Environment, edge
     }
 
 }
-function createExecutionEnvironment(node: AppNode, environment: Environment, logCollector: LogCollector): ExecutionEnvironment<any> {
+function createExecutionEnvironment(node: AppNode, environment: Environment, logCollector: LogCollector, userId?: string): ExecutionEnvironment<any> {
     return {
         getInput: (name: string) => environment.phases[node.id].inputs[name],
         setOutput: (name: string, value: string) => {
             environment.phases[node.id].outputs[name] = value
         },
+        getUserId: () => userId,
         getBrowser: () => environment.browser,
         setBrowser: (browser: Browser) => {
             environment.browser = browser

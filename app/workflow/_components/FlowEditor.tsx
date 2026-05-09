@@ -114,11 +114,22 @@ function FlowEditor({ workflow }: { workflow: Workflow }) {
       const input = targetTask.inputs.find(
         (o) => o.name === connection.targetHandle
       );
+
+      if (
+        target.data.type === TaskType.AI &&
+        connection.targetHandle &&
+        connection.targetHandle !== "Input"
+      ) {
+        toast.error("Node này chỉ nhận dữ liệu đầu vào qua cổng chính");
+        return false;
+      }
   
       if (output?.type !== input?.type) {
         console.error("Type mismatch");
-        toast.error("Bạn không được kết nối các kiểu khác nhau!");
-        return false;
+        if (target.data.type !== TaskType.EXPORT) {
+          toast.error("Bạn không được kết nối các kiểu khác nhau!");
+          return false;
+        }
       }
   
       const hasCycle = (node: AppNode, visited = new Set()): boolean => {

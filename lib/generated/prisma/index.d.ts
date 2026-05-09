@@ -38,6 +38,83 @@ export type ExecutionLog = $Result.DefaultSelection<Prisma.$ExecutionLogPayload>
  * 
  */
 export type UserBalance = $Result.DefaultSelection<Prisma.$UserBalancePayload>
+/**
+ * Model UserPurchase
+ * 
+ */
+export type UserPurchase = $Result.DefaultSelection<Prisma.$UserPurchasePayload>
+/**
+ * Model CreditTransaction
+ * 
+ */
+export type CreditTransaction = $Result.DefaultSelection<Prisma.$CreditTransactionPayload>
+/**
+ * Model UserCredentials
+ * 
+ */
+export type UserCredentials = $Result.DefaultSelection<Prisma.$UserCredentialsPayload>
+/**
+ * Model Credentials
+ * 
+ */
+export type Credentials = $Result.DefaultSelection<Prisma.$CredentialsPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const UserPurchaseStatus: {
+  PENDING: 'PENDING',
+  SUCCESS: 'SUCCESS',
+  FAILED: 'FAILED'
+};
+
+export type UserPurchaseStatus = (typeof UserPurchaseStatus)[keyof typeof UserPurchaseStatus]
+
+
+export const CreditTransactionType: {
+  DEPOSIT: 'DEPOSIT',
+  USAGE: 'USAGE'
+};
+
+export type CreditTransactionType = (typeof CreditTransactionType)[keyof typeof CreditTransactionType]
+
+
+export const CredentialType: {
+  GOOGLE: 'GOOGLE',
+  OPENAI: 'OPENAI',
+  GEMINI: 'GEMINI'
+};
+
+export type CredentialType = (typeof CredentialType)[keyof typeof CredentialType]
+
+
+export const CredentialStatus: {
+  ACTIVE: 'ACTIVE',
+  VALID: 'VALID',
+  EXPIRED: 'EXPIRED',
+  INVALID: 'INVALID'
+};
+
+export type CredentialStatus = (typeof CredentialStatus)[keyof typeof CredentialStatus]
+
+}
+
+export type UserPurchaseStatus = $Enums.UserPurchaseStatus
+
+export const UserPurchaseStatus: typeof $Enums.UserPurchaseStatus
+
+export type CreditTransactionType = $Enums.CreditTransactionType
+
+export const CreditTransactionType: typeof $Enums.CreditTransactionType
+
+export type CredentialType = $Enums.CredentialType
+
+export const CredentialType: typeof $Enums.CredentialType
+
+export type CredentialStatus = $Enums.CredentialStatus
+
+export const CredentialStatus: typeof $Enums.CredentialStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -213,6 +290,46 @@ export class PrismaClient<
     * ```
     */
   get userBalance(): Prisma.UserBalanceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userPurchase`: Exposes CRUD operations for the **UserPurchase** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserPurchases
+    * const userPurchases = await prisma.userPurchase.findMany()
+    * ```
+    */
+  get userPurchase(): Prisma.UserPurchaseDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.creditTransaction`: Exposes CRUD operations for the **CreditTransaction** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CreditTransactions
+    * const creditTransactions = await prisma.creditTransaction.findMany()
+    * ```
+    */
+  get creditTransaction(): Prisma.CreditTransactionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userCredentials`: Exposes CRUD operations for the **UserCredentials** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserCredentials
+    * const userCredentials = await prisma.userCredentials.findMany()
+    * ```
+    */
+  get userCredentials(): Prisma.UserCredentialsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.credentials`: Exposes CRUD operations for the **Credentials** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Credentials
+    * const credentials = await prisma.credentials.findMany()
+    * ```
+    */
+  get credentials(): Prisma.CredentialsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -657,7 +774,11 @@ export namespace Prisma {
     WorkflowExecution: 'WorkflowExecution',
     ExecutionPhase: 'ExecutionPhase',
     ExecutionLog: 'ExecutionLog',
-    UserBalance: 'UserBalance'
+    UserBalance: 'UserBalance',
+    UserPurchase: 'UserPurchase',
+    CreditTransaction: 'CreditTransaction',
+    UserCredentials: 'UserCredentials',
+    Credentials: 'Credentials'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -676,7 +797,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "workflow" | "workflowExecution" | "executionPhase" | "executionLog" | "userBalance"
+      modelProps: "workflow" | "workflowExecution" | "executionPhase" | "executionLog" | "userBalance" | "userPurchase" | "creditTransaction" | "userCredentials" | "credentials"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1050,6 +1171,302 @@ export namespace Prisma {
           }
         }
       }
+      UserPurchase: {
+        payload: Prisma.$UserPurchasePayload<ExtArgs>
+        fields: Prisma.UserPurchaseFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserPurchaseFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPurchasePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserPurchaseFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPurchasePayload>
+          }
+          findFirst: {
+            args: Prisma.UserPurchaseFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPurchasePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserPurchaseFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPurchasePayload>
+          }
+          findMany: {
+            args: Prisma.UserPurchaseFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPurchasePayload>[]
+          }
+          create: {
+            args: Prisma.UserPurchaseCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPurchasePayload>
+          }
+          createMany: {
+            args: Prisma.UserPurchaseCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserPurchaseCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPurchasePayload>[]
+          }
+          delete: {
+            args: Prisma.UserPurchaseDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPurchasePayload>
+          }
+          update: {
+            args: Prisma.UserPurchaseUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPurchasePayload>
+          }
+          deleteMany: {
+            args: Prisma.UserPurchaseDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserPurchaseUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserPurchaseUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPurchasePayload>[]
+          }
+          upsert: {
+            args: Prisma.UserPurchaseUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPurchasePayload>
+          }
+          aggregate: {
+            args: Prisma.UserPurchaseAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserPurchase>
+          }
+          groupBy: {
+            args: Prisma.UserPurchaseGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserPurchaseGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserPurchaseCountArgs<ExtArgs>
+            result: $Utils.Optional<UserPurchaseCountAggregateOutputType> | number
+          }
+        }
+      }
+      CreditTransaction: {
+        payload: Prisma.$CreditTransactionPayload<ExtArgs>
+        fields: Prisma.CreditTransactionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CreditTransactionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditTransactionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CreditTransactionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+          }
+          findFirst: {
+            args: Prisma.CreditTransactionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditTransactionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CreditTransactionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+          }
+          findMany: {
+            args: Prisma.CreditTransactionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditTransactionPayload>[]
+          }
+          create: {
+            args: Prisma.CreditTransactionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+          }
+          createMany: {
+            args: Prisma.CreditTransactionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CreditTransactionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditTransactionPayload>[]
+          }
+          delete: {
+            args: Prisma.CreditTransactionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+          }
+          update: {
+            args: Prisma.CreditTransactionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+          }
+          deleteMany: {
+            args: Prisma.CreditTransactionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CreditTransactionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CreditTransactionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditTransactionPayload>[]
+          }
+          upsert: {
+            args: Prisma.CreditTransactionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+          }
+          aggregate: {
+            args: Prisma.CreditTransactionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCreditTransaction>
+          }
+          groupBy: {
+            args: Prisma.CreditTransactionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CreditTransactionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CreditTransactionCountArgs<ExtArgs>
+            result: $Utils.Optional<CreditTransactionCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserCredentials: {
+        payload: Prisma.$UserCredentialsPayload<ExtArgs>
+        fields: Prisma.UserCredentialsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserCredentialsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCredentialsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserCredentialsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCredentialsPayload>
+          }
+          findFirst: {
+            args: Prisma.UserCredentialsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCredentialsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserCredentialsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCredentialsPayload>
+          }
+          findMany: {
+            args: Prisma.UserCredentialsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCredentialsPayload>[]
+          }
+          create: {
+            args: Prisma.UserCredentialsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCredentialsPayload>
+          }
+          createMany: {
+            args: Prisma.UserCredentialsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserCredentialsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCredentialsPayload>[]
+          }
+          delete: {
+            args: Prisma.UserCredentialsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCredentialsPayload>
+          }
+          update: {
+            args: Prisma.UserCredentialsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCredentialsPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserCredentialsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserCredentialsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserCredentialsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCredentialsPayload>[]
+          }
+          upsert: {
+            args: Prisma.UserCredentialsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCredentialsPayload>
+          }
+          aggregate: {
+            args: Prisma.UserCredentialsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserCredentials>
+          }
+          groupBy: {
+            args: Prisma.UserCredentialsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserCredentialsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserCredentialsCountArgs<ExtArgs>
+            result: $Utils.Optional<UserCredentialsCountAggregateOutputType> | number
+          }
+        }
+      }
+      Credentials: {
+        payload: Prisma.$CredentialsPayload<ExtArgs>
+        fields: Prisma.CredentialsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CredentialsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CredentialsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CredentialsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CredentialsPayload>
+          }
+          findFirst: {
+            args: Prisma.CredentialsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CredentialsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CredentialsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CredentialsPayload>
+          }
+          findMany: {
+            args: Prisma.CredentialsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CredentialsPayload>[]
+          }
+          create: {
+            args: Prisma.CredentialsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CredentialsPayload>
+          }
+          createMany: {
+            args: Prisma.CredentialsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CredentialsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CredentialsPayload>[]
+          }
+          delete: {
+            args: Prisma.CredentialsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CredentialsPayload>
+          }
+          update: {
+            args: Prisma.CredentialsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CredentialsPayload>
+          }
+          deleteMany: {
+            args: Prisma.CredentialsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CredentialsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CredentialsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CredentialsPayload>[]
+          }
+          upsert: {
+            args: Prisma.CredentialsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CredentialsPayload>
+          }
+          aggregate: {
+            args: Prisma.CredentialsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCredentials>
+          }
+          groupBy: {
+            args: Prisma.CredentialsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CredentialsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CredentialsCountArgs<ExtArgs>
+            result: $Utils.Optional<CredentialsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1139,6 +1556,10 @@ export namespace Prisma {
     executionPhase?: ExecutionPhaseOmit
     executionLog?: ExecutionLogOmit
     userBalance?: UserBalanceOmit
+    userPurchase?: UserPurchaseOmit
+    creditTransaction?: CreditTransactionOmit
+    userCredentials?: UserCredentialsOmit
+    credentials?: CredentialsOmit
   }
 
   /* Types for Logging */
@@ -7002,6 +7423,4193 @@ export namespace Prisma {
 
 
   /**
+   * Model UserPurchase
+   */
+
+  export type AggregateUserPurchase = {
+    _count: UserPurchaseCountAggregateOutputType | null
+    _avg: UserPurchaseAvgAggregateOutputType | null
+    _sum: UserPurchaseSumAggregateOutputType | null
+    _min: UserPurchaseMinAggregateOutputType | null
+    _max: UserPurchaseMaxAggregateOutputType | null
+  }
+
+  export type UserPurchaseAvgAggregateOutputType = {
+    amount: number | null
+    credits: number | null
+  }
+
+  export type UserPurchaseSumAggregateOutputType = {
+    amount: number | null
+    credits: number | null
+  }
+
+  export type UserPurchaseMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    amount: number | null
+    currency: string | null
+    credits: number | null
+    status: $Enums.UserPurchaseStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserPurchaseMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    amount: number | null
+    currency: string | null
+    credits: number | null
+    status: $Enums.UserPurchaseStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserPurchaseCountAggregateOutputType = {
+    id: number
+    userId: number
+    amount: number
+    currency: number
+    credits: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UserPurchaseAvgAggregateInputType = {
+    amount?: true
+    credits?: true
+  }
+
+  export type UserPurchaseSumAggregateInputType = {
+    amount?: true
+    credits?: true
+  }
+
+  export type UserPurchaseMinAggregateInputType = {
+    id?: true
+    userId?: true
+    amount?: true
+    currency?: true
+    credits?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserPurchaseMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    amount?: true
+    currency?: true
+    credits?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserPurchaseCountAggregateInputType = {
+    id?: true
+    userId?: true
+    amount?: true
+    currency?: true
+    credits?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UserPurchaseAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserPurchase to aggregate.
+     */
+    where?: UserPurchaseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPurchases to fetch.
+     */
+    orderBy?: UserPurchaseOrderByWithRelationInput | UserPurchaseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserPurchaseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPurchases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPurchases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserPurchases
+    **/
+    _count?: true | UserPurchaseCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UserPurchaseAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserPurchaseSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserPurchaseMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserPurchaseMaxAggregateInputType
+  }
+
+  export type GetUserPurchaseAggregateType<T extends UserPurchaseAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserPurchase]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserPurchase[P]>
+      : GetScalarType<T[P], AggregateUserPurchase[P]>
+  }
+
+
+
+
+  export type UserPurchaseGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserPurchaseWhereInput
+    orderBy?: UserPurchaseOrderByWithAggregationInput | UserPurchaseOrderByWithAggregationInput[]
+    by: UserPurchaseScalarFieldEnum[] | UserPurchaseScalarFieldEnum
+    having?: UserPurchaseScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserPurchaseCountAggregateInputType | true
+    _avg?: UserPurchaseAvgAggregateInputType
+    _sum?: UserPurchaseSumAggregateInputType
+    _min?: UserPurchaseMinAggregateInputType
+    _max?: UserPurchaseMaxAggregateInputType
+  }
+
+  export type UserPurchaseGroupByOutputType = {
+    id: string
+    userId: string
+    amount: number
+    currency: string
+    credits: number
+    status: $Enums.UserPurchaseStatus
+    createdAt: Date
+    updatedAt: Date
+    _count: UserPurchaseCountAggregateOutputType | null
+    _avg: UserPurchaseAvgAggregateOutputType | null
+    _sum: UserPurchaseSumAggregateOutputType | null
+    _min: UserPurchaseMinAggregateOutputType | null
+    _max: UserPurchaseMaxAggregateOutputType | null
+  }
+
+  type GetUserPurchaseGroupByPayload<T extends UserPurchaseGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserPurchaseGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserPurchaseGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserPurchaseGroupByOutputType[P]>
+            : GetScalarType<T[P], UserPurchaseGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserPurchaseSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    currency?: boolean
+    credits?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["userPurchase"]>
+
+  export type UserPurchaseSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    currency?: boolean
+    credits?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["userPurchase"]>
+
+  export type UserPurchaseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    currency?: boolean
+    credits?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["userPurchase"]>
+
+  export type UserPurchaseSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    currency?: boolean
+    credits?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type UserPurchaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "amount" | "currency" | "credits" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["userPurchase"]>
+
+  export type $UserPurchasePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserPurchase"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      amount: number
+      currency: string
+      credits: number
+      status: $Enums.UserPurchaseStatus
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["userPurchase"]>
+    composites: {}
+  }
+
+  type UserPurchaseGetPayload<S extends boolean | null | undefined | UserPurchaseDefaultArgs> = $Result.GetResult<Prisma.$UserPurchasePayload, S>
+
+  type UserPurchaseCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserPurchaseFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserPurchaseCountAggregateInputType | true
+    }
+
+  export interface UserPurchaseDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserPurchase'], meta: { name: 'UserPurchase' } }
+    /**
+     * Find zero or one UserPurchase that matches the filter.
+     * @param {UserPurchaseFindUniqueArgs} args - Arguments to find a UserPurchase
+     * @example
+     * // Get one UserPurchase
+     * const userPurchase = await prisma.userPurchase.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserPurchaseFindUniqueArgs>(args: SelectSubset<T, UserPurchaseFindUniqueArgs<ExtArgs>>): Prisma__UserPurchaseClient<$Result.GetResult<Prisma.$UserPurchasePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserPurchase that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserPurchaseFindUniqueOrThrowArgs} args - Arguments to find a UserPurchase
+     * @example
+     * // Get one UserPurchase
+     * const userPurchase = await prisma.userPurchase.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserPurchaseFindUniqueOrThrowArgs>(args: SelectSubset<T, UserPurchaseFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserPurchaseClient<$Result.GetResult<Prisma.$UserPurchasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserPurchase that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPurchaseFindFirstArgs} args - Arguments to find a UserPurchase
+     * @example
+     * // Get one UserPurchase
+     * const userPurchase = await prisma.userPurchase.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserPurchaseFindFirstArgs>(args?: SelectSubset<T, UserPurchaseFindFirstArgs<ExtArgs>>): Prisma__UserPurchaseClient<$Result.GetResult<Prisma.$UserPurchasePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserPurchase that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPurchaseFindFirstOrThrowArgs} args - Arguments to find a UserPurchase
+     * @example
+     * // Get one UserPurchase
+     * const userPurchase = await prisma.userPurchase.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserPurchaseFindFirstOrThrowArgs>(args?: SelectSubset<T, UserPurchaseFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserPurchaseClient<$Result.GetResult<Prisma.$UserPurchasePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserPurchases that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPurchaseFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserPurchases
+     * const userPurchases = await prisma.userPurchase.findMany()
+     * 
+     * // Get first 10 UserPurchases
+     * const userPurchases = await prisma.userPurchase.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userPurchaseWithIdOnly = await prisma.userPurchase.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserPurchaseFindManyArgs>(args?: SelectSubset<T, UserPurchaseFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPurchasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserPurchase.
+     * @param {UserPurchaseCreateArgs} args - Arguments to create a UserPurchase.
+     * @example
+     * // Create one UserPurchase
+     * const UserPurchase = await prisma.userPurchase.create({
+     *   data: {
+     *     // ... data to create a UserPurchase
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserPurchaseCreateArgs>(args: SelectSubset<T, UserPurchaseCreateArgs<ExtArgs>>): Prisma__UserPurchaseClient<$Result.GetResult<Prisma.$UserPurchasePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserPurchases.
+     * @param {UserPurchaseCreateManyArgs} args - Arguments to create many UserPurchases.
+     * @example
+     * // Create many UserPurchases
+     * const userPurchase = await prisma.userPurchase.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserPurchaseCreateManyArgs>(args?: SelectSubset<T, UserPurchaseCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserPurchases and returns the data saved in the database.
+     * @param {UserPurchaseCreateManyAndReturnArgs} args - Arguments to create many UserPurchases.
+     * @example
+     * // Create many UserPurchases
+     * const userPurchase = await prisma.userPurchase.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserPurchases and only return the `id`
+     * const userPurchaseWithIdOnly = await prisma.userPurchase.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserPurchaseCreateManyAndReturnArgs>(args?: SelectSubset<T, UserPurchaseCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPurchasePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserPurchase.
+     * @param {UserPurchaseDeleteArgs} args - Arguments to delete one UserPurchase.
+     * @example
+     * // Delete one UserPurchase
+     * const UserPurchase = await prisma.userPurchase.delete({
+     *   where: {
+     *     // ... filter to delete one UserPurchase
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserPurchaseDeleteArgs>(args: SelectSubset<T, UserPurchaseDeleteArgs<ExtArgs>>): Prisma__UserPurchaseClient<$Result.GetResult<Prisma.$UserPurchasePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserPurchase.
+     * @param {UserPurchaseUpdateArgs} args - Arguments to update one UserPurchase.
+     * @example
+     * // Update one UserPurchase
+     * const userPurchase = await prisma.userPurchase.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserPurchaseUpdateArgs>(args: SelectSubset<T, UserPurchaseUpdateArgs<ExtArgs>>): Prisma__UserPurchaseClient<$Result.GetResult<Prisma.$UserPurchasePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserPurchases.
+     * @param {UserPurchaseDeleteManyArgs} args - Arguments to filter UserPurchases to delete.
+     * @example
+     * // Delete a few UserPurchases
+     * const { count } = await prisma.userPurchase.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserPurchaseDeleteManyArgs>(args?: SelectSubset<T, UserPurchaseDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserPurchases.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPurchaseUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserPurchases
+     * const userPurchase = await prisma.userPurchase.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserPurchaseUpdateManyArgs>(args: SelectSubset<T, UserPurchaseUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserPurchases and returns the data updated in the database.
+     * @param {UserPurchaseUpdateManyAndReturnArgs} args - Arguments to update many UserPurchases.
+     * @example
+     * // Update many UserPurchases
+     * const userPurchase = await prisma.userPurchase.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserPurchases and only return the `id`
+     * const userPurchaseWithIdOnly = await prisma.userPurchase.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserPurchaseUpdateManyAndReturnArgs>(args: SelectSubset<T, UserPurchaseUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPurchasePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserPurchase.
+     * @param {UserPurchaseUpsertArgs} args - Arguments to update or create a UserPurchase.
+     * @example
+     * // Update or create a UserPurchase
+     * const userPurchase = await prisma.userPurchase.upsert({
+     *   create: {
+     *     // ... data to create a UserPurchase
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserPurchase we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserPurchaseUpsertArgs>(args: SelectSubset<T, UserPurchaseUpsertArgs<ExtArgs>>): Prisma__UserPurchaseClient<$Result.GetResult<Prisma.$UserPurchasePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserPurchases.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPurchaseCountArgs} args - Arguments to filter UserPurchases to count.
+     * @example
+     * // Count the number of UserPurchases
+     * const count = await prisma.userPurchase.count({
+     *   where: {
+     *     // ... the filter for the UserPurchases we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserPurchaseCountArgs>(
+      args?: Subset<T, UserPurchaseCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserPurchaseCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserPurchase.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPurchaseAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserPurchaseAggregateArgs>(args: Subset<T, UserPurchaseAggregateArgs>): Prisma.PrismaPromise<GetUserPurchaseAggregateType<T>>
+
+    /**
+     * Group by UserPurchase.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserPurchaseGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserPurchaseGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserPurchaseGroupByArgs['orderBy'] }
+        : { orderBy?: UserPurchaseGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserPurchaseGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserPurchaseGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserPurchase model
+   */
+  readonly fields: UserPurchaseFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserPurchase.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserPurchaseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserPurchase model
+   */
+  interface UserPurchaseFieldRefs {
+    readonly id: FieldRef<"UserPurchase", 'String'>
+    readonly userId: FieldRef<"UserPurchase", 'String'>
+    readonly amount: FieldRef<"UserPurchase", 'Int'>
+    readonly currency: FieldRef<"UserPurchase", 'String'>
+    readonly credits: FieldRef<"UserPurchase", 'Int'>
+    readonly status: FieldRef<"UserPurchase", 'UserPurchaseStatus'>
+    readonly createdAt: FieldRef<"UserPurchase", 'DateTime'>
+    readonly updatedAt: FieldRef<"UserPurchase", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserPurchase findUnique
+   */
+  export type UserPurchaseFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+    /**
+     * Filter, which UserPurchase to fetch.
+     */
+    where: UserPurchaseWhereUniqueInput
+  }
+
+  /**
+   * UserPurchase findUniqueOrThrow
+   */
+  export type UserPurchaseFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+    /**
+     * Filter, which UserPurchase to fetch.
+     */
+    where: UserPurchaseWhereUniqueInput
+  }
+
+  /**
+   * UserPurchase findFirst
+   */
+  export type UserPurchaseFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+    /**
+     * Filter, which UserPurchase to fetch.
+     */
+    where?: UserPurchaseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPurchases to fetch.
+     */
+    orderBy?: UserPurchaseOrderByWithRelationInput | UserPurchaseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserPurchases.
+     */
+    cursor?: UserPurchaseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPurchases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPurchases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserPurchases.
+     */
+    distinct?: UserPurchaseScalarFieldEnum | UserPurchaseScalarFieldEnum[]
+  }
+
+  /**
+   * UserPurchase findFirstOrThrow
+   */
+  export type UserPurchaseFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+    /**
+     * Filter, which UserPurchase to fetch.
+     */
+    where?: UserPurchaseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPurchases to fetch.
+     */
+    orderBy?: UserPurchaseOrderByWithRelationInput | UserPurchaseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserPurchases.
+     */
+    cursor?: UserPurchaseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPurchases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPurchases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserPurchases.
+     */
+    distinct?: UserPurchaseScalarFieldEnum | UserPurchaseScalarFieldEnum[]
+  }
+
+  /**
+   * UserPurchase findMany
+   */
+  export type UserPurchaseFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+    /**
+     * Filter, which UserPurchases to fetch.
+     */
+    where?: UserPurchaseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserPurchases to fetch.
+     */
+    orderBy?: UserPurchaseOrderByWithRelationInput | UserPurchaseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserPurchases.
+     */
+    cursor?: UserPurchaseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserPurchases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserPurchases.
+     */
+    skip?: number
+    distinct?: UserPurchaseScalarFieldEnum | UserPurchaseScalarFieldEnum[]
+  }
+
+  /**
+   * UserPurchase create
+   */
+  export type UserPurchaseCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+    /**
+     * The data needed to create a UserPurchase.
+     */
+    data: XOR<UserPurchaseCreateInput, UserPurchaseUncheckedCreateInput>
+  }
+
+  /**
+   * UserPurchase createMany
+   */
+  export type UserPurchaseCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserPurchases.
+     */
+    data: UserPurchaseCreateManyInput | UserPurchaseCreateManyInput[]
+  }
+
+  /**
+   * UserPurchase createManyAndReturn
+   */
+  export type UserPurchaseCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserPurchases.
+     */
+    data: UserPurchaseCreateManyInput | UserPurchaseCreateManyInput[]
+  }
+
+  /**
+   * UserPurchase update
+   */
+  export type UserPurchaseUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+    /**
+     * The data needed to update a UserPurchase.
+     */
+    data: XOR<UserPurchaseUpdateInput, UserPurchaseUncheckedUpdateInput>
+    /**
+     * Choose, which UserPurchase to update.
+     */
+    where: UserPurchaseWhereUniqueInput
+  }
+
+  /**
+   * UserPurchase updateMany
+   */
+  export type UserPurchaseUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserPurchases.
+     */
+    data: XOR<UserPurchaseUpdateManyMutationInput, UserPurchaseUncheckedUpdateManyInput>
+    /**
+     * Filter which UserPurchases to update
+     */
+    where?: UserPurchaseWhereInput
+    /**
+     * Limit how many UserPurchases to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserPurchase updateManyAndReturn
+   */
+  export type UserPurchaseUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+    /**
+     * The data used to update UserPurchases.
+     */
+    data: XOR<UserPurchaseUpdateManyMutationInput, UserPurchaseUncheckedUpdateManyInput>
+    /**
+     * Filter which UserPurchases to update
+     */
+    where?: UserPurchaseWhereInput
+    /**
+     * Limit how many UserPurchases to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserPurchase upsert
+   */
+  export type UserPurchaseUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+    /**
+     * The filter to search for the UserPurchase to update in case it exists.
+     */
+    where: UserPurchaseWhereUniqueInput
+    /**
+     * In case the UserPurchase found by the `where` argument doesn't exist, create a new UserPurchase with this data.
+     */
+    create: XOR<UserPurchaseCreateInput, UserPurchaseUncheckedCreateInput>
+    /**
+     * In case the UserPurchase was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserPurchaseUpdateInput, UserPurchaseUncheckedUpdateInput>
+  }
+
+  /**
+   * UserPurchase delete
+   */
+  export type UserPurchaseDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+    /**
+     * Filter which UserPurchase to delete.
+     */
+    where: UserPurchaseWhereUniqueInput
+  }
+
+  /**
+   * UserPurchase deleteMany
+   */
+  export type UserPurchaseDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserPurchases to delete
+     */
+    where?: UserPurchaseWhereInput
+    /**
+     * Limit how many UserPurchases to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserPurchase without action
+   */
+  export type UserPurchaseDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserPurchase
+     */
+    select?: UserPurchaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserPurchase
+     */
+    omit?: UserPurchaseOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CreditTransaction
+   */
+
+  export type AggregateCreditTransaction = {
+    _count: CreditTransactionCountAggregateOutputType | null
+    _avg: CreditTransactionAvgAggregateOutputType | null
+    _sum: CreditTransactionSumAggregateOutputType | null
+    _min: CreditTransactionMinAggregateOutputType | null
+    _max: CreditTransactionMaxAggregateOutputType | null
+  }
+
+  export type CreditTransactionAvgAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type CreditTransactionSumAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type CreditTransactionMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    amount: number | null
+    type: $Enums.CreditTransactionType | null
+    description: string | null
+    createdAt: Date | null
+  }
+
+  export type CreditTransactionMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    amount: number | null
+    type: $Enums.CreditTransactionType | null
+    description: string | null
+    createdAt: Date | null
+  }
+
+  export type CreditTransactionCountAggregateOutputType = {
+    id: number
+    userId: number
+    amount: number
+    type: number
+    description: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CreditTransactionAvgAggregateInputType = {
+    amount?: true
+  }
+
+  export type CreditTransactionSumAggregateInputType = {
+    amount?: true
+  }
+
+  export type CreditTransactionMinAggregateInputType = {
+    id?: true
+    userId?: true
+    amount?: true
+    type?: true
+    description?: true
+    createdAt?: true
+  }
+
+  export type CreditTransactionMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    amount?: true
+    type?: true
+    description?: true
+    createdAt?: true
+  }
+
+  export type CreditTransactionCountAggregateInputType = {
+    id?: true
+    userId?: true
+    amount?: true
+    type?: true
+    description?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CreditTransactionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CreditTransaction to aggregate.
+     */
+    where?: CreditTransactionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CreditTransactions to fetch.
+     */
+    orderBy?: CreditTransactionOrderByWithRelationInput | CreditTransactionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CreditTransactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CreditTransactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CreditTransactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CreditTransactions
+    **/
+    _count?: true | CreditTransactionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CreditTransactionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CreditTransactionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CreditTransactionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CreditTransactionMaxAggregateInputType
+  }
+
+  export type GetCreditTransactionAggregateType<T extends CreditTransactionAggregateArgs> = {
+        [P in keyof T & keyof AggregateCreditTransaction]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCreditTransaction[P]>
+      : GetScalarType<T[P], AggregateCreditTransaction[P]>
+  }
+
+
+
+
+  export type CreditTransactionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CreditTransactionWhereInput
+    orderBy?: CreditTransactionOrderByWithAggregationInput | CreditTransactionOrderByWithAggregationInput[]
+    by: CreditTransactionScalarFieldEnum[] | CreditTransactionScalarFieldEnum
+    having?: CreditTransactionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CreditTransactionCountAggregateInputType | true
+    _avg?: CreditTransactionAvgAggregateInputType
+    _sum?: CreditTransactionSumAggregateInputType
+    _min?: CreditTransactionMinAggregateInputType
+    _max?: CreditTransactionMaxAggregateInputType
+  }
+
+  export type CreditTransactionGroupByOutputType = {
+    id: string
+    userId: string
+    amount: number
+    type: $Enums.CreditTransactionType
+    description: string | null
+    createdAt: Date
+    _count: CreditTransactionCountAggregateOutputType | null
+    _avg: CreditTransactionAvgAggregateOutputType | null
+    _sum: CreditTransactionSumAggregateOutputType | null
+    _min: CreditTransactionMinAggregateOutputType | null
+    _max: CreditTransactionMaxAggregateOutputType | null
+  }
+
+  type GetCreditTransactionGroupByPayload<T extends CreditTransactionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CreditTransactionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CreditTransactionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CreditTransactionGroupByOutputType[P]>
+            : GetScalarType<T[P], CreditTransactionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CreditTransactionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    type?: boolean
+    description?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["creditTransaction"]>
+
+  export type CreditTransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    type?: boolean
+    description?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["creditTransaction"]>
+
+  export type CreditTransactionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    type?: boolean
+    description?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["creditTransaction"]>
+
+  export type CreditTransactionSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    type?: boolean
+    description?: boolean
+    createdAt?: boolean
+  }
+
+  export type CreditTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "amount" | "type" | "description" | "createdAt", ExtArgs["result"]["creditTransaction"]>
+
+  export type $CreditTransactionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CreditTransaction"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      amount: number
+      type: $Enums.CreditTransactionType
+      description: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["creditTransaction"]>
+    composites: {}
+  }
+
+  type CreditTransactionGetPayload<S extends boolean | null | undefined | CreditTransactionDefaultArgs> = $Result.GetResult<Prisma.$CreditTransactionPayload, S>
+
+  type CreditTransactionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CreditTransactionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CreditTransactionCountAggregateInputType | true
+    }
+
+  export interface CreditTransactionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CreditTransaction'], meta: { name: 'CreditTransaction' } }
+    /**
+     * Find zero or one CreditTransaction that matches the filter.
+     * @param {CreditTransactionFindUniqueArgs} args - Arguments to find a CreditTransaction
+     * @example
+     * // Get one CreditTransaction
+     * const creditTransaction = await prisma.creditTransaction.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CreditTransactionFindUniqueArgs>(args: SelectSubset<T, CreditTransactionFindUniqueArgs<ExtArgs>>): Prisma__CreditTransactionClient<$Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CreditTransaction that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CreditTransactionFindUniqueOrThrowArgs} args - Arguments to find a CreditTransaction
+     * @example
+     * // Get one CreditTransaction
+     * const creditTransaction = await prisma.creditTransaction.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CreditTransactionFindUniqueOrThrowArgs>(args: SelectSubset<T, CreditTransactionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CreditTransactionClient<$Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CreditTransaction that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditTransactionFindFirstArgs} args - Arguments to find a CreditTransaction
+     * @example
+     * // Get one CreditTransaction
+     * const creditTransaction = await prisma.creditTransaction.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CreditTransactionFindFirstArgs>(args?: SelectSubset<T, CreditTransactionFindFirstArgs<ExtArgs>>): Prisma__CreditTransactionClient<$Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CreditTransaction that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditTransactionFindFirstOrThrowArgs} args - Arguments to find a CreditTransaction
+     * @example
+     * // Get one CreditTransaction
+     * const creditTransaction = await prisma.creditTransaction.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CreditTransactionFindFirstOrThrowArgs>(args?: SelectSubset<T, CreditTransactionFindFirstOrThrowArgs<ExtArgs>>): Prisma__CreditTransactionClient<$Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CreditTransactions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditTransactionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CreditTransactions
+     * const creditTransactions = await prisma.creditTransaction.findMany()
+     * 
+     * // Get first 10 CreditTransactions
+     * const creditTransactions = await prisma.creditTransaction.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const creditTransactionWithIdOnly = await prisma.creditTransaction.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CreditTransactionFindManyArgs>(args?: SelectSubset<T, CreditTransactionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CreditTransaction.
+     * @param {CreditTransactionCreateArgs} args - Arguments to create a CreditTransaction.
+     * @example
+     * // Create one CreditTransaction
+     * const CreditTransaction = await prisma.creditTransaction.create({
+     *   data: {
+     *     // ... data to create a CreditTransaction
+     *   }
+     * })
+     * 
+     */
+    create<T extends CreditTransactionCreateArgs>(args: SelectSubset<T, CreditTransactionCreateArgs<ExtArgs>>): Prisma__CreditTransactionClient<$Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CreditTransactions.
+     * @param {CreditTransactionCreateManyArgs} args - Arguments to create many CreditTransactions.
+     * @example
+     * // Create many CreditTransactions
+     * const creditTransaction = await prisma.creditTransaction.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CreditTransactionCreateManyArgs>(args?: SelectSubset<T, CreditTransactionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CreditTransactions and returns the data saved in the database.
+     * @param {CreditTransactionCreateManyAndReturnArgs} args - Arguments to create many CreditTransactions.
+     * @example
+     * // Create many CreditTransactions
+     * const creditTransaction = await prisma.creditTransaction.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CreditTransactions and only return the `id`
+     * const creditTransactionWithIdOnly = await prisma.creditTransaction.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CreditTransactionCreateManyAndReturnArgs>(args?: SelectSubset<T, CreditTransactionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CreditTransaction.
+     * @param {CreditTransactionDeleteArgs} args - Arguments to delete one CreditTransaction.
+     * @example
+     * // Delete one CreditTransaction
+     * const CreditTransaction = await prisma.creditTransaction.delete({
+     *   where: {
+     *     // ... filter to delete one CreditTransaction
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CreditTransactionDeleteArgs>(args: SelectSubset<T, CreditTransactionDeleteArgs<ExtArgs>>): Prisma__CreditTransactionClient<$Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CreditTransaction.
+     * @param {CreditTransactionUpdateArgs} args - Arguments to update one CreditTransaction.
+     * @example
+     * // Update one CreditTransaction
+     * const creditTransaction = await prisma.creditTransaction.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CreditTransactionUpdateArgs>(args: SelectSubset<T, CreditTransactionUpdateArgs<ExtArgs>>): Prisma__CreditTransactionClient<$Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CreditTransactions.
+     * @param {CreditTransactionDeleteManyArgs} args - Arguments to filter CreditTransactions to delete.
+     * @example
+     * // Delete a few CreditTransactions
+     * const { count } = await prisma.creditTransaction.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CreditTransactionDeleteManyArgs>(args?: SelectSubset<T, CreditTransactionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CreditTransactions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditTransactionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CreditTransactions
+     * const creditTransaction = await prisma.creditTransaction.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CreditTransactionUpdateManyArgs>(args: SelectSubset<T, CreditTransactionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CreditTransactions and returns the data updated in the database.
+     * @param {CreditTransactionUpdateManyAndReturnArgs} args - Arguments to update many CreditTransactions.
+     * @example
+     * // Update many CreditTransactions
+     * const creditTransaction = await prisma.creditTransaction.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CreditTransactions and only return the `id`
+     * const creditTransactionWithIdOnly = await prisma.creditTransaction.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CreditTransactionUpdateManyAndReturnArgs>(args: SelectSubset<T, CreditTransactionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CreditTransaction.
+     * @param {CreditTransactionUpsertArgs} args - Arguments to update or create a CreditTransaction.
+     * @example
+     * // Update or create a CreditTransaction
+     * const creditTransaction = await prisma.creditTransaction.upsert({
+     *   create: {
+     *     // ... data to create a CreditTransaction
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CreditTransaction we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CreditTransactionUpsertArgs>(args: SelectSubset<T, CreditTransactionUpsertArgs<ExtArgs>>): Prisma__CreditTransactionClient<$Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CreditTransactions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditTransactionCountArgs} args - Arguments to filter CreditTransactions to count.
+     * @example
+     * // Count the number of CreditTransactions
+     * const count = await prisma.creditTransaction.count({
+     *   where: {
+     *     // ... the filter for the CreditTransactions we want to count
+     *   }
+     * })
+    **/
+    count<T extends CreditTransactionCountArgs>(
+      args?: Subset<T, CreditTransactionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CreditTransactionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CreditTransaction.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditTransactionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CreditTransactionAggregateArgs>(args: Subset<T, CreditTransactionAggregateArgs>): Prisma.PrismaPromise<GetCreditTransactionAggregateType<T>>
+
+    /**
+     * Group by CreditTransaction.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditTransactionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CreditTransactionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CreditTransactionGroupByArgs['orderBy'] }
+        : { orderBy?: CreditTransactionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CreditTransactionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCreditTransactionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CreditTransaction model
+   */
+  readonly fields: CreditTransactionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CreditTransaction.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CreditTransactionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CreditTransaction model
+   */
+  interface CreditTransactionFieldRefs {
+    readonly id: FieldRef<"CreditTransaction", 'String'>
+    readonly userId: FieldRef<"CreditTransaction", 'String'>
+    readonly amount: FieldRef<"CreditTransaction", 'Int'>
+    readonly type: FieldRef<"CreditTransaction", 'CreditTransactionType'>
+    readonly description: FieldRef<"CreditTransaction", 'String'>
+    readonly createdAt: FieldRef<"CreditTransaction", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CreditTransaction findUnique
+   */
+  export type CreditTransactionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+    /**
+     * Filter, which CreditTransaction to fetch.
+     */
+    where: CreditTransactionWhereUniqueInput
+  }
+
+  /**
+   * CreditTransaction findUniqueOrThrow
+   */
+  export type CreditTransactionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+    /**
+     * Filter, which CreditTransaction to fetch.
+     */
+    where: CreditTransactionWhereUniqueInput
+  }
+
+  /**
+   * CreditTransaction findFirst
+   */
+  export type CreditTransactionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+    /**
+     * Filter, which CreditTransaction to fetch.
+     */
+    where?: CreditTransactionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CreditTransactions to fetch.
+     */
+    orderBy?: CreditTransactionOrderByWithRelationInput | CreditTransactionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CreditTransactions.
+     */
+    cursor?: CreditTransactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CreditTransactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CreditTransactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CreditTransactions.
+     */
+    distinct?: CreditTransactionScalarFieldEnum | CreditTransactionScalarFieldEnum[]
+  }
+
+  /**
+   * CreditTransaction findFirstOrThrow
+   */
+  export type CreditTransactionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+    /**
+     * Filter, which CreditTransaction to fetch.
+     */
+    where?: CreditTransactionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CreditTransactions to fetch.
+     */
+    orderBy?: CreditTransactionOrderByWithRelationInput | CreditTransactionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CreditTransactions.
+     */
+    cursor?: CreditTransactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CreditTransactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CreditTransactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CreditTransactions.
+     */
+    distinct?: CreditTransactionScalarFieldEnum | CreditTransactionScalarFieldEnum[]
+  }
+
+  /**
+   * CreditTransaction findMany
+   */
+  export type CreditTransactionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+    /**
+     * Filter, which CreditTransactions to fetch.
+     */
+    where?: CreditTransactionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CreditTransactions to fetch.
+     */
+    orderBy?: CreditTransactionOrderByWithRelationInput | CreditTransactionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CreditTransactions.
+     */
+    cursor?: CreditTransactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CreditTransactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CreditTransactions.
+     */
+    skip?: number
+    distinct?: CreditTransactionScalarFieldEnum | CreditTransactionScalarFieldEnum[]
+  }
+
+  /**
+   * CreditTransaction create
+   */
+  export type CreditTransactionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+    /**
+     * The data needed to create a CreditTransaction.
+     */
+    data: XOR<CreditTransactionCreateInput, CreditTransactionUncheckedCreateInput>
+  }
+
+  /**
+   * CreditTransaction createMany
+   */
+  export type CreditTransactionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CreditTransactions.
+     */
+    data: CreditTransactionCreateManyInput | CreditTransactionCreateManyInput[]
+  }
+
+  /**
+   * CreditTransaction createManyAndReturn
+   */
+  export type CreditTransactionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+    /**
+     * The data used to create many CreditTransactions.
+     */
+    data: CreditTransactionCreateManyInput | CreditTransactionCreateManyInput[]
+  }
+
+  /**
+   * CreditTransaction update
+   */
+  export type CreditTransactionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+    /**
+     * The data needed to update a CreditTransaction.
+     */
+    data: XOR<CreditTransactionUpdateInput, CreditTransactionUncheckedUpdateInput>
+    /**
+     * Choose, which CreditTransaction to update.
+     */
+    where: CreditTransactionWhereUniqueInput
+  }
+
+  /**
+   * CreditTransaction updateMany
+   */
+  export type CreditTransactionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CreditTransactions.
+     */
+    data: XOR<CreditTransactionUpdateManyMutationInput, CreditTransactionUncheckedUpdateManyInput>
+    /**
+     * Filter which CreditTransactions to update
+     */
+    where?: CreditTransactionWhereInput
+    /**
+     * Limit how many CreditTransactions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CreditTransaction updateManyAndReturn
+   */
+  export type CreditTransactionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+    /**
+     * The data used to update CreditTransactions.
+     */
+    data: XOR<CreditTransactionUpdateManyMutationInput, CreditTransactionUncheckedUpdateManyInput>
+    /**
+     * Filter which CreditTransactions to update
+     */
+    where?: CreditTransactionWhereInput
+    /**
+     * Limit how many CreditTransactions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CreditTransaction upsert
+   */
+  export type CreditTransactionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+    /**
+     * The filter to search for the CreditTransaction to update in case it exists.
+     */
+    where: CreditTransactionWhereUniqueInput
+    /**
+     * In case the CreditTransaction found by the `where` argument doesn't exist, create a new CreditTransaction with this data.
+     */
+    create: XOR<CreditTransactionCreateInput, CreditTransactionUncheckedCreateInput>
+    /**
+     * In case the CreditTransaction was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CreditTransactionUpdateInput, CreditTransactionUncheckedUpdateInput>
+  }
+
+  /**
+   * CreditTransaction delete
+   */
+  export type CreditTransactionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+    /**
+     * Filter which CreditTransaction to delete.
+     */
+    where: CreditTransactionWhereUniqueInput
+  }
+
+  /**
+   * CreditTransaction deleteMany
+   */
+  export type CreditTransactionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CreditTransactions to delete
+     */
+    where?: CreditTransactionWhereInput
+    /**
+     * Limit how many CreditTransactions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CreditTransaction without action
+   */
+  export type CreditTransactionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditTransaction
+     */
+    select?: CreditTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditTransaction
+     */
+    omit?: CreditTransactionOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserCredentials
+   */
+
+  export type AggregateUserCredentials = {
+    _count: UserCredentialsCountAggregateOutputType | null
+    _min: UserCredentialsMinAggregateOutputType | null
+    _max: UserCredentialsMaxAggregateOutputType | null
+  }
+
+  export type UserCredentialsMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    provider: string | null
+    email: string | null
+    accessToken: string | null
+    refreshToken: string | null
+    expiryDate: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserCredentialsMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    provider: string | null
+    email: string | null
+    accessToken: string | null
+    refreshToken: string | null
+    expiryDate: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserCredentialsCountAggregateOutputType = {
+    id: number
+    userId: number
+    provider: number
+    email: number
+    accessToken: number
+    refreshToken: number
+    expiryDate: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UserCredentialsMinAggregateInputType = {
+    id?: true
+    userId?: true
+    provider?: true
+    email?: true
+    accessToken?: true
+    refreshToken?: true
+    expiryDate?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserCredentialsMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    provider?: true
+    email?: true
+    accessToken?: true
+    refreshToken?: true
+    expiryDate?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserCredentialsCountAggregateInputType = {
+    id?: true
+    userId?: true
+    provider?: true
+    email?: true
+    accessToken?: true
+    refreshToken?: true
+    expiryDate?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UserCredentialsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserCredentials to aggregate.
+     */
+    where?: UserCredentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserCredentials to fetch.
+     */
+    orderBy?: UserCredentialsOrderByWithRelationInput | UserCredentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserCredentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserCredentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserCredentials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserCredentials
+    **/
+    _count?: true | UserCredentialsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserCredentialsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserCredentialsMaxAggregateInputType
+  }
+
+  export type GetUserCredentialsAggregateType<T extends UserCredentialsAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserCredentials]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserCredentials[P]>
+      : GetScalarType<T[P], AggregateUserCredentials[P]>
+  }
+
+
+
+
+  export type UserCredentialsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserCredentialsWhereInput
+    orderBy?: UserCredentialsOrderByWithAggregationInput | UserCredentialsOrderByWithAggregationInput[]
+    by: UserCredentialsScalarFieldEnum[] | UserCredentialsScalarFieldEnum
+    having?: UserCredentialsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserCredentialsCountAggregateInputType | true
+    _min?: UserCredentialsMinAggregateInputType
+    _max?: UserCredentialsMaxAggregateInputType
+  }
+
+  export type UserCredentialsGroupByOutputType = {
+    id: string
+    userId: string
+    provider: string
+    email: string
+    accessToken: string
+    refreshToken: string | null
+    expiryDate: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: UserCredentialsCountAggregateOutputType | null
+    _min: UserCredentialsMinAggregateOutputType | null
+    _max: UserCredentialsMaxAggregateOutputType | null
+  }
+
+  type GetUserCredentialsGroupByPayload<T extends UserCredentialsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserCredentialsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserCredentialsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserCredentialsGroupByOutputType[P]>
+            : GetScalarType<T[P], UserCredentialsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserCredentialsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    provider?: boolean
+    email?: boolean
+    accessToken?: boolean
+    refreshToken?: boolean
+    expiryDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["userCredentials"]>
+
+  export type UserCredentialsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    provider?: boolean
+    email?: boolean
+    accessToken?: boolean
+    refreshToken?: boolean
+    expiryDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["userCredentials"]>
+
+  export type UserCredentialsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    provider?: boolean
+    email?: boolean
+    accessToken?: boolean
+    refreshToken?: boolean
+    expiryDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["userCredentials"]>
+
+  export type UserCredentialsSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    provider?: boolean
+    email?: boolean
+    accessToken?: boolean
+    refreshToken?: boolean
+    expiryDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type UserCredentialsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "provider" | "email" | "accessToken" | "refreshToken" | "expiryDate" | "createdAt" | "updatedAt", ExtArgs["result"]["userCredentials"]>
+
+  export type $UserCredentialsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserCredentials"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      provider: string
+      email: string
+      accessToken: string
+      refreshToken: string | null
+      expiryDate: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["userCredentials"]>
+    composites: {}
+  }
+
+  type UserCredentialsGetPayload<S extends boolean | null | undefined | UserCredentialsDefaultArgs> = $Result.GetResult<Prisma.$UserCredentialsPayload, S>
+
+  type UserCredentialsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserCredentialsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserCredentialsCountAggregateInputType | true
+    }
+
+  export interface UserCredentialsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserCredentials'], meta: { name: 'UserCredentials' } }
+    /**
+     * Find zero or one UserCredentials that matches the filter.
+     * @param {UserCredentialsFindUniqueArgs} args - Arguments to find a UserCredentials
+     * @example
+     * // Get one UserCredentials
+     * const userCredentials = await prisma.userCredentials.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserCredentialsFindUniqueArgs>(args: SelectSubset<T, UserCredentialsFindUniqueArgs<ExtArgs>>): Prisma__UserCredentialsClient<$Result.GetResult<Prisma.$UserCredentialsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserCredentials that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserCredentialsFindUniqueOrThrowArgs} args - Arguments to find a UserCredentials
+     * @example
+     * // Get one UserCredentials
+     * const userCredentials = await prisma.userCredentials.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserCredentialsFindUniqueOrThrowArgs>(args: SelectSubset<T, UserCredentialsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserCredentialsClient<$Result.GetResult<Prisma.$UserCredentialsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserCredentials that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCredentialsFindFirstArgs} args - Arguments to find a UserCredentials
+     * @example
+     * // Get one UserCredentials
+     * const userCredentials = await prisma.userCredentials.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserCredentialsFindFirstArgs>(args?: SelectSubset<T, UserCredentialsFindFirstArgs<ExtArgs>>): Prisma__UserCredentialsClient<$Result.GetResult<Prisma.$UserCredentialsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserCredentials that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCredentialsFindFirstOrThrowArgs} args - Arguments to find a UserCredentials
+     * @example
+     * // Get one UserCredentials
+     * const userCredentials = await prisma.userCredentials.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserCredentialsFindFirstOrThrowArgs>(args?: SelectSubset<T, UserCredentialsFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserCredentialsClient<$Result.GetResult<Prisma.$UserCredentialsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserCredentials that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCredentialsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserCredentials
+     * const userCredentials = await prisma.userCredentials.findMany()
+     * 
+     * // Get first 10 UserCredentials
+     * const userCredentials = await prisma.userCredentials.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userCredentialsWithIdOnly = await prisma.userCredentials.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserCredentialsFindManyArgs>(args?: SelectSubset<T, UserCredentialsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCredentialsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserCredentials.
+     * @param {UserCredentialsCreateArgs} args - Arguments to create a UserCredentials.
+     * @example
+     * // Create one UserCredentials
+     * const UserCredentials = await prisma.userCredentials.create({
+     *   data: {
+     *     // ... data to create a UserCredentials
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserCredentialsCreateArgs>(args: SelectSubset<T, UserCredentialsCreateArgs<ExtArgs>>): Prisma__UserCredentialsClient<$Result.GetResult<Prisma.$UserCredentialsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserCredentials.
+     * @param {UserCredentialsCreateManyArgs} args - Arguments to create many UserCredentials.
+     * @example
+     * // Create many UserCredentials
+     * const userCredentials = await prisma.userCredentials.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserCredentialsCreateManyArgs>(args?: SelectSubset<T, UserCredentialsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserCredentials and returns the data saved in the database.
+     * @param {UserCredentialsCreateManyAndReturnArgs} args - Arguments to create many UserCredentials.
+     * @example
+     * // Create many UserCredentials
+     * const userCredentials = await prisma.userCredentials.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserCredentials and only return the `id`
+     * const userCredentialsWithIdOnly = await prisma.userCredentials.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserCredentialsCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCredentialsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCredentialsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserCredentials.
+     * @param {UserCredentialsDeleteArgs} args - Arguments to delete one UserCredentials.
+     * @example
+     * // Delete one UserCredentials
+     * const UserCredentials = await prisma.userCredentials.delete({
+     *   where: {
+     *     // ... filter to delete one UserCredentials
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserCredentialsDeleteArgs>(args: SelectSubset<T, UserCredentialsDeleteArgs<ExtArgs>>): Prisma__UserCredentialsClient<$Result.GetResult<Prisma.$UserCredentialsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserCredentials.
+     * @param {UserCredentialsUpdateArgs} args - Arguments to update one UserCredentials.
+     * @example
+     * // Update one UserCredentials
+     * const userCredentials = await prisma.userCredentials.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserCredentialsUpdateArgs>(args: SelectSubset<T, UserCredentialsUpdateArgs<ExtArgs>>): Prisma__UserCredentialsClient<$Result.GetResult<Prisma.$UserCredentialsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserCredentials.
+     * @param {UserCredentialsDeleteManyArgs} args - Arguments to filter UserCredentials to delete.
+     * @example
+     * // Delete a few UserCredentials
+     * const { count } = await prisma.userCredentials.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserCredentialsDeleteManyArgs>(args?: SelectSubset<T, UserCredentialsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserCredentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCredentialsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserCredentials
+     * const userCredentials = await prisma.userCredentials.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserCredentialsUpdateManyArgs>(args: SelectSubset<T, UserCredentialsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserCredentials and returns the data updated in the database.
+     * @param {UserCredentialsUpdateManyAndReturnArgs} args - Arguments to update many UserCredentials.
+     * @example
+     * // Update many UserCredentials
+     * const userCredentials = await prisma.userCredentials.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserCredentials and only return the `id`
+     * const userCredentialsWithIdOnly = await prisma.userCredentials.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserCredentialsUpdateManyAndReturnArgs>(args: SelectSubset<T, UserCredentialsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCredentialsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserCredentials.
+     * @param {UserCredentialsUpsertArgs} args - Arguments to update or create a UserCredentials.
+     * @example
+     * // Update or create a UserCredentials
+     * const userCredentials = await prisma.userCredentials.upsert({
+     *   create: {
+     *     // ... data to create a UserCredentials
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserCredentials we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserCredentialsUpsertArgs>(args: SelectSubset<T, UserCredentialsUpsertArgs<ExtArgs>>): Prisma__UserCredentialsClient<$Result.GetResult<Prisma.$UserCredentialsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserCredentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCredentialsCountArgs} args - Arguments to filter UserCredentials to count.
+     * @example
+     * // Count the number of UserCredentials
+     * const count = await prisma.userCredentials.count({
+     *   where: {
+     *     // ... the filter for the UserCredentials we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserCredentialsCountArgs>(
+      args?: Subset<T, UserCredentialsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserCredentialsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserCredentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCredentialsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserCredentialsAggregateArgs>(args: Subset<T, UserCredentialsAggregateArgs>): Prisma.PrismaPromise<GetUserCredentialsAggregateType<T>>
+
+    /**
+     * Group by UserCredentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCredentialsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserCredentialsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserCredentialsGroupByArgs['orderBy'] }
+        : { orderBy?: UserCredentialsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserCredentialsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserCredentialsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserCredentials model
+   */
+  readonly fields: UserCredentialsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserCredentials.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserCredentialsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserCredentials model
+   */
+  interface UserCredentialsFieldRefs {
+    readonly id: FieldRef<"UserCredentials", 'String'>
+    readonly userId: FieldRef<"UserCredentials", 'String'>
+    readonly provider: FieldRef<"UserCredentials", 'String'>
+    readonly email: FieldRef<"UserCredentials", 'String'>
+    readonly accessToken: FieldRef<"UserCredentials", 'String'>
+    readonly refreshToken: FieldRef<"UserCredentials", 'String'>
+    readonly expiryDate: FieldRef<"UserCredentials", 'DateTime'>
+    readonly createdAt: FieldRef<"UserCredentials", 'DateTime'>
+    readonly updatedAt: FieldRef<"UserCredentials", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserCredentials findUnique
+   */
+  export type UserCredentialsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+    /**
+     * Filter, which UserCredentials to fetch.
+     */
+    where: UserCredentialsWhereUniqueInput
+  }
+
+  /**
+   * UserCredentials findUniqueOrThrow
+   */
+  export type UserCredentialsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+    /**
+     * Filter, which UserCredentials to fetch.
+     */
+    where: UserCredentialsWhereUniqueInput
+  }
+
+  /**
+   * UserCredentials findFirst
+   */
+  export type UserCredentialsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+    /**
+     * Filter, which UserCredentials to fetch.
+     */
+    where?: UserCredentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserCredentials to fetch.
+     */
+    orderBy?: UserCredentialsOrderByWithRelationInput | UserCredentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserCredentials.
+     */
+    cursor?: UserCredentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserCredentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserCredentials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserCredentials.
+     */
+    distinct?: UserCredentialsScalarFieldEnum | UserCredentialsScalarFieldEnum[]
+  }
+
+  /**
+   * UserCredentials findFirstOrThrow
+   */
+  export type UserCredentialsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+    /**
+     * Filter, which UserCredentials to fetch.
+     */
+    where?: UserCredentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserCredentials to fetch.
+     */
+    orderBy?: UserCredentialsOrderByWithRelationInput | UserCredentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserCredentials.
+     */
+    cursor?: UserCredentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserCredentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserCredentials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserCredentials.
+     */
+    distinct?: UserCredentialsScalarFieldEnum | UserCredentialsScalarFieldEnum[]
+  }
+
+  /**
+   * UserCredentials findMany
+   */
+  export type UserCredentialsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+    /**
+     * Filter, which UserCredentials to fetch.
+     */
+    where?: UserCredentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserCredentials to fetch.
+     */
+    orderBy?: UserCredentialsOrderByWithRelationInput | UserCredentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserCredentials.
+     */
+    cursor?: UserCredentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserCredentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserCredentials.
+     */
+    skip?: number
+    distinct?: UserCredentialsScalarFieldEnum | UserCredentialsScalarFieldEnum[]
+  }
+
+  /**
+   * UserCredentials create
+   */
+  export type UserCredentialsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+    /**
+     * The data needed to create a UserCredentials.
+     */
+    data: XOR<UserCredentialsCreateInput, UserCredentialsUncheckedCreateInput>
+  }
+
+  /**
+   * UserCredentials createMany
+   */
+  export type UserCredentialsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserCredentials.
+     */
+    data: UserCredentialsCreateManyInput | UserCredentialsCreateManyInput[]
+  }
+
+  /**
+   * UserCredentials createManyAndReturn
+   */
+  export type UserCredentialsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserCredentials.
+     */
+    data: UserCredentialsCreateManyInput | UserCredentialsCreateManyInput[]
+  }
+
+  /**
+   * UserCredentials update
+   */
+  export type UserCredentialsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+    /**
+     * The data needed to update a UserCredentials.
+     */
+    data: XOR<UserCredentialsUpdateInput, UserCredentialsUncheckedUpdateInput>
+    /**
+     * Choose, which UserCredentials to update.
+     */
+    where: UserCredentialsWhereUniqueInput
+  }
+
+  /**
+   * UserCredentials updateMany
+   */
+  export type UserCredentialsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserCredentials.
+     */
+    data: XOR<UserCredentialsUpdateManyMutationInput, UserCredentialsUncheckedUpdateManyInput>
+    /**
+     * Filter which UserCredentials to update
+     */
+    where?: UserCredentialsWhereInput
+    /**
+     * Limit how many UserCredentials to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserCredentials updateManyAndReturn
+   */
+  export type UserCredentialsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+    /**
+     * The data used to update UserCredentials.
+     */
+    data: XOR<UserCredentialsUpdateManyMutationInput, UserCredentialsUncheckedUpdateManyInput>
+    /**
+     * Filter which UserCredentials to update
+     */
+    where?: UserCredentialsWhereInput
+    /**
+     * Limit how many UserCredentials to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserCredentials upsert
+   */
+  export type UserCredentialsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+    /**
+     * The filter to search for the UserCredentials to update in case it exists.
+     */
+    where: UserCredentialsWhereUniqueInput
+    /**
+     * In case the UserCredentials found by the `where` argument doesn't exist, create a new UserCredentials with this data.
+     */
+    create: XOR<UserCredentialsCreateInput, UserCredentialsUncheckedCreateInput>
+    /**
+     * In case the UserCredentials was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserCredentialsUpdateInput, UserCredentialsUncheckedUpdateInput>
+  }
+
+  /**
+   * UserCredentials delete
+   */
+  export type UserCredentialsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+    /**
+     * Filter which UserCredentials to delete.
+     */
+    where: UserCredentialsWhereUniqueInput
+  }
+
+  /**
+   * UserCredentials deleteMany
+   */
+  export type UserCredentialsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserCredentials to delete
+     */
+    where?: UserCredentialsWhereInput
+    /**
+     * Limit how many UserCredentials to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserCredentials without action
+   */
+  export type UserCredentialsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCredentials
+     */
+    select?: UserCredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCredentials
+     */
+    omit?: UserCredentialsOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Credentials
+   */
+
+  export type AggregateCredentials = {
+    _count: CredentialsCountAggregateOutputType | null
+    _min: CredentialsMinAggregateOutputType | null
+    _max: CredentialsMaxAggregateOutputType | null
+  }
+
+  export type CredentialsMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    name: string | null
+    type: $Enums.CredentialType | null
+    value: string | null
+    status: $Enums.CredentialStatus | null
+    lastUsedAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type CredentialsMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    name: string | null
+    type: $Enums.CredentialType | null
+    value: string | null
+    status: $Enums.CredentialStatus | null
+    lastUsedAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type CredentialsCountAggregateOutputType = {
+    id: number
+    userId: number
+    name: number
+    type: number
+    value: number
+    status: number
+    lastUsedAt: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CredentialsMinAggregateInputType = {
+    id?: true
+    userId?: true
+    name?: true
+    type?: true
+    value?: true
+    status?: true
+    lastUsedAt?: true
+    createdAt?: true
+  }
+
+  export type CredentialsMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    name?: true
+    type?: true
+    value?: true
+    status?: true
+    lastUsedAt?: true
+    createdAt?: true
+  }
+
+  export type CredentialsCountAggregateInputType = {
+    id?: true
+    userId?: true
+    name?: true
+    type?: true
+    value?: true
+    status?: true
+    lastUsedAt?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CredentialsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Credentials to aggregate.
+     */
+    where?: CredentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Credentials to fetch.
+     */
+    orderBy?: CredentialsOrderByWithRelationInput | CredentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CredentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Credentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Credentials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Credentials
+    **/
+    _count?: true | CredentialsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CredentialsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CredentialsMaxAggregateInputType
+  }
+
+  export type GetCredentialsAggregateType<T extends CredentialsAggregateArgs> = {
+        [P in keyof T & keyof AggregateCredentials]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCredentials[P]>
+      : GetScalarType<T[P], AggregateCredentials[P]>
+  }
+
+
+
+
+  export type CredentialsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CredentialsWhereInput
+    orderBy?: CredentialsOrderByWithAggregationInput | CredentialsOrderByWithAggregationInput[]
+    by: CredentialsScalarFieldEnum[] | CredentialsScalarFieldEnum
+    having?: CredentialsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CredentialsCountAggregateInputType | true
+    _min?: CredentialsMinAggregateInputType
+    _max?: CredentialsMaxAggregateInputType
+  }
+
+  export type CredentialsGroupByOutputType = {
+    id: string
+    userId: string
+    name: string
+    type: $Enums.CredentialType
+    value: string
+    status: $Enums.CredentialStatus
+    lastUsedAt: Date | null
+    createdAt: Date
+    _count: CredentialsCountAggregateOutputType | null
+    _min: CredentialsMinAggregateOutputType | null
+    _max: CredentialsMaxAggregateOutputType | null
+  }
+
+  type GetCredentialsGroupByPayload<T extends CredentialsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CredentialsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CredentialsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CredentialsGroupByOutputType[P]>
+            : GetScalarType<T[P], CredentialsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CredentialsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    name?: boolean
+    type?: boolean
+    value?: boolean
+    status?: boolean
+    lastUsedAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["credentials"]>
+
+  export type CredentialsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    name?: boolean
+    type?: boolean
+    value?: boolean
+    status?: boolean
+    lastUsedAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["credentials"]>
+
+  export type CredentialsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    name?: boolean
+    type?: boolean
+    value?: boolean
+    status?: boolean
+    lastUsedAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["credentials"]>
+
+  export type CredentialsSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    name?: boolean
+    type?: boolean
+    value?: boolean
+    status?: boolean
+    lastUsedAt?: boolean
+    createdAt?: boolean
+  }
+
+  export type CredentialsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "type" | "value" | "status" | "lastUsedAt" | "createdAt", ExtArgs["result"]["credentials"]>
+
+  export type $CredentialsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Credentials"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      name: string
+      type: $Enums.CredentialType
+      value: string
+      status: $Enums.CredentialStatus
+      lastUsedAt: Date | null
+      createdAt: Date
+    }, ExtArgs["result"]["credentials"]>
+    composites: {}
+  }
+
+  type CredentialsGetPayload<S extends boolean | null | undefined | CredentialsDefaultArgs> = $Result.GetResult<Prisma.$CredentialsPayload, S>
+
+  type CredentialsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CredentialsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CredentialsCountAggregateInputType | true
+    }
+
+  export interface CredentialsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Credentials'], meta: { name: 'Credentials' } }
+    /**
+     * Find zero or one Credentials that matches the filter.
+     * @param {CredentialsFindUniqueArgs} args - Arguments to find a Credentials
+     * @example
+     * // Get one Credentials
+     * const credentials = await prisma.credentials.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CredentialsFindUniqueArgs>(args: SelectSubset<T, CredentialsFindUniqueArgs<ExtArgs>>): Prisma__CredentialsClient<$Result.GetResult<Prisma.$CredentialsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Credentials that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CredentialsFindUniqueOrThrowArgs} args - Arguments to find a Credentials
+     * @example
+     * // Get one Credentials
+     * const credentials = await prisma.credentials.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CredentialsFindUniqueOrThrowArgs>(args: SelectSubset<T, CredentialsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CredentialsClient<$Result.GetResult<Prisma.$CredentialsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Credentials that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CredentialsFindFirstArgs} args - Arguments to find a Credentials
+     * @example
+     * // Get one Credentials
+     * const credentials = await prisma.credentials.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CredentialsFindFirstArgs>(args?: SelectSubset<T, CredentialsFindFirstArgs<ExtArgs>>): Prisma__CredentialsClient<$Result.GetResult<Prisma.$CredentialsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Credentials that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CredentialsFindFirstOrThrowArgs} args - Arguments to find a Credentials
+     * @example
+     * // Get one Credentials
+     * const credentials = await prisma.credentials.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CredentialsFindFirstOrThrowArgs>(args?: SelectSubset<T, CredentialsFindFirstOrThrowArgs<ExtArgs>>): Prisma__CredentialsClient<$Result.GetResult<Prisma.$CredentialsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Credentials that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CredentialsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Credentials
+     * const credentials = await prisma.credentials.findMany()
+     * 
+     * // Get first 10 Credentials
+     * const credentials = await prisma.credentials.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const credentialsWithIdOnly = await prisma.credentials.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CredentialsFindManyArgs>(args?: SelectSubset<T, CredentialsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CredentialsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Credentials.
+     * @param {CredentialsCreateArgs} args - Arguments to create a Credentials.
+     * @example
+     * // Create one Credentials
+     * const Credentials = await prisma.credentials.create({
+     *   data: {
+     *     // ... data to create a Credentials
+     *   }
+     * })
+     * 
+     */
+    create<T extends CredentialsCreateArgs>(args: SelectSubset<T, CredentialsCreateArgs<ExtArgs>>): Prisma__CredentialsClient<$Result.GetResult<Prisma.$CredentialsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Credentials.
+     * @param {CredentialsCreateManyArgs} args - Arguments to create many Credentials.
+     * @example
+     * // Create many Credentials
+     * const credentials = await prisma.credentials.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CredentialsCreateManyArgs>(args?: SelectSubset<T, CredentialsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Credentials and returns the data saved in the database.
+     * @param {CredentialsCreateManyAndReturnArgs} args - Arguments to create many Credentials.
+     * @example
+     * // Create many Credentials
+     * const credentials = await prisma.credentials.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Credentials and only return the `id`
+     * const credentialsWithIdOnly = await prisma.credentials.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CredentialsCreateManyAndReturnArgs>(args?: SelectSubset<T, CredentialsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CredentialsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Credentials.
+     * @param {CredentialsDeleteArgs} args - Arguments to delete one Credentials.
+     * @example
+     * // Delete one Credentials
+     * const Credentials = await prisma.credentials.delete({
+     *   where: {
+     *     // ... filter to delete one Credentials
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CredentialsDeleteArgs>(args: SelectSubset<T, CredentialsDeleteArgs<ExtArgs>>): Prisma__CredentialsClient<$Result.GetResult<Prisma.$CredentialsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Credentials.
+     * @param {CredentialsUpdateArgs} args - Arguments to update one Credentials.
+     * @example
+     * // Update one Credentials
+     * const credentials = await prisma.credentials.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CredentialsUpdateArgs>(args: SelectSubset<T, CredentialsUpdateArgs<ExtArgs>>): Prisma__CredentialsClient<$Result.GetResult<Prisma.$CredentialsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Credentials.
+     * @param {CredentialsDeleteManyArgs} args - Arguments to filter Credentials to delete.
+     * @example
+     * // Delete a few Credentials
+     * const { count } = await prisma.credentials.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CredentialsDeleteManyArgs>(args?: SelectSubset<T, CredentialsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Credentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CredentialsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Credentials
+     * const credentials = await prisma.credentials.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CredentialsUpdateManyArgs>(args: SelectSubset<T, CredentialsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Credentials and returns the data updated in the database.
+     * @param {CredentialsUpdateManyAndReturnArgs} args - Arguments to update many Credentials.
+     * @example
+     * // Update many Credentials
+     * const credentials = await prisma.credentials.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Credentials and only return the `id`
+     * const credentialsWithIdOnly = await prisma.credentials.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CredentialsUpdateManyAndReturnArgs>(args: SelectSubset<T, CredentialsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CredentialsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Credentials.
+     * @param {CredentialsUpsertArgs} args - Arguments to update or create a Credentials.
+     * @example
+     * // Update or create a Credentials
+     * const credentials = await prisma.credentials.upsert({
+     *   create: {
+     *     // ... data to create a Credentials
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Credentials we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CredentialsUpsertArgs>(args: SelectSubset<T, CredentialsUpsertArgs<ExtArgs>>): Prisma__CredentialsClient<$Result.GetResult<Prisma.$CredentialsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Credentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CredentialsCountArgs} args - Arguments to filter Credentials to count.
+     * @example
+     * // Count the number of Credentials
+     * const count = await prisma.credentials.count({
+     *   where: {
+     *     // ... the filter for the Credentials we want to count
+     *   }
+     * })
+    **/
+    count<T extends CredentialsCountArgs>(
+      args?: Subset<T, CredentialsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CredentialsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Credentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CredentialsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CredentialsAggregateArgs>(args: Subset<T, CredentialsAggregateArgs>): Prisma.PrismaPromise<GetCredentialsAggregateType<T>>
+
+    /**
+     * Group by Credentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CredentialsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CredentialsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CredentialsGroupByArgs['orderBy'] }
+        : { orderBy?: CredentialsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CredentialsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCredentialsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Credentials model
+   */
+  readonly fields: CredentialsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Credentials.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CredentialsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Credentials model
+   */
+  interface CredentialsFieldRefs {
+    readonly id: FieldRef<"Credentials", 'String'>
+    readonly userId: FieldRef<"Credentials", 'String'>
+    readonly name: FieldRef<"Credentials", 'String'>
+    readonly type: FieldRef<"Credentials", 'CredentialType'>
+    readonly value: FieldRef<"Credentials", 'String'>
+    readonly status: FieldRef<"Credentials", 'CredentialStatus'>
+    readonly lastUsedAt: FieldRef<"Credentials", 'DateTime'>
+    readonly createdAt: FieldRef<"Credentials", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Credentials findUnique
+   */
+  export type CredentialsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+    /**
+     * Filter, which Credentials to fetch.
+     */
+    where: CredentialsWhereUniqueInput
+  }
+
+  /**
+   * Credentials findUniqueOrThrow
+   */
+  export type CredentialsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+    /**
+     * Filter, which Credentials to fetch.
+     */
+    where: CredentialsWhereUniqueInput
+  }
+
+  /**
+   * Credentials findFirst
+   */
+  export type CredentialsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+    /**
+     * Filter, which Credentials to fetch.
+     */
+    where?: CredentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Credentials to fetch.
+     */
+    orderBy?: CredentialsOrderByWithRelationInput | CredentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Credentials.
+     */
+    cursor?: CredentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Credentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Credentials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Credentials.
+     */
+    distinct?: CredentialsScalarFieldEnum | CredentialsScalarFieldEnum[]
+  }
+
+  /**
+   * Credentials findFirstOrThrow
+   */
+  export type CredentialsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+    /**
+     * Filter, which Credentials to fetch.
+     */
+    where?: CredentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Credentials to fetch.
+     */
+    orderBy?: CredentialsOrderByWithRelationInput | CredentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Credentials.
+     */
+    cursor?: CredentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Credentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Credentials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Credentials.
+     */
+    distinct?: CredentialsScalarFieldEnum | CredentialsScalarFieldEnum[]
+  }
+
+  /**
+   * Credentials findMany
+   */
+  export type CredentialsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+    /**
+     * Filter, which Credentials to fetch.
+     */
+    where?: CredentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Credentials to fetch.
+     */
+    orderBy?: CredentialsOrderByWithRelationInput | CredentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Credentials.
+     */
+    cursor?: CredentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Credentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Credentials.
+     */
+    skip?: number
+    distinct?: CredentialsScalarFieldEnum | CredentialsScalarFieldEnum[]
+  }
+
+  /**
+   * Credentials create
+   */
+  export type CredentialsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Credentials.
+     */
+    data: XOR<CredentialsCreateInput, CredentialsUncheckedCreateInput>
+  }
+
+  /**
+   * Credentials createMany
+   */
+  export type CredentialsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Credentials.
+     */
+    data: CredentialsCreateManyInput | CredentialsCreateManyInput[]
+  }
+
+  /**
+   * Credentials createManyAndReturn
+   */
+  export type CredentialsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+    /**
+     * The data used to create many Credentials.
+     */
+    data: CredentialsCreateManyInput | CredentialsCreateManyInput[]
+  }
+
+  /**
+   * Credentials update
+   */
+  export type CredentialsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Credentials.
+     */
+    data: XOR<CredentialsUpdateInput, CredentialsUncheckedUpdateInput>
+    /**
+     * Choose, which Credentials to update.
+     */
+    where: CredentialsWhereUniqueInput
+  }
+
+  /**
+   * Credentials updateMany
+   */
+  export type CredentialsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Credentials.
+     */
+    data: XOR<CredentialsUpdateManyMutationInput, CredentialsUncheckedUpdateManyInput>
+    /**
+     * Filter which Credentials to update
+     */
+    where?: CredentialsWhereInput
+    /**
+     * Limit how many Credentials to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Credentials updateManyAndReturn
+   */
+  export type CredentialsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+    /**
+     * The data used to update Credentials.
+     */
+    data: XOR<CredentialsUpdateManyMutationInput, CredentialsUncheckedUpdateManyInput>
+    /**
+     * Filter which Credentials to update
+     */
+    where?: CredentialsWhereInput
+    /**
+     * Limit how many Credentials to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Credentials upsert
+   */
+  export type CredentialsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Credentials to update in case it exists.
+     */
+    where: CredentialsWhereUniqueInput
+    /**
+     * In case the Credentials found by the `where` argument doesn't exist, create a new Credentials with this data.
+     */
+    create: XOR<CredentialsCreateInput, CredentialsUncheckedCreateInput>
+    /**
+     * In case the Credentials was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CredentialsUpdateInput, CredentialsUncheckedUpdateInput>
+  }
+
+  /**
+   * Credentials delete
+   */
+  export type CredentialsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+    /**
+     * Filter which Credentials to delete.
+     */
+    where: CredentialsWhereUniqueInput
+  }
+
+  /**
+   * Credentials deleteMany
+   */
+  export type CredentialsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Credentials to delete
+     */
+    where?: CredentialsWhereInput
+    /**
+     * Limit how many Credentials to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Credentials without action
+   */
+  export type CredentialsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Credentials
+     */
+    select?: CredentialsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Credentials
+     */
+    omit?: CredentialsOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -7086,6 +11694,61 @@ export namespace Prisma {
   export type UserBalanceScalarFieldEnum = (typeof UserBalanceScalarFieldEnum)[keyof typeof UserBalanceScalarFieldEnum]
 
 
+  export const UserPurchaseScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    amount: 'amount',
+    currency: 'currency',
+    credits: 'credits',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UserPurchaseScalarFieldEnum = (typeof UserPurchaseScalarFieldEnum)[keyof typeof UserPurchaseScalarFieldEnum]
+
+
+  export const CreditTransactionScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    amount: 'amount',
+    type: 'type',
+    description: 'description',
+    createdAt: 'createdAt'
+  };
+
+  export type CreditTransactionScalarFieldEnum = (typeof CreditTransactionScalarFieldEnum)[keyof typeof CreditTransactionScalarFieldEnum]
+
+
+  export const UserCredentialsScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    provider: 'provider',
+    email: 'email',
+    accessToken: 'accessToken',
+    refreshToken: 'refreshToken',
+    expiryDate: 'expiryDate',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UserCredentialsScalarFieldEnum = (typeof UserCredentialsScalarFieldEnum)[keyof typeof UserCredentialsScalarFieldEnum]
+
+
+  export const CredentialsScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    name: 'name',
+    type: 'type',
+    value: 'value',
+    status: 'status',
+    lastUsedAt: 'lastUsedAt',
+    createdAt: 'createdAt'
+  };
+
+  export type CredentialsScalarFieldEnum = (typeof CredentialsScalarFieldEnum)[keyof typeof CredentialsScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -7125,6 +11788,34 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserPurchaseStatus'
+   */
+  export type EnumUserPurchaseStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserPurchaseStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'CreditTransactionType'
+   */
+  export type EnumCreditTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CreditTransactionType'>
+    
+
+
+  /**
+   * Reference to a field of type 'CredentialType'
+   */
+  export type EnumCredentialTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CredentialType'>
+    
+
+
+  /**
+   * Reference to a field of type 'CredentialStatus'
+   */
+  export type EnumCredentialStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CredentialStatus'>
     
 
 
@@ -7518,6 +12209,275 @@ export namespace Prisma {
     NOT?: UserBalanceScalarWhereWithAggregatesInput | UserBalanceScalarWhereWithAggregatesInput[]
     userId?: StringWithAggregatesFilter<"UserBalance"> | string
     credits?: IntWithAggregatesFilter<"UserBalance"> | number
+  }
+
+  export type UserPurchaseWhereInput = {
+    AND?: UserPurchaseWhereInput | UserPurchaseWhereInput[]
+    OR?: UserPurchaseWhereInput[]
+    NOT?: UserPurchaseWhereInput | UserPurchaseWhereInput[]
+    id?: StringFilter<"UserPurchase"> | string
+    userId?: StringFilter<"UserPurchase"> | string
+    amount?: IntFilter<"UserPurchase"> | number
+    currency?: StringFilter<"UserPurchase"> | string
+    credits?: IntFilter<"UserPurchase"> | number
+    status?: EnumUserPurchaseStatusFilter<"UserPurchase"> | $Enums.UserPurchaseStatus
+    createdAt?: DateTimeFilter<"UserPurchase"> | Date | string
+    updatedAt?: DateTimeFilter<"UserPurchase"> | Date | string
+  }
+
+  export type UserPurchaseOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    currency?: SortOrder
+    credits?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserPurchaseWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: UserPurchaseWhereInput | UserPurchaseWhereInput[]
+    OR?: UserPurchaseWhereInput[]
+    NOT?: UserPurchaseWhereInput | UserPurchaseWhereInput[]
+    userId?: StringFilter<"UserPurchase"> | string
+    amount?: IntFilter<"UserPurchase"> | number
+    currency?: StringFilter<"UserPurchase"> | string
+    credits?: IntFilter<"UserPurchase"> | number
+    status?: EnumUserPurchaseStatusFilter<"UserPurchase"> | $Enums.UserPurchaseStatus
+    createdAt?: DateTimeFilter<"UserPurchase"> | Date | string
+    updatedAt?: DateTimeFilter<"UserPurchase"> | Date | string
+  }, "id">
+
+  export type UserPurchaseOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    currency?: SortOrder
+    credits?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: UserPurchaseCountOrderByAggregateInput
+    _avg?: UserPurchaseAvgOrderByAggregateInput
+    _max?: UserPurchaseMaxOrderByAggregateInput
+    _min?: UserPurchaseMinOrderByAggregateInput
+    _sum?: UserPurchaseSumOrderByAggregateInput
+  }
+
+  export type UserPurchaseScalarWhereWithAggregatesInput = {
+    AND?: UserPurchaseScalarWhereWithAggregatesInput | UserPurchaseScalarWhereWithAggregatesInput[]
+    OR?: UserPurchaseScalarWhereWithAggregatesInput[]
+    NOT?: UserPurchaseScalarWhereWithAggregatesInput | UserPurchaseScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UserPurchase"> | string
+    userId?: StringWithAggregatesFilter<"UserPurchase"> | string
+    amount?: IntWithAggregatesFilter<"UserPurchase"> | number
+    currency?: StringWithAggregatesFilter<"UserPurchase"> | string
+    credits?: IntWithAggregatesFilter<"UserPurchase"> | number
+    status?: EnumUserPurchaseStatusWithAggregatesFilter<"UserPurchase"> | $Enums.UserPurchaseStatus
+    createdAt?: DateTimeWithAggregatesFilter<"UserPurchase"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"UserPurchase"> | Date | string
+  }
+
+  export type CreditTransactionWhereInput = {
+    AND?: CreditTransactionWhereInput | CreditTransactionWhereInput[]
+    OR?: CreditTransactionWhereInput[]
+    NOT?: CreditTransactionWhereInput | CreditTransactionWhereInput[]
+    id?: StringFilter<"CreditTransaction"> | string
+    userId?: StringFilter<"CreditTransaction"> | string
+    amount?: IntFilter<"CreditTransaction"> | number
+    type?: EnumCreditTransactionTypeFilter<"CreditTransaction"> | $Enums.CreditTransactionType
+    description?: StringNullableFilter<"CreditTransaction"> | string | null
+    createdAt?: DateTimeFilter<"CreditTransaction"> | Date | string
+  }
+
+  export type CreditTransactionOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    type?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CreditTransactionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CreditTransactionWhereInput | CreditTransactionWhereInput[]
+    OR?: CreditTransactionWhereInput[]
+    NOT?: CreditTransactionWhereInput | CreditTransactionWhereInput[]
+    userId?: StringFilter<"CreditTransaction"> | string
+    amount?: IntFilter<"CreditTransaction"> | number
+    type?: EnumCreditTransactionTypeFilter<"CreditTransaction"> | $Enums.CreditTransactionType
+    description?: StringNullableFilter<"CreditTransaction"> | string | null
+    createdAt?: DateTimeFilter<"CreditTransaction"> | Date | string
+  }, "id">
+
+  export type CreditTransactionOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    type?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: CreditTransactionCountOrderByAggregateInput
+    _avg?: CreditTransactionAvgOrderByAggregateInput
+    _max?: CreditTransactionMaxOrderByAggregateInput
+    _min?: CreditTransactionMinOrderByAggregateInput
+    _sum?: CreditTransactionSumOrderByAggregateInput
+  }
+
+  export type CreditTransactionScalarWhereWithAggregatesInput = {
+    AND?: CreditTransactionScalarWhereWithAggregatesInput | CreditTransactionScalarWhereWithAggregatesInput[]
+    OR?: CreditTransactionScalarWhereWithAggregatesInput[]
+    NOT?: CreditTransactionScalarWhereWithAggregatesInput | CreditTransactionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CreditTransaction"> | string
+    userId?: StringWithAggregatesFilter<"CreditTransaction"> | string
+    amount?: IntWithAggregatesFilter<"CreditTransaction"> | number
+    type?: EnumCreditTransactionTypeWithAggregatesFilter<"CreditTransaction"> | $Enums.CreditTransactionType
+    description?: StringNullableWithAggregatesFilter<"CreditTransaction"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"CreditTransaction"> | Date | string
+  }
+
+  export type UserCredentialsWhereInput = {
+    AND?: UserCredentialsWhereInput | UserCredentialsWhereInput[]
+    OR?: UserCredentialsWhereInput[]
+    NOT?: UserCredentialsWhereInput | UserCredentialsWhereInput[]
+    id?: StringFilter<"UserCredentials"> | string
+    userId?: StringFilter<"UserCredentials"> | string
+    provider?: StringFilter<"UserCredentials"> | string
+    email?: StringFilter<"UserCredentials"> | string
+    accessToken?: StringFilter<"UserCredentials"> | string
+    refreshToken?: StringNullableFilter<"UserCredentials"> | string | null
+    expiryDate?: DateTimeNullableFilter<"UserCredentials"> | Date | string | null
+    createdAt?: DateTimeFilter<"UserCredentials"> | Date | string
+    updatedAt?: DateTimeFilter<"UserCredentials"> | Date | string
+  }
+
+  export type UserCredentialsOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    provider?: SortOrder
+    email?: SortOrder
+    accessToken?: SortOrder
+    refreshToken?: SortOrderInput | SortOrder
+    expiryDate?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserCredentialsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_provider?: UserCredentialsUserId_providerCompoundUniqueInput
+    AND?: UserCredentialsWhereInput | UserCredentialsWhereInput[]
+    OR?: UserCredentialsWhereInput[]
+    NOT?: UserCredentialsWhereInput | UserCredentialsWhereInput[]
+    userId?: StringFilter<"UserCredentials"> | string
+    provider?: StringFilter<"UserCredentials"> | string
+    email?: StringFilter<"UserCredentials"> | string
+    accessToken?: StringFilter<"UserCredentials"> | string
+    refreshToken?: StringNullableFilter<"UserCredentials"> | string | null
+    expiryDate?: DateTimeNullableFilter<"UserCredentials"> | Date | string | null
+    createdAt?: DateTimeFilter<"UserCredentials"> | Date | string
+    updatedAt?: DateTimeFilter<"UserCredentials"> | Date | string
+  }, "id" | "userId_provider">
+
+  export type UserCredentialsOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    provider?: SortOrder
+    email?: SortOrder
+    accessToken?: SortOrder
+    refreshToken?: SortOrderInput | SortOrder
+    expiryDate?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: UserCredentialsCountOrderByAggregateInput
+    _max?: UserCredentialsMaxOrderByAggregateInput
+    _min?: UserCredentialsMinOrderByAggregateInput
+  }
+
+  export type UserCredentialsScalarWhereWithAggregatesInput = {
+    AND?: UserCredentialsScalarWhereWithAggregatesInput | UserCredentialsScalarWhereWithAggregatesInput[]
+    OR?: UserCredentialsScalarWhereWithAggregatesInput[]
+    NOT?: UserCredentialsScalarWhereWithAggregatesInput | UserCredentialsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UserCredentials"> | string
+    userId?: StringWithAggregatesFilter<"UserCredentials"> | string
+    provider?: StringWithAggregatesFilter<"UserCredentials"> | string
+    email?: StringWithAggregatesFilter<"UserCredentials"> | string
+    accessToken?: StringWithAggregatesFilter<"UserCredentials"> | string
+    refreshToken?: StringNullableWithAggregatesFilter<"UserCredentials"> | string | null
+    expiryDate?: DateTimeNullableWithAggregatesFilter<"UserCredentials"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"UserCredentials"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"UserCredentials"> | Date | string
+  }
+
+  export type CredentialsWhereInput = {
+    AND?: CredentialsWhereInput | CredentialsWhereInput[]
+    OR?: CredentialsWhereInput[]
+    NOT?: CredentialsWhereInput | CredentialsWhereInput[]
+    id?: StringFilter<"Credentials"> | string
+    userId?: StringFilter<"Credentials"> | string
+    name?: StringFilter<"Credentials"> | string
+    type?: EnumCredentialTypeFilter<"Credentials"> | $Enums.CredentialType
+    value?: StringFilter<"Credentials"> | string
+    status?: EnumCredentialStatusFilter<"Credentials"> | $Enums.CredentialStatus
+    lastUsedAt?: DateTimeNullableFilter<"Credentials"> | Date | string | null
+    createdAt?: DateTimeFilter<"Credentials"> | Date | string
+  }
+
+  export type CredentialsOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    value?: SortOrder
+    status?: SortOrder
+    lastUsedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CredentialsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_type_name?: CredentialsUserIdTypeNameCompoundUniqueInput
+    AND?: CredentialsWhereInput | CredentialsWhereInput[]
+    OR?: CredentialsWhereInput[]
+    NOT?: CredentialsWhereInput | CredentialsWhereInput[]
+    userId?: StringFilter<"Credentials"> | string
+    name?: StringFilter<"Credentials"> | string
+    type?: EnumCredentialTypeFilter<"Credentials"> | $Enums.CredentialType
+    value?: StringFilter<"Credentials"> | string
+    status?: EnumCredentialStatusFilter<"Credentials"> | $Enums.CredentialStatus
+    lastUsedAt?: DateTimeNullableFilter<"Credentials"> | Date | string | null
+    createdAt?: DateTimeFilter<"Credentials"> | Date | string
+  }, "id" | "userId_type_name">
+
+  export type CredentialsOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    value?: SortOrder
+    status?: SortOrder
+    lastUsedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: CredentialsCountOrderByAggregateInput
+    _max?: CredentialsMaxOrderByAggregateInput
+    _min?: CredentialsMinOrderByAggregateInput
+  }
+
+  export type CredentialsScalarWhereWithAggregatesInput = {
+    AND?: CredentialsScalarWhereWithAggregatesInput | CredentialsScalarWhereWithAggregatesInput[]
+    OR?: CredentialsScalarWhereWithAggregatesInput[]
+    NOT?: CredentialsScalarWhereWithAggregatesInput | CredentialsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Credentials"> | string
+    userId?: StringWithAggregatesFilter<"Credentials"> | string
+    name?: StringWithAggregatesFilter<"Credentials"> | string
+    type?: EnumCredentialTypeWithAggregatesFilter<"Credentials"> | $Enums.CredentialType
+    value?: StringWithAggregatesFilter<"Credentials"> | string
+    status?: EnumCredentialStatusWithAggregatesFilter<"Credentials"> | $Enums.CredentialStatus
+    lastUsedAt?: DateTimeNullableWithAggregatesFilter<"Credentials"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Credentials"> | Date | string
   }
 
   export type WorkflowCreateInput = {
@@ -7940,6 +12900,307 @@ export namespace Prisma {
   export type UserBalanceUncheckedUpdateManyInput = {
     userId?: StringFieldUpdateOperationsInput | string
     credits?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserPurchaseCreateInput = {
+    id?: string
+    userId: string
+    amount: number
+    currency: string
+    credits: number
+    status?: $Enums.UserPurchaseStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserPurchaseUncheckedCreateInput = {
+    id?: string
+    userId: string
+    amount: number
+    currency: string
+    credits: number
+    status?: $Enums.UserPurchaseStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserPurchaseUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    credits?: IntFieldUpdateOperationsInput | number
+    status?: EnumUserPurchaseStatusFieldUpdateOperationsInput | $Enums.UserPurchaseStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPurchaseUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    credits?: IntFieldUpdateOperationsInput | number
+    status?: EnumUserPurchaseStatusFieldUpdateOperationsInput | $Enums.UserPurchaseStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPurchaseCreateManyInput = {
+    id?: string
+    userId: string
+    amount: number
+    currency: string
+    credits: number
+    status?: $Enums.UserPurchaseStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserPurchaseUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    credits?: IntFieldUpdateOperationsInput | number
+    status?: EnumUserPurchaseStatusFieldUpdateOperationsInput | $Enums.UserPurchaseStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserPurchaseUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    credits?: IntFieldUpdateOperationsInput | number
+    status?: EnumUserPurchaseStatusFieldUpdateOperationsInput | $Enums.UserPurchaseStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CreditTransactionCreateInput = {
+    id?: string
+    userId: string
+    amount: number
+    type: $Enums.CreditTransactionType
+    description?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CreditTransactionUncheckedCreateInput = {
+    id?: string
+    userId: string
+    amount: number
+    type: $Enums.CreditTransactionType
+    description?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CreditTransactionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    type?: EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CreditTransactionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    type?: EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CreditTransactionCreateManyInput = {
+    id?: string
+    userId: string
+    amount: number
+    type: $Enums.CreditTransactionType
+    description?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CreditTransactionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    type?: EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CreditTransactionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    type?: EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCredentialsCreateInput = {
+    id?: string
+    userId: string
+    provider: string
+    email: string
+    accessToken: string
+    refreshToken?: string | null
+    expiryDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserCredentialsUncheckedCreateInput = {
+    id?: string
+    userId: string
+    provider: string
+    email: string
+    accessToken: string
+    refreshToken?: string | null
+    expiryDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserCredentialsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    accessToken?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCredentialsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    accessToken?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCredentialsCreateManyInput = {
+    id?: string
+    userId: string
+    provider: string
+    email: string
+    accessToken: string
+    refreshToken?: string | null
+    expiryDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserCredentialsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    accessToken?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCredentialsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    accessToken?: StringFieldUpdateOperationsInput | string
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    expiryDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CredentialsCreateInput = {
+    id?: string
+    userId: string
+    name: string
+    type: $Enums.CredentialType
+    value: string
+    status?: $Enums.CredentialStatus
+    lastUsedAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type CredentialsUncheckedCreateInput = {
+    id?: string
+    userId: string
+    name: string
+    type: $Enums.CredentialType
+    value: string
+    status?: $Enums.CredentialStatus
+    lastUsedAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type CredentialsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCredentialTypeFieldUpdateOperationsInput | $Enums.CredentialType
+    value?: StringFieldUpdateOperationsInput | string
+    status?: EnumCredentialStatusFieldUpdateOperationsInput | $Enums.CredentialStatus
+    lastUsedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CredentialsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCredentialTypeFieldUpdateOperationsInput | $Enums.CredentialType
+    value?: StringFieldUpdateOperationsInput | string
+    status?: EnumCredentialStatusFieldUpdateOperationsInput | $Enums.CredentialStatus
+    lastUsedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CredentialsCreateManyInput = {
+    id?: string
+    userId: string
+    name: string
+    type: $Enums.CredentialType
+    value: string
+    status?: $Enums.CredentialStatus
+    lastUsedAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type CredentialsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCredentialTypeFieldUpdateOperationsInput | $Enums.CredentialType
+    value?: StringFieldUpdateOperationsInput | string
+    status?: EnumCredentialStatusFieldUpdateOperationsInput | $Enums.CredentialStatus
+    lastUsedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CredentialsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCredentialTypeFieldUpdateOperationsInput | $Enums.CredentialType
+    value?: StringFieldUpdateOperationsInput | string
+    status?: EnumCredentialStatusFieldUpdateOperationsInput | $Enums.CredentialStatus
+    lastUsedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -8374,6 +13635,232 @@ export namespace Prisma {
     credits?: SortOrder
   }
 
+  export type EnumUserPurchaseStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserPurchaseStatus | EnumUserPurchaseStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserPurchaseStatus[]
+    notIn?: $Enums.UserPurchaseStatus[]
+    not?: NestedEnumUserPurchaseStatusFilter<$PrismaModel> | $Enums.UserPurchaseStatus
+  }
+
+  export type UserPurchaseCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    currency?: SortOrder
+    credits?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserPurchaseAvgOrderByAggregateInput = {
+    amount?: SortOrder
+    credits?: SortOrder
+  }
+
+  export type UserPurchaseMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    currency?: SortOrder
+    credits?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserPurchaseMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    currency?: SortOrder
+    credits?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserPurchaseSumOrderByAggregateInput = {
+    amount?: SortOrder
+    credits?: SortOrder
+  }
+
+  export type EnumUserPurchaseStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserPurchaseStatus | EnumUserPurchaseStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserPurchaseStatus[]
+    notIn?: $Enums.UserPurchaseStatus[]
+    not?: NestedEnumUserPurchaseStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserPurchaseStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserPurchaseStatusFilter<$PrismaModel>
+    _max?: NestedEnumUserPurchaseStatusFilter<$PrismaModel>
+  }
+
+  export type EnumCreditTransactionTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.CreditTransactionType | EnumCreditTransactionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CreditTransactionType[]
+    notIn?: $Enums.CreditTransactionType[]
+    not?: NestedEnumCreditTransactionTypeFilter<$PrismaModel> | $Enums.CreditTransactionType
+  }
+
+  export type CreditTransactionCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    type?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CreditTransactionAvgOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type CreditTransactionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    type?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CreditTransactionMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    type?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CreditTransactionSumOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type EnumCreditTransactionTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CreditTransactionType | EnumCreditTransactionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CreditTransactionType[]
+    notIn?: $Enums.CreditTransactionType[]
+    not?: NestedEnumCreditTransactionTypeWithAggregatesFilter<$PrismaModel> | $Enums.CreditTransactionType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCreditTransactionTypeFilter<$PrismaModel>
+    _max?: NestedEnumCreditTransactionTypeFilter<$PrismaModel>
+  }
+
+  export type UserCredentialsUserId_providerCompoundUniqueInput = {
+    userId: string
+    provider: string
+  }
+
+  export type UserCredentialsCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    provider?: SortOrder
+    email?: SortOrder
+    accessToken?: SortOrder
+    refreshToken?: SortOrder
+    expiryDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserCredentialsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    provider?: SortOrder
+    email?: SortOrder
+    accessToken?: SortOrder
+    refreshToken?: SortOrder
+    expiryDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserCredentialsMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    provider?: SortOrder
+    email?: SortOrder
+    accessToken?: SortOrder
+    refreshToken?: SortOrder
+    expiryDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumCredentialTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.CredentialType | EnumCredentialTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CredentialType[]
+    notIn?: $Enums.CredentialType[]
+    not?: NestedEnumCredentialTypeFilter<$PrismaModel> | $Enums.CredentialType
+  }
+
+  export type EnumCredentialStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.CredentialStatus | EnumCredentialStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CredentialStatus[]
+    notIn?: $Enums.CredentialStatus[]
+    not?: NestedEnumCredentialStatusFilter<$PrismaModel> | $Enums.CredentialStatus
+  }
+
+  export type CredentialsUserIdTypeNameCompoundUniqueInput = {
+    userId: string
+    type: $Enums.CredentialType
+    name: string
+  }
+
+  export type CredentialsCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    value?: SortOrder
+    status?: SortOrder
+    lastUsedAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CredentialsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    value?: SortOrder
+    status?: SortOrder
+    lastUsedAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CredentialsMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    value?: SortOrder
+    status?: SortOrder
+    lastUsedAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EnumCredentialTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CredentialType | EnumCredentialTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CredentialType[]
+    notIn?: $Enums.CredentialType[]
+    not?: NestedEnumCredentialTypeWithAggregatesFilter<$PrismaModel> | $Enums.CredentialType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCredentialTypeFilter<$PrismaModel>
+    _max?: NestedEnumCredentialTypeFilter<$PrismaModel>
+  }
+
+  export type EnumCredentialStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CredentialStatus | EnumCredentialStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CredentialStatus[]
+    notIn?: $Enums.CredentialStatus[]
+    not?: NestedEnumCredentialStatusWithAggregatesFilter<$PrismaModel> | $Enums.CredentialStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCredentialStatusFilter<$PrismaModel>
+    _max?: NestedEnumCredentialStatusFilter<$PrismaModel>
+  }
+
   export type WorkflowExecutionCreateNestedManyWithoutWorkflowInput = {
     create?: XOR<WorkflowExecutionCreateWithoutWorkflowInput, WorkflowExecutionUncheckedCreateWithoutWorkflowInput> | WorkflowExecutionCreateWithoutWorkflowInput[] | WorkflowExecutionUncheckedCreateWithoutWorkflowInput[]
     connectOrCreate?: WorkflowExecutionCreateOrConnectWithoutWorkflowInput | WorkflowExecutionCreateOrConnectWithoutWorkflowInput[]
@@ -8574,6 +14061,22 @@ export namespace Prisma {
     update?: XOR<XOR<ExecutionPhaseUpdateToOneWithWhereWithoutLogsInput, ExecutionPhaseUpdateWithoutLogsInput>, ExecutionPhaseUncheckedUpdateWithoutLogsInput>
   }
 
+  export type EnumUserPurchaseStatusFieldUpdateOperationsInput = {
+    set?: $Enums.UserPurchaseStatus
+  }
+
+  export type EnumCreditTransactionTypeFieldUpdateOperationsInput = {
+    set?: $Enums.CreditTransactionType
+  }
+
+  export type EnumCredentialTypeFieldUpdateOperationsInput = {
+    set?: $Enums.CredentialType
+  }
+
+  export type EnumCredentialStatusFieldUpdateOperationsInput = {
+    set?: $Enums.CredentialStatus
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -8760,6 +14263,74 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumUserPurchaseStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserPurchaseStatus | EnumUserPurchaseStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserPurchaseStatus[]
+    notIn?: $Enums.UserPurchaseStatus[]
+    not?: NestedEnumUserPurchaseStatusFilter<$PrismaModel> | $Enums.UserPurchaseStatus
+  }
+
+  export type NestedEnumUserPurchaseStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserPurchaseStatus | EnumUserPurchaseStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserPurchaseStatus[]
+    notIn?: $Enums.UserPurchaseStatus[]
+    not?: NestedEnumUserPurchaseStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserPurchaseStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserPurchaseStatusFilter<$PrismaModel>
+    _max?: NestedEnumUserPurchaseStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumCreditTransactionTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.CreditTransactionType | EnumCreditTransactionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CreditTransactionType[]
+    notIn?: $Enums.CreditTransactionType[]
+    not?: NestedEnumCreditTransactionTypeFilter<$PrismaModel> | $Enums.CreditTransactionType
+  }
+
+  export type NestedEnumCreditTransactionTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CreditTransactionType | EnumCreditTransactionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CreditTransactionType[]
+    notIn?: $Enums.CreditTransactionType[]
+    not?: NestedEnumCreditTransactionTypeWithAggregatesFilter<$PrismaModel> | $Enums.CreditTransactionType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCreditTransactionTypeFilter<$PrismaModel>
+    _max?: NestedEnumCreditTransactionTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumCredentialTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.CredentialType | EnumCredentialTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CredentialType[]
+    notIn?: $Enums.CredentialType[]
+    not?: NestedEnumCredentialTypeFilter<$PrismaModel> | $Enums.CredentialType
+  }
+
+  export type NestedEnumCredentialStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.CredentialStatus | EnumCredentialStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CredentialStatus[]
+    notIn?: $Enums.CredentialStatus[]
+    not?: NestedEnumCredentialStatusFilter<$PrismaModel> | $Enums.CredentialStatus
+  }
+
+  export type NestedEnumCredentialTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CredentialType | EnumCredentialTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CredentialType[]
+    notIn?: $Enums.CredentialType[]
+    not?: NestedEnumCredentialTypeWithAggregatesFilter<$PrismaModel> | $Enums.CredentialType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCredentialTypeFilter<$PrismaModel>
+    _max?: NestedEnumCredentialTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumCredentialStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CredentialStatus | EnumCredentialStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CredentialStatus[]
+    notIn?: $Enums.CredentialStatus[]
+    not?: NestedEnumCredentialStatusWithAggregatesFilter<$PrismaModel> | $Enums.CredentialStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCredentialStatusFilter<$PrismaModel>
+    _max?: NestedEnumCredentialStatusFilter<$PrismaModel>
   }
 
   export type WorkflowExecutionCreateWithoutWorkflowInput = {

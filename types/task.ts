@@ -3,10 +3,13 @@ export enum TaskType{
     PAGE_TO_HTML="PAGE_TO_HTML",
     EXTRACT_TEXT_FROM_ELEMENT="EXTRACT_TEXT_FROM_ELEMENT",
     FILL_INPUT="FILL_INPUT",
+    AI="AI",
+    EXPORT="EXPORT",
 }
 export enum TaskParamType{
     STRING="STRING",
     BROWSER_INSTANCE="BROWSER_INSTANCE",
+    CREDENTIAL="CREDENTIAL",
 }
 export interface TaskParam{
     name:string;

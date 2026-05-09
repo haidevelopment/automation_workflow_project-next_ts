@@ -2,9 +2,11 @@ import { TaskType } from "@/types/task";
 import { LaunchBrowserExecutor } from "./LaunchBrowserExecutor";
 import { PageToHtmlExecutor } from "./PageToHtmlExecutor";
 import { FillInputExecutor } from "./FillInputExecutor";
+import { AIExecutor } from "./AIExecutor";
 import { ExecutionEnvironment } from "@/types/executor";
 import { WorkflowTask } from "@/types/workflow";
 import { ExtractTextFromElementExecutor } from "./ExtractTextFromElementExecutor";
+import { ExportExecutor } from "./ExportExecutor";
 type ExecutorFn<T extends WorkflowTask> = (enviroment: ExecutionEnvironment<T>) => Promise<boolean>;
 type RegistryType = {
     [K in TaskType]: ExecutorFn<WorkflowTask& { type: K}>;
@@ -14,4 +16,6 @@ export const ExecutorRegistry:RegistryType ={
     PAGE_TO_HTML: PageToHtmlExecutor,
     EXTRACT_TEXT_FROM_ELEMENT: ExtractTextFromElementExecutor,
     FILL_INPUT: FillInputExecutor,
+    AI: AIExecutor,
+    EXPORT: ExportExecutor,
 }

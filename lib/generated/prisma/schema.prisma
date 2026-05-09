@@ -80,3 +80,79 @@ model UserBalance {
   userId  String @id
   credits Int    @default(0)
 }
+
+model UserPurchase {
+  id        String             @id @default(cuid())
+  userId    String
+  amount    Int
+  currency  String
+  credits   Int
+  status    UserPurchaseStatus @default(PENDING)
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+
+  @@index([userId])
+}
+
+enum UserPurchaseStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+model CreditTransaction {
+  id          String                @id @default(cuid())
+  userId      String
+  amount      Int
+  type        CreditTransactionType
+  description String?
+  createdAt   DateTime              @default(now())
+
+  @@index([userId])
+}
+
+enum CreditTransactionType {
+  DEPOSIT
+  USAGE
+}
+
+model UserCredentials {
+  id           String    @id @default(cuid())
+  userId       String
+  provider     String
+  email        String
+  accessToken  String
+  refreshToken String?
+  expiryDate   DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@unique([userId, provider], name: "userId_provider")
+}
+
+enum CredentialType {
+  GOOGLE
+  OPENAI
+  GEMINI
+}
+
+enum CredentialStatus {
+  ACTIVE
+  VALID
+  EXPIRED
+  INVALID
+}
+
+model Credentials {
+  id         String           @id @default(cuid())
+  userId     String
+  name       String
+  type       CredentialType
+  value      String
+  status     CredentialStatus @default(ACTIVE)
+  lastUsedAt DateTime?
+  createdAt  DateTime         @default(now())
+
+  @@unique([userId, type, name])
+  @@index([userId])
+}

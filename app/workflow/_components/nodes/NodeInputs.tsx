@@ -16,7 +16,11 @@ const {invalidInputs} = useFlowValidation();
   const hasErrors = invalidInputs.find(node => node.nodeId == nodeId)?.inputs.find(invalidInput  => invalidInput === input.name);
   return (
     <div className={cn("flex justify-start relative p-3 bg-secondary w-full",hasErrors && "bg-destructive/30")}>
-      <NodeParamField param={input} nodeId={nodeId} disabled={isConnected} />
+      {!input.hideField && (
+        <div className="nodrag nowheel w-full">
+          <NodeParamField param={input} nodeId={nodeId} disabled={isConnected} />
+        </div>
+      )}
       {!input.hideHandle && (
         <Handle
           id={input.name}

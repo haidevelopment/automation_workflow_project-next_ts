@@ -7,6 +7,7 @@ import { useReactFlow } from '@xyflow/react'
 import { PlayIcon } from 'lucide-react'
 import React from 'react'
 import { toast } from 'sonner'
+import { TaskType } from '@/types/task'
 
 export default function ExecuteBtn({workflowId}:{workflowId:string}) {
   const generate = useExecutionPlan();
@@ -22,6 +23,17 @@ export default function ExecuteBtn({workflowId}:{workflowId:string}) {
    })
   return (
     <Button variant={"outline"} className='flex items-center gap-2' disabled={mutation.isPending  } onClick={()=>{
+      const flow = toObject();
+      const hasInvalidAINodeCredentials = (flow.nodes ?? []).some((n: any) => {
+        if (n?.data?.type !== TaskType.AI) return false;
+        const credentials = n?.data?.inputs?.["Credentials"];
+        return !credentials || String(credentials).trim().length === 0;
+      });
+      if (hasInvalidAINodeCredentials) {
+        toast.error("Vui lòng hoàn thành cấu hình AI để chạy luồng", { id: "flow-execution" });
+        return;
+      }
+
       const plan = generate();
       console.log("____plan____");
       console.table(plan);
@@ -31,7 +43,7 @@ export default function ExecuteBtn({workflowId}:{workflowId:string}) {
       }
       mutation.mutate({
         workflowId,
-        flowDefinition:JSON.stringify(toObject()),
+        flowDefinition:JSON.stringify(flow),
       });
     }}>
       <PlayIcon size={16} className='stroke-orange-400' /> Execute

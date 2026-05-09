@@ -55,25 +55,33 @@ export function FlowToExecutionPlan(
         continue;
       }
       const invalidInputs = getInvalidInputs(currentNode, edges, planned);
+      const incomers = getIncomers(currentNode, nodes, edges);
+      const allIncomersPlanned = incomers.every((incomer) =>
+        planned.has(incomer.id)
+      );
+
       if (invalidInputs.length > 0) {
-        const incomers = getIncomers(currentNode, nodes, edges);
-        if (incomers.every((incomer) => planned.has(incomer.id))) {
+        if (allIncomersPlanned) {
           // if all incoming incormer/edges are planned and there are still invalid inputs
           //this mean that this particular node has and invalid input
           //which mean that the workflow is invalid
           console.log("invalid input", currentNode.id, invalidInputs);
           inputsWithErrors.push({
-            nodeId:currentNode.id,
-            inputs:invalidInputs
-          })
+            nodeId: currentNode.id,
+            inputs: invalidInputs,
+          });
         } else {
+          // Some incomers are not planned yet, this node must wait for a later phase
           continue;
         }
       }
-      nextPhase.nodes.push(currentNode);
+
+      if (allIncomersPlanned) {
+        nextPhase.nodes.push(currentNode);
+      }
     }
-    for(const node of nextPhase.nodes){
-        planned.add(node.id);
+    for (const node of nextPhase.nodes) {
+      planned.add(node.id);
     }
     executionPlan?.push(nextPhase);
   }
@@ -91,6 +99,7 @@ function getInvalidInputs(node: AppNode, edges: Edge[], planned: Set<string>) {
   const invalidInputs = [];
   const inputs = TaskRegistry[node?.data?.type]?.inputs;
   for (const input of inputs) {
+    if (input.hideField) continue; // Skip validation for hidden fields
     const inputValue = node.data.inputs[input.name];
     const inputValueProvided = inputValue?.length > 0;
     if (inputValueProvided) {
