@@ -42,8 +42,8 @@ export async function POST(request: Request) {
 
     try {
       console.log(`Attempting to add ${pack.credits} credits to user ${userId}...`);
-      await (prisma as any).$transaction([
-        (prisma as any).userBalance.upsert({
+      await prisma.$transaction([
+        prisma.userBalance.upsert({
           where: { userId },
           create: {
             userId,
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
             },
           },
         }),
-        (prisma as any).creditTransaction.create({
+        prisma.creditTransaction.create({
           data: {
             userId,
             amount: pack.credits,
