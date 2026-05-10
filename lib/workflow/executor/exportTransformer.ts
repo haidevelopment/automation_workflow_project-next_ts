@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const TurndownService = require("turndown");
 
 export type ExportType = "Word" | "Excel" | "Google Sheets" | "Google Docs";

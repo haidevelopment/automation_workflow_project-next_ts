@@ -21,7 +21,7 @@ const useExecutionPlan= () =>{
             toast.error("Something went wrong");
             break;
      }
-    },[])
+    },[setInvalidInputs])
     const generateExecutionPlan = useCallback(()=>{
         const {nodes,edges} = toObject();
         const {executionPlan,error} = FlowToExecutionPlan(nodes as AppNode[],edges);

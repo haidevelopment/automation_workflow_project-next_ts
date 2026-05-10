@@ -35,7 +35,7 @@ import { ExternalLinkIcon } from "lucide-react";
 const DEV_MODE = process.env.NEXT_PUBLIC_DEV_MODE === "true";
 const NodeComponent = memo((props: NodeProps) => {
   const nodeData = props.data as AppNodeData;
-  const task = TaskRegistry[nodeData.type];
+  const task = useMemo(() => TaskRegistry[nodeData.type], [nodeData.type]);
   const { getNode, updateNodeData } = useReactFlow();
   const edges = useEdges();
   const node = getNode(props.id) as AppNode | undefined;
@@ -285,24 +285,16 @@ const NodeComponent = memo((props: NodeProps) => {
   };
 
   useEffect(() => {
-    if (nodeData.type !== TaskType.EXPORT) return;
-    if (!isGoogleExport) return;
-    if (isGoogleConnected) return;
+    const inputs = (node?.data?.inputs as Record<string, any>) || {};
+    const type = inputs["Export Type"];
+    if (type) setExportTypeValue(type);
+  }, [node?.data?.inputs, setExportTypeValue]);
 
-    let cancelled = false;
-    fetch("/api/auth/google/export/status", { cache: "no-store" })
-      .then((r) => r.json())
-      .then((j) => {
-        if (cancelled) return;
-        const email = String(j?.email ?? "").trim();
-        if (email) setGoogleAccount(email);
-      })
-      .catch(() => {});
-
-    return () => {
-      cancelled = true;
-    };
-  }, [isGoogleConnected, isGoogleExport, nodeData.type]);
+  useEffect(() => {
+    const inputs = (node?.data?.inputs as Record<string, any>) || {};
+    const account = inputs["Google Account"];
+    if (account) setGoogleAccount(account);
+  }, [node?.data?.inputs, setGoogleAccount]);
 
   return (
     <NodeCard nodeId={props.id} isSelected={props.selected}>

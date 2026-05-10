@@ -41,12 +41,12 @@ function ExecutionViewer({ initialData }: { initialData: ExecutionData }) {
      const phases = query.data?.phases || [];
      if(isRunning){
       const phaseToSelect = phases.toSorted((a,b)=> a.startedAt! > b.startedAt! ? -1 : 1)[0];
-      setSelectedPhase(phaseToSelect.id);
+      if (phaseToSelect) setSelectedPhase(phaseToSelect.id);
       return;
      }
      const phaseToSelect = phases.toSorted((a,b)=> a.completedAt! > b.completedAt! ? -1 : 1)[0];
-     setSelectedPhase(phaseToSelect.id);
-  },[query.data?.phases, isRunning, setSelectedPhase])
+     if (phaseToSelect) setSelectedPhase(phaseToSelect.id);
+  },[query.data?.phases, isRunning])
   const phaseDetails = useQuery({
     queryKey: ["phaseDetails", selectedPhase],
     enabled: !!selectedPhase,
@@ -418,7 +418,7 @@ function JsonTree({ data, level = 0 }: { data: any; level?: number }) {
   }
 
   if (typeof data === "string") {
-    return <div style={indent} className="text-emerald-300 break-words">"{data}"</div>;
+    return <div style={indent} className="text-emerald-300 break-words">&quot;{data}&quot;</div>;
   }
   if (typeof data === "number") {
     return <div style={indent} className="text-sky-300">{data}</div>;
