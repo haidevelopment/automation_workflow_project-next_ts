@@ -22,7 +22,7 @@ export async function createCheckoutSession(packId: string) {
   }
 
   // Lấy domain từ env hoặc mặc định localhost
-  const domain = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  const domain = process.env.NEXT_PUBLIC_DOMAIN || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
