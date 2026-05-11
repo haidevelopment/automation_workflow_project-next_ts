@@ -285,16 +285,19 @@ const NodeComponent = memo((props: NodeProps) => {
   };
 
   useEffect(() => {
-    const inputs = (node?.data?.inputs as Record<string, any>) || {};
-    const type = inputs["Export Type"];
-    if (type) setExportTypeValue(type);
-  }, [node?.data?.inputs, setExportTypeValue]);
-
-  useEffect(() => {
-    const inputs = (node?.data?.inputs as Record<string, any>) || {};
-    const account = inputs["Google Account"];
-    if (account) setGoogleAccount(account);
-  }, [node?.data?.inputs, setGoogleAccount]);
+    if (nodeData.type !== TaskType.EXPORT) return;
+    if (exportTypeValue) return;
+    const suggested = exportSuggestedTypes[0];
+    if (!suggested) return;
+    
+    // Chỉ cập nhật nếu thực sự chưa có giá trị
+    updateNodeData(props.id, {
+      inputs: {
+        ...node?.data.inputs,
+        "Export Type": suggested,
+      },
+    });
+  }, [exportSuggestedTypes, exportTypeValue, nodeData.type, props.id, updateNodeData, node?.data.inputs]);
 
   return (
     <NodeCard nodeId={props.id} isSelected={props.selected}>
